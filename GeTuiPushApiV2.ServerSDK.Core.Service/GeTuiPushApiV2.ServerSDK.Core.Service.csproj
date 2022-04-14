@@ -18,7 +18,7 @@
     <PackageTags>GeTui;GeTuiPush</PackageTags>
     <PackageReleaseNotes>首次发布</PackageReleaseNotes>
     <Copyright>Copyright 2022 (c) pinzi. All rights reserved.</Copyright>
-    <RepositoryUrl>https://github.com/pinzi/GeTuiPushApiV2.ServerSDK.Core.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/pinzi/GeTui-PushApi-ServerSDK-V2.git</RepositoryUrl>
     <PackageProjectUrl>https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core</PackageProjectUrl>
   </PropertyGroup>
 
