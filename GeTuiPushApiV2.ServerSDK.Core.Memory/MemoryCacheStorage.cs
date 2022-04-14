@@ -1,4 +1,6 @@
-﻿namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
+﻿using GeTuiPushApiV2.ServerSDK.Storage;
+
+namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
 {
     /// <summary>
     /// 使用内存缓存存储数据

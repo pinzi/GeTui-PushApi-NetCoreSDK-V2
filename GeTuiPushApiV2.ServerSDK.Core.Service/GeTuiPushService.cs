@@ -1,4 +1,5 @@
 ﻿using GeTuiPushApiV2.ServerSDK.Core.Utility;
+using GeTuiPushApiV2.ServerSDK.Storage;
 
 namespace GeTuiPushApiV2.ServerSDK.Core.Service
 {

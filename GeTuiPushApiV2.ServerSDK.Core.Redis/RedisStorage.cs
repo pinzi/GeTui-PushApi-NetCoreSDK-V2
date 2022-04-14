@@ -1,4 +1,6 @@
-﻿namespace GeTuiPushApiV2.ServerSDK.Core.Redis
+﻿using GeTuiPushApiV2.ServerSDK.Storage;
+
+namespace GeTuiPushApiV2.ServerSDK.Core.Redis
 {
     /// <summary>
     /// 使用Redis存储数据

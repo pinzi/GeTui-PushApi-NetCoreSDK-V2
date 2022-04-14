@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core\GeTuiPushApiV2.ServerSDK.Core.csproj" />
+    <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core.Storage\GeTuiPushApiV2.ServerSDK.Core.Storage.csproj" />
   </ItemGroup>
 
 </Project>

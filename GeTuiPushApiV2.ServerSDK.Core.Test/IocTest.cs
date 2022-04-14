@@ -1,6 +1,7 @@
 ﻿using GeTuiPushApiV2.ServerSDK.Core.Service;
 using GeTuiPushApiV2.ServerSDK.Core.Utility;
 using Microsoft.Extensions.DependencyInjection;
+using GeTuiPushApiV2.ServerSDK.Storage;
 using Newtonsoft.Json;
 
 namespace GeTuiPushApiV2.ServerSDK.Core.Test

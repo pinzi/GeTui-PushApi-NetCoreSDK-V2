@@ -1,6 +1,7 @@
 ﻿using GeTuiPushApiV2.ServerSDK.Core.Redis;
 using GeTuiPushApiV2.ServerSDK.Core.Service;
 using GeTuiPushApiV2.ServerSDK.Core.Utility;
+using GeTuiPushApiV2.ServerSDK.Storage;
 using Newtonsoft.Json;
 
 namespace GeTuiPushApiV2.ServerSDK.Core.Test

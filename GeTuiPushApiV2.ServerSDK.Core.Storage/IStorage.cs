@@ -1,4 +1,4 @@
-﻿namespace GeTuiPushApiV2.ServerSDK.Core
+﻿namespace GeTuiPushApiV2.ServerSDK.Storage
 {
     /// <summary>
     /// 存储方式抽象接口
