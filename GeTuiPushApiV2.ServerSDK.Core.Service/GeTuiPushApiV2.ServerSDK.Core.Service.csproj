@@ -3,6 +3,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<Description>GeTuiPushApiV2.ServerSDK.Core</Description>
     <Description>个推PUSH SDK For .NetCore</Description>
     <ApplicationIcon>icon_48x48.ico</ApplicationIcon>
     <PackageIcon>icon_128x128.jpg</PackageIcon>
@@ -13,7 +14,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <PackageId>GeTuiPushApiV2.ServerSDK.Core.Service</PackageId>
+    <PackageId>GeTuiPushApiV2.ServerSDK.Core</PackageId>
     <PackageTags>GeTui;GeTuiPush</PackageTags>
     <PackageReleaseNotes>首次发布</PackageReleaseNotes>
     <Copyright>Copyright 2022 (c) pinzi. All rights reserved.</Copyright>

@@ -1,34 +1,34 @@
-»¶Ó­Ê¹ÓÃ[¸öÍÆ**PUSH** SDK For .NetCore](https://docs.getui.com/getui/server/rest_v2/introduction/)¡£
+æ¬¢è¿ä½¿ç”¨[ä¸ªæ¨**PUSH** SDK For .NetCore](https://docs.getui.com/getui/server/rest_v2/introduction/)ã€‚
 
-`¸öÍÆPUSH SDK For .NetCore`µÄÖ÷ÒªÄ¿±êÊÇÌáÉı¿ª·¢ÕßÔÚ**·şÎñ¶Ë**¼¯³É¸öÍÆÍÆËÍ·şÎñµÄ¿ª·¢Ğ§ÂÊ¡£
-¿ª·¢Õß²»ĞèÒª½øĞĞ¸´ÔÓ±à³Ì¼´¿ÉÊ¹ÓÃ¸öÍÆÍÆËÍ·şÎñµÄ¸÷Ïî³£ÓÃ¹¦ÄÜ£¬SDK¿ÉÒÔ×Ô¶¯°ïÄúÂú×ãµ÷ÓÃ¹ı³ÌÖĞËùĞèµÄ¼øÈ¨¡¢×é×°²ÎÊı¡¢·¢ËÍHTTPÇëÇóµÈ·Ç¹¦ÄÜĞÔÒªÇó¡£
-Ä¿Ç°SDK½öÊµÏÖÁËµ¥ÍÆ£¬ÅúÁ¿ÍÆ£¬ÈºÍÆÈıÖÖ·½Ê½µÄÍÆËÍ·şÎñ¡£
-
-
-## »·¾³ÒªÇó
-1. Ö§³Ö.NET CORE 6.0£¬7.0¡£
-
-2. Ê¹ÓÃ`¸öÍÆPUSH SDK`Ç°£¬ÄúĞèÒªÏÈÇ°Íù[¸öÍÆ¿ª·¢ÕßÖĞĞÄ](https://dev.getui.com) Íê³É¿ª·¢Õß½ÓÈëµÄÒ»Ğ©×¼±¸¹¤×÷£¬´´½¨Ó¦ÓÃ¡£ÏêÏ¸¼û[²Ù×÷²½Öè](https://docs.getui.com/getui/start/devcenter/#1)
-
-3. ×¼±¸¹¤×÷Íê³Éºó£¬Ç°Íù[¸öÍÆ¿ª·¢ÕßÖĞĞÄ](https://dev.getui.com)»ñÈ¡Ó¦ÓÃÅäÖÃ£¬ºóĞø½«×÷ÎªÊ¹ÓÃSDKµÄÊäÈë¡£ÏêÏ¸¼û[²Ù×÷²½Öè](https://docs.getui.com/getui/start/devcenter/#11)
+`ä¸ªæ¨PUSH SDK For .NetCore`çš„ä¸»è¦ç›®æ ‡æ˜¯æå‡å¼€å‘è€…åœ¨**æœåŠ¡ç«¯**é›†æˆä¸ªæ¨æ¨é€æœåŠ¡çš„å¼€å‘æ•ˆç‡ã€‚
+å¼€å‘è€…ä¸éœ€è¦è¿›è¡Œå¤æ‚ç¼–ç¨‹å³å¯ä½¿ç”¨ä¸ªæ¨æ¨é€æœåŠ¡çš„å„é¡¹å¸¸ç”¨åŠŸèƒ½ï¼ŒSDKå¯ä»¥è‡ªåŠ¨å¸®æ‚¨æ»¡è¶³è°ƒç”¨è¿‡ç¨‹ä¸­æ‰€éœ€çš„é‰´æƒã€ç»„è£…å‚æ•°ã€å‘é€HTTPè¯·æ±‚ç­‰éåŠŸèƒ½æ€§è¦æ±‚ã€‚
+ç›®å‰SDKä»…å®ç°äº†å•æ¨ï¼Œæ‰¹é‡æ¨ï¼Œç¾¤æ¨ä¸‰ç§æ–¹å¼çš„æ¨é€æœåŠ¡ã€‚
 
 
-## °²×°ÒÀÀµ
-```
+## ç¯å¢ƒè¦æ±‚
+1. æ”¯æŒ.NET CORE 6.0ï¼Œ7.0ã€‚
+
+2. ä½¿ç”¨`ä¸ªæ¨PUSH SDK For .NetCore`å‰ï¼Œæ‚¨éœ€è¦å…ˆå‰å¾€[ä¸ªæ¨å¼€å‘è€…ä¸­å¿ƒ](https://dev.getui.com) å®Œæˆå¼€å‘è€…æ¥å…¥çš„ä¸€äº›å‡†å¤‡å·¥ä½œï¼Œåˆ›å»ºåº”ç”¨ã€‚è¯¦ç»†è§[æ“ä½œæ­¥éª¤](https://docs.getui.com/getui/start/devcenter/#1)
+
+3. å‡†å¤‡å·¥ä½œå®Œæˆåï¼Œå‰å¾€[ä¸ªæ¨å¼€å‘è€…ä¸­å¿ƒ](https://dev.getui.com)è·å–åº”ç”¨é…ç½®ï¼Œåç»­å°†ä½œä¸ºä½¿ç”¨SDKçš„è¾“å…¥ã€‚è¯¦ç»†è§[æ“ä½œæ­¥éª¤](https://docs.getui.com/getui/start/devcenter/#11)
+
+
+## å®‰è£…ä¾èµ–
+```SH
     Install-Package GeTuiPushApiV2.ServerSDK.Core
 ```
 
-## ¿ìËÙ¿ªÊ¼
-±¾SDKÖ§³Ö3ÖÖµ÷ÓÃ·½Ê½£¬Çë¸ù¾İ×Ô¼ºµÄÒµÎñÇé¿ö½øĞĞÑ¡Ôñ¡£
+## å¿«é€Ÿå¼€å§‹
+æœ¬SDKæ”¯æŒ3ç§è°ƒç”¨æ–¹å¼ï¼Œè¯·æ ¹æ®è‡ªå·±çš„ä¸šåŠ¡æƒ…å†µè¿›è¡Œé€‰æ‹©ã€‚
 
-### 1.Ö±½Óµ÷ÓÃ¸öÍÆRestAPI V2µÄ½Ó¿Ú·½·¨
-ÕâÖÖ·½Ê½ĞèÒª×Ô¼º¶Ô½Ó¿ÚµÄÇëÇó²ÎÊı¼°ÏìÓ¦½øĞĞ´¦Àí£¬¶Ô¼øÈ¨token£¬CID½øĞĞ»º´æµÈ¡£
-##### Ê¹ÓÃÊ¾Àı
-###### 1.**»ñÈ¡¼øÈ¨token**
+### 1.ç›´æ¥è°ƒç”¨ä¸ªæ¨RestAPI V2çš„æ¥å£æ–¹æ³•
+è¿™ç§æ–¹å¼éœ€è¦è‡ªå·±å¯¹æ¥å£çš„è¯·æ±‚å‚æ•°åŠå“åº”è¿›è¡Œå¤„ç†ï¼Œå¯¹é‰´æƒtokenï¼ŒCIDè¿›è¡Œç¼“å­˜ç­‰ã€‚
+##### ä½¿ç”¨ç¤ºä¾‹
+###### 1.**è·å–é‰´æƒtoken**
 ```C#
-            string AppID = "Ny3b4Umv7882X0UheVwCU4";//Ó¦ÓÃID
-            string AppKey = "dY1BXGSHys8TPKeCqU3ilA"; //Ó¦ÓÃkey
-            string MasterSecret = "GAZTCU0hyO69XjC9u5pSb2"; //Ö÷ÃÜÔ¿
+            string AppID = "Ny3b4Umv7882X0UheVwCU4";//åº”ç”¨ID
+            string AppKey = "dY1BXGSHys8TPKeCqU3ilA"; //åº”ç”¨key
+            string MasterSecret = "GAZTCU0hyO69XjC9u5pSb2"; //ä¸»å¯†é’¥
 
             long _timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000;
             var indto = new ApiAuthInDto()
@@ -42,7 +42,7 @@
             var result = await GeTuiPushV2Api.HttpPostGeTuiApiAsync<ApiAuthInDto, ApiAuthOutDto>($"https://restapi.getui.com/v2/{AppID}/auth", indto);
             string token=result.data.token;
 ```
-###### 2.**¸ù¾İcid½øĞĞµ¥ÍÆ**
+###### 2.**æ ¹æ®cidè¿›è¡Œå•æ¨**
 ```C#
                var apiInDto = new ApiPushToSingleInDto()
                 {
@@ -53,16 +53,16 @@
                     },
                     push_message = new push_messageDto()
                 };
-                //Í¨ÖªÏûÏ¢
+                //é€šçŸ¥æ¶ˆæ¯
                 apiInDto.push_message.notification = new notificationDto()
                 {
-                    title = "Í£»ú¾¯¸æ",
-                    body = "ÒÑÍ£»ú£¬Çë¼°Ê±´¦Àí",
+                    title = "åœæœºè­¦å‘Š",
+                    body = "å·²åœæœºï¼Œè¯·åŠæ—¶å¤„ç†",
                     click_type = "payload",
                     payload = JsonConvert.SerializeObject(new
                     {
                         msgId = new string[] { Guid.NewGuid().ToStr() },
-                        text = $"Í£»úÊ±¼ä£º{DateTime.Now}"
+                        text = $"åœæœºæ—¶é—´ï¼š{DateTime.Now}"
                     }),
                     badge_add_num = 1,
                     channel_id = "Push",
@@ -75,52 +75,52 @@
 ```
 
 
-### 2.Ê¹ÓÃÒÑ·â×°ºÃµÄÍ³Ò»·¢Æğ¼°ÏìÓ¦´¦Àí·½·¨
-ÕâÖÖ·½Ê½ÊÇÔÚµÚ1ÖÖ·½Ê½ÉÏ½øĞĞÁËÒ»²ã·â×°£¬Í³Ò»¶Ô½Ó¿ÚÇëÇó£¬ÏìÓ¦½øĞĞÁË´¦Àí£¬µ«ÈÔÈ»ĞèÒª¶Ô¼øÈ¨token£¬CID½øĞĞ»º´æµÈ¡£
+### 2.ä½¿ç”¨å·²å°è£…å¥½çš„ç»Ÿä¸€å‘èµ·åŠå“åº”å¤„ç†æ–¹æ³•
+è¿™ç§æ–¹å¼æ˜¯åœ¨ç¬¬1ç§æ–¹å¼ä¸Šè¿›è¡Œäº†ä¸€å±‚å°è£…ï¼Œç»Ÿä¸€å¯¹æ¥å£è¯·æ±‚ï¼Œå“åº”è¿›è¡Œäº†å¤„ç†ï¼Œä½†ä»ç„¶éœ€è¦å¯¹é‰´æƒtokenï¼ŒCIDè¿›è¡Œç¼“å­˜ç­‰ã€‚
 
-### 3.Ê¹ÓÃÒÑ·â×°ºÃµÄ¸öÍÆÍÆËÍ·şÎñ£¨ÍÆ¼ö£©
-ÕâÖÖ·½Ê½ÏÂ£¬½öĞèÒª×¼±¸ÍÆËÍ·şÎñËùĞè²ÎÊı£¬¼´¿É½øĞĞÍÆËÍ¡£ÎŞĞèÊÖ¶¯Ñ¡ÔñÍÆËÍ½Ó¿ÚÀ´¾ö¶¨Ê¹ÓÃµ¥ÍÆ£¬ÈºÍÆ£¬ÅúÁ¿ÍÆ£¬³ÌĞò»á¸ù¾İ²ÎÊı×Ô¶¯Ñ¡ÔñÍÆËÍ·½Ê½¡£
+### 3.ä½¿ç”¨å·²å°è£…å¥½çš„ä¸ªæ¨æ¨é€æœåŠ¡ï¼ˆæ¨èï¼‰
+è¿™ç§æ–¹å¼ä¸‹ï¼Œä»…éœ€è¦å‡†å¤‡æ¨é€æœåŠ¡æ‰€éœ€å‚æ•°ï¼Œå³å¯è¿›è¡Œæ¨é€ã€‚æ— éœ€æ‰‹åŠ¨é€‰æ‹©æ¨é€æ¥å£æ¥å†³å®šä½¿ç”¨å•æ¨ï¼Œç¾¤æ¨ï¼Œæ‰¹é‡æ¨ï¼Œç¨‹åºä¼šæ ¹æ®å‚æ•°è‡ªåŠ¨é€‰æ‹©æ¨é€æ–¹å¼ã€‚
 
-### ÆÕÍ¨µ÷ÓÃ
-
-
+### æ™®é€šè°ƒç”¨
 
 
 
-##### Ê¹ÓÃÊ¾Àı£º**´´½¨API**
 
-```C#
 
-```
-
-##### Ê¹ÓÃÊ¾Àı£º**ÍÆËÍAPI**_¸ù¾İcid½øĞĞµ¥ÍÆ
+##### ä½¿ç”¨ç¤ºä¾‹ï¼š**åˆ›å»ºAPI**
 
 ```C#
 
 ```
 
+##### ä½¿ç”¨ç¤ºä¾‹ï¼š**æ¨é€API**_æ ¹æ®cidè¿›è¡Œå•æ¨
+
+```C#
+
+```
 
 
-## ÒÑÖ§³ÖµÄAPIÁĞ±í
-ÒÔÏÂÊÇÏûÏ¢ÍÆËÍ¹¦ÄÜÓëÍÆËÍAPIµÄ¶ÔÓ¦¹ØÏµ
 
-| APIÀà±ğ      |      ¹¦ÄÜ       | µ÷ÓÃµÄAPIÃû³Æ                                              |
+## å·²æ”¯æŒçš„APIåˆ—è¡¨
+ä»¥ä¸‹æ˜¯æ¶ˆæ¯æ¨é€åŠŸèƒ½ä¸æ¨é€APIçš„å¯¹åº”å…³ç³»
+
+| APIç±»åˆ«      |      åŠŸèƒ½       | è°ƒç”¨çš„APIåç§°                                              |
 |-----------|-----------------|-----------------------------------------------------------|
-| ¼øÈ¨API | [¼øÈ¨](https://docs.getui.com/getui/server/rest_v2/token/#0)              | com.getui.push.v2.sdk.api.AuthApi.auth                                  |
-| ÍÆËÍAPI | [cidµ¥ÍÆ](https://docs.getui.com/getui/server/rest_v2/push/#1)            | com.getui.push.v2.sdk.api.PushApi.pushToSingleByCid                     |
-| ÍÆËÍAPI | [tolist´´½¨ÏûÏ¢](https://docs.getui.com/getui/server/rest_v2/push/#5)      | com.getui.push.v2.sdk.api.PushApi.createMsg                             |
-| ÍÆËÍAPI | [cidÅúÁ¿ÍÆ](https://docs.getui.com/getui/server/rest_v2/push/#6)           | com.getui.push.v2.sdk.api.PushApi.pushListByCid                         |                  
-| ÍÆËÍAPI | [ÈºÍÆ](https://docs.getui.com/getui/server/rest_v2/push/#8)                | com.getui.push.v2.sdk.api.PushApi.pushAll                               |                                
+| é‰´æƒAPI | [é‰´æƒ](https://docs.getui.com/getui/server/rest_v2/token/#0)              | com.getui.push.v2.sdk.api.AuthApi.auth                                  |
+| æ¨é€API | [cidå•æ¨](https://docs.getui.com/getui/server/rest_v2/push/#1)            | com.getui.push.v2.sdk.api.PushApi.pushToSingleByCid                     |
+| æ¨é€API | [toliståˆ›å»ºæ¶ˆæ¯](https://docs.getui.com/getui/server/rest_v2/push/#5)      | com.getui.push.v2.sdk.api.PushApi.createMsg                             |
+| æ¨é€API | [cidæ‰¹é‡æ¨](https://docs.getui.com/getui/server/rest_v2/push/#6)           | com.getui.push.v2.sdk.api.PushApi.pushListByCid                         |
+| æ¨é€API | [ç¾¤æ¨](https://docs.getui.com/getui/server/rest_v2/push/#8)                | com.getui.push.v2.sdk.api.PushApi.pushAll                               |
 
-> ×¢£º¸ü¶àAPI³ÖĞø¸üĞÂÖĞ£¬¾´ÇëÆÚ´ı¡£
+> æ³¨ï¼šæ›´å¤šAPIæŒç»­æ›´æ–°ä¸­ï¼Œæ•¬è¯·æœŸå¾…ã€‚
 
 
-## ĞÂAPI½Ó¿Ú¿ª·¢Ö¸ÄÏ
-1. ĞÂ½¨api½Ó¿ÚÀà£¬Ê¹ÓÃÀà×¢½â`com.getui.push.v2.sdk.anno.GtApi`±ê¼ÇÎª¸öÍÆ½Ó¿ÚÀà
+## æ–°APIæ¥å£å¼€å‘æŒ‡å—
+1. æ–°å»ºapiæ¥å£ç±»ï¼Œä½¿ç”¨ç±»æ³¨è§£`com.getui.push.v2.sdk.anno.GtApi`æ ‡è®°ä¸ºä¸ªæ¨æ¥å£ç±»
 
-2. ½Ó¿Ú£¬Ê¹ÓÃ`com.getui.push.v2.sdk.anno.method`°üÏÂµÄ·½·¨×¢½â`GtGet`/`GtPost`/`GtPut`/`GtDelete`±ê¼ÇÇëÇó·½Ê½£¬·Ö±ğ´ú±í`GET`¡¢`POST`¡¢`PUT`¡¢`DELETE`ËÄÖÖHTTPÇëÇó·½Ê½
+2. æ¥å£ï¼Œä½¿ç”¨`com.getui.push.v2.sdk.anno.method`åŒ…ä¸‹çš„æ–¹æ³•æ³¨è§£`GtGet`/`GtPost`/`GtPut`/`GtDelete`æ ‡è®°è¯·æ±‚æ–¹å¼ï¼Œåˆ†åˆ«ä»£è¡¨`GET`ã€`POST`ã€`PUT`ã€`DELETE`å››ç§HTTPè¯·æ±‚æ–¹å¼
 
-3. ²ÎÊı£¬Ê¹ÓÃ`com.getui.push.v2.sdk.anno.param`°üÏÂµÄ²ÎÊı×¢½â`GtPathParam`/`GtHeaderParam`/`GtQueryParam`/`GtBodyParam`±ê¼Ç²ÎÊıÀàĞÍ£¬·Ö±ğ±íÊ¾HTTPÇëÇóÖĞµÄËÄÖÖ²ÎÊı£º Â·¾¶²ÎÊı/header²ÎÊı/query²ÎÊı/body²ÎÊı
+3. å‚æ•°ï¼Œä½¿ç”¨`com.getui.push.v2.sdk.anno.param`åŒ…ä¸‹çš„å‚æ•°æ³¨è§£`GtPathParam`/`GtHeaderParam`/`GtQueryParam`/`GtBodyParam`æ ‡è®°å‚æ•°ç±»å‹ï¼Œåˆ†åˆ«è¡¨ç¤ºHTTPè¯·æ±‚ä¸­çš„å››ç§å‚æ•°ï¼š è·¯å¾„å‚æ•°/headerå‚æ•°/queryå‚æ•°/bodyå‚æ•°
 
-## ÆäËûÁ´½Ó
-[¸öÍÆ·şÎñ¶ËSDK RestAPI V2ÎÄµµÖĞĞÄ](https://docs.getui.com/getui/server/rest_v2/service_sdk/)
+## å…¶ä»–é“¾æ¥
+[ä¸ªæ¨æœåŠ¡ç«¯SDK RestAPI V2æ–‡æ¡£ä¸­å¿ƒ](https://docs.getui.com/getui/server/rest_v2/service_sdk/)

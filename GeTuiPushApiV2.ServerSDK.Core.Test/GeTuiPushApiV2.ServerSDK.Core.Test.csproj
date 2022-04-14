@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core.Service\GeTuiPushApiV2.ServerSDK.Core.Service.csproj" />
     <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core.Utility\GeTuiPushApiV2.ServerSDK.Core.Utility.csproj" />
     <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core\GeTuiPushApiV2.ServerSDK.Core.csproj" />
     <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.IOC\GeTuiPushApiV2.ServerSDK.IOC.csproj" />
