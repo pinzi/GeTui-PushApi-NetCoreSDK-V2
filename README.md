@@ -6,7 +6,7 @@
 
 
 ## 环境要求
-1. 支持.NET CORE 3.X，5.0，6.0，7.0。
+1. 支持.NET CORE 6.0，7.0。
 
 2. 使用`个推PUSH SDK`前，您需要先前往[个推开发者中心](https://dev.getui.com) 完成开发者接入的一些准备工作，创建应用。详细见[操作步骤](https://docs.getui.com/getui/start/devcenter/#1)
 
