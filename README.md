@@ -139,6 +139,7 @@ await api.PushToSingleAsync(apiInDto);
 该方式又支持普通调用和IOC调用两种方式，推荐使用IOC调用方式。
 
 #### 3.1 普通调用
+##### 使用示例
 ```C#
 IStorage iStorage = new RedisStorage(new StackExchangeRedis(new RedisOptions()
 {
@@ -252,7 +253,7 @@ services.AddNewLifeRedis();
 
 注入完成，即可通过IOC容器获取服务实例，并进行消息推送。
 
-
+##### 使用示例
 ```C#
 IServiceCollection services = new ServiceCollection();
 //注入推送服务
@@ -296,5 +297,8 @@ catch (Exception ex)
 
 > 注：更多API持续更新中，敬请期待。
 
+
+
 ## 其他链接
+
 [个推服务端SDK RestAPI V2文档中心](https://docs.getui.com/getui/server/rest_v2/service_sdk/)
