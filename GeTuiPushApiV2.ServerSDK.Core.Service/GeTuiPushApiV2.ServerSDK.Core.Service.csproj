@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Description>个推PUSH SDK For .NetCore</Description>
+    <ApplicationIcon>icon_48x48.ico</ApplicationIcon>
+    <PackageIcon>icon_128x128.jpg</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <Authors>pinzi</Authors>
+    <Product>GeTuiPushApiV2.ServerSDK.Core.Service</Product>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageId>GeTuiPushApiV2.ServerSDK.Core.Service</PackageId>
+    <PackageTags>GeTui;GeTuiPush</PackageTags>
+    <PackageReleaseNotes>首次发布</PackageReleaseNotes>
+    <Copyright>Copyright 2022 (c) pinzi. All rights reserved.</Copyright>
+    <RepositoryUrl>https://github.com/pinzi/GeTuiPushApiV2.ServerSDK.Core.git</RepositoryUrl>
+    <PackageProjectUrl>https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="icon_48x48.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\icon_128x128.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+	<None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core.Utility\GeTuiPushApiV2.ServerSDK.Core.Utility.csproj" />
+    <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core\GeTuiPushApiV2.ServerSDK.Core.csproj" />
+  </ItemGroup>
+
+</Project>

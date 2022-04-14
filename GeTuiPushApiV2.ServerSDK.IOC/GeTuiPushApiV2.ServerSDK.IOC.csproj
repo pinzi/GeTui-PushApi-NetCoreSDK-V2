@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core.Memory\GeTuiPushApiV2.ServerSDK.Core.MemoryCache.csproj" />
+    <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core.Service\GeTuiPushApiV2.ServerSDK.Core.Service.csproj" />
+    <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core.Storage\GeTuiPushApiV2.ServerSDK.Core.Redis.csproj" />
+    <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core\GeTuiPushApiV2.ServerSDK.Core.csproj" />
+  </ItemGroup>
+
+</Project>
