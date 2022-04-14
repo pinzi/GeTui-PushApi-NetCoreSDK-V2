@@ -287,13 +287,13 @@ catch (Exception ex)
 ## 已支持的API列表
 以下是消息推送功能与推送API的对应关系
 
-| API类别 | 功能                                                         | 调用的API名称                                       |
-| ------- | ------------------------------------------------------------ | --------------------------------------------------- |
-| 鉴权API | [鉴权](https://docs.getui.com/getui/server/rest_v2/token/#0) | com.getui.push.v2.sdk.api.AuthApi.auth              |
-| 推送API | [cid单推](https://docs.getui.com/getui/server/rest_v2/push/#1) | com.getui.push.v2.sdk.api.PushApi.pushToSingleByCid |
-| 推送API | [tolist创建消息](https://docs.getui.com/getui/server/rest_v2/push/#5) | com.getui.push.v2.sdk.api.PushApi.createMsg         |
-| 推送API | [cid批量推](https://docs.getui.com/getui/server/rest_v2/push/#6) | com.getui.push.v2.sdk.api.PushApi.pushListByCid     |
-| 推送API | [群推](https://docs.getui.com/getui/server/rest_v2/push/#8)  | com.getui.push.v2.sdk.api.PushApi.pushAll           |
+| API类别 | 功能                                                         |
+| ------- | ------------------------------------------------------------ |
+| 鉴权API | [鉴权](https://docs.getui.com/getui/server/rest_v2/token/#0) |
+| 推送API | [cid单推](https://docs.getui.com/getui/server/rest_v2/push/#1) |
+| 推送API | [tolist创建消息](https://docs.getui.com/getui/server/rest_v2/push/#5) |
+| 推送API | [cid批量推](https://docs.getui.com/getui/server/rest_v2/push/#6) |
+| 推送API | [群推](https://docs.getui.com/getui/server/rest_v2/push/#8)  |
 
 > 注：更多API持续更新中，敬请期待。
 
