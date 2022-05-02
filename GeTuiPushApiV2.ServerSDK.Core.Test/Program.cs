@@ -3,7 +3,7 @@ using GeTuiPushApiV2.ServerSDK.IOC;
 using Microsoft.Extensions.DependencyInjection;
 
 //普通方式
-//await new CommTest().Run();
+await new CommTest().Run();
 //IOC方式
 IServiceCollection services = new ServiceCollection();
 services.UseIOC();

@@ -17,7 +17,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
 
             //准备CID
             var redis = provider.GetRequiredService<IStorage>();
-            redis.AddCID("123456789", Guid.NewGuid().ToStr());
+            redis.AddCID("123456789", "2bfd19ad80d679853a690ceb72c7c041");
 
             //获取推送身份Token
             GeTuiPushOptions geTuiPushOptions = provider.GetRequiredService<GeTuiPushOptions>();
@@ -54,7 +54,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
                 {
                     await service.PushMessageAsync(new PushMessageInDto()
                     {
-                        title = "停机警告",
+                        title = "停机警告-IOC",
                         body = $"已停机，请及时处理",
                         payload = JsonConvert.SerializeObject(new
                         {

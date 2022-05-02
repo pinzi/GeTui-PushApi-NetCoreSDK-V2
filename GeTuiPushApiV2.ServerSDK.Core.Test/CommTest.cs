@@ -35,7 +35,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
                     request_id = Guid.NewGuid().ToString(),
                     audience = new audience_cidDto()
                     {
-                        cid = new string[] { "123456789" }
+                        cid = new string[] { "2bfd19ad80d679853a690ceb72c7c041" }
                     },
                     push_message = new push_messageDto()
                 };
@@ -106,7 +106,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
                     Port = 6379,
                     DbNum = 10
                 }));
-                iStorage.AddCID("123456789", Guid.NewGuid().ToStr());
+                iStorage.AddCID("123456789", "2bfd19ad80d679853a690ceb72c7c041");
                 var options = new GeTuiPushOptions()
                 {
                     AppID = AppID,
