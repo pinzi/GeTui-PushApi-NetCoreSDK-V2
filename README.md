@@ -1,4 +1,8 @@
-### <font color=red>【注意】nuget包存在重大错误，无法正常安装使用，已经暂时下架，待重新打包后上架，可以先用源码项目。</font>
+### 【注意】nuget包存在重大错误，无法正常安装使用，已经暂时下架，待重新打包后上架，可以先用源码项目。
+### 【注意】nuget包存在重大错误，无法正常安装使用，已经暂时下架，待重新打包后上架，可以先用源码项目。
+### 【注意】nuget包存在重大错误，无法正常安装使用，已经暂时下架，待重新打包后上架，可以先用源码项目。
+
+
 
 
 欢迎使用[个推PUSH RestAPI V2 SDK For .NetCore](https://docs.getui.com/getui/server/rest_v2/introduction/)。
