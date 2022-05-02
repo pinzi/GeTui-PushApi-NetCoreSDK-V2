@@ -1,3 +1,6 @@
+### <font color=red>【注意】nuget包存在重大错误，无法正常安装使用，已经暂时下架，待重新打包后上架，可以先用源码项目。</font>
+
+
 欢迎使用[个推PUSH RestAPI V2 SDK For .NetCore](https://docs.getui.com/getui/server/rest_v2/introduction/)。
 
 `个推PUSH RestAPI V2 SDK For .NetCore`的主要目标是提升开发者在**服务端**集成个推推送服务的开发效率。
