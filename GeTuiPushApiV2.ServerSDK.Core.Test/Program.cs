@@ -1,4 +1,4 @@
-﻿using GeTuiPushApiV2.ServerSDK.Core.Test;
+﻿using GeTuiPushApiV2.ServerSDK.Core.TestMethod;
 using GeTuiPushApiV2.ServerSDK.IOC;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,5 +11,3 @@ await new IocTest().Run(services);
 
 Console.WriteLine("ok");
 Console.ReadKey();
-
-

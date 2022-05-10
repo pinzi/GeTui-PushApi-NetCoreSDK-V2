@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using GeTuiPushApiV2.ServerSDK.Storage;
 using Newtonsoft.Json;
 
-namespace GeTuiPushApiV2.ServerSDK.Core.Test
+namespace GeTuiPushApiV2.ServerSDK.Core.TestMethod
 {
     /// <summary>
     /// IOC方式
@@ -13,6 +13,8 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
     {
         public async Task Run(IServiceCollection services)
         {
+            Console.WriteLine("*************************************************IOC方式*************************************************");
+
             var provider = services.BuildServiceProvider();
 
             //准备CID
@@ -64,12 +66,15 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
                         isall = false,
                         uid = new string[] { "123456789" }
                     });
+                    Console.WriteLine("推送成功");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
             }
+
+            Console.WriteLine("*************************************************IOC方式*************************************************");
         }
     }
 }

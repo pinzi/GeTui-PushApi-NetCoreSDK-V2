@@ -28,7 +28,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeTuiPushApiV2.ServerSDK.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeTuiPushApiV2.ServerSDK.Core.Sample", "GeTuiPushApiV2.ServerSDK.Core.Sample\GeTuiPushApiV2.ServerSDK.Core.Sample.csproj", "{87898E4F-6B72-4BC3-9D80-3A9B54521F68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeTuiPushApiV2.ServerSDK.Core.Storage", "GeTuiPushApiV2.ServerSDK.Core.Storage\GeTuiPushApiV2.ServerSDK.Core.Storage.csproj", "{E6F7D3B6-7F74-4FB3-BCC0-FCB811B68119}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeTuiPushApiV2.ServerSDK.Core.Storage", "GeTuiPushApiV2.ServerSDK.Core.Storage\GeTuiPushApiV2.ServerSDK.Core.Storage.csproj", "{E6F7D3B6-7F74-4FB3-BCC0-FCB811B68119}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeTuiPushApiV2.ServerSDK.Core.TestMethod", "GeTuiPushApiV2.ServerSDK.Core.TestMethod\GeTuiPushApiV2.ServerSDK.Core.TestMethod.csproj", "{806245D6-9EC9-4F41-B3F6-E8C0DEB003D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +74,10 @@ Global
 		{E6F7D3B6-7F74-4FB3-BCC0-FCB811B68119}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6F7D3B6-7F74-4FB3-BCC0-FCB811B68119}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6F7D3B6-7F74-4FB3-BCC0-FCB811B68119}.Release|Any CPU.Build.0 = Release|Any CPU
+		{806245D6-9EC9-4F41-B3F6-E8C0DEB003D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{806245D6-9EC9-4F41-B3F6-E8C0DEB003D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{806245D6-9EC9-4F41-B3F6-E8C0DEB003D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{806245D6-9EC9-4F41-B3F6-E8C0DEB003D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +92,7 @@ Global
 		{FF50581D-BBA7-4450-95A7-4AB3F449A1B6} = {C2F2D815-EDE2-4FEE-BC7D-582E8CE29654}
 		{87898E4F-6B72-4BC3-9D80-3A9B54521F68} = {8E47A358-FA49-445D-853D-A77C22896EFB}
 		{E6F7D3B6-7F74-4FB3-BCC0-FCB811B68119} = {C2F2D815-EDE2-4FEE-BC7D-582E8CE29654}
+		{806245D6-9EC9-4F41-B3F6-E8C0DEB003D4} = {8E47A358-FA49-445D-853D-A77C22896EFB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8797DE7E-E50B-483A-BEF7-93DE45C38260}

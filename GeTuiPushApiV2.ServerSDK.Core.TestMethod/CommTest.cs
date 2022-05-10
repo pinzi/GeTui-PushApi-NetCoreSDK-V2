@@ -4,7 +4,7 @@ using GeTuiPushApiV2.ServerSDK.Core.Utility;
 using GeTuiPushApiV2.ServerSDK.Storage;
 using Newtonsoft.Json;
 
-namespace GeTuiPushApiV2.ServerSDK.Core.Test
+namespace GeTuiPushApiV2.ServerSDK.Core.TestMethod
 {
     /// <summary>
     /// 普通方式
@@ -13,6 +13,8 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
     {
         public async Task Run()
         {
+            Console.WriteLine("*************************************************普通方式*************************************************");
+
             string AppID = "Ny3b4Umv7882X0UheVwCU4";//应用ID
             string AppKey = "dY1BXGSHys8TPKeCqU3ilA"; //应用key
             string MasterSecret = "GAZTCU0hyO69XjC9u5pSb2"; //主密钥
@@ -129,12 +131,15 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
                         isall = false,
                         uid = new string[] { "123456789" }
                     });
+                    Console.WriteLine("推送成功");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
             }
+
+            Console.WriteLine("*************************************************普通方式*************************************************");
         }
     }
 }
