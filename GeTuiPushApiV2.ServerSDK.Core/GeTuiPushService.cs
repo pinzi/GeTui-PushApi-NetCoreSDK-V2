@@ -1,7 +1,7 @@
 ﻿using GeTuiPushApiV2.ServerSDK.Core.Utility;
 using GeTuiPushApiV2.ServerSDK.Storage;
 
-namespace GeTuiPushApiV2.ServerSDK.Core.Service
+namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
     /// 个推消息推送服务
@@ -70,12 +70,13 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Service
         /// 获取token
         /// </summary>
         /// <param name="appId">应用id</param>
+        /// <param name="forceRefresh">是否强制刷新token</param>
         /// <returns></returns>
-        private async Task<string> GetTokenAsync(string appId)
+        private async Task<string> GetTokenAsync(string appId, bool forceRefresh = false)
         {
             //从redis读取token缓存信息
             string token = _iStorage.GetToken(appId);
-            if (string.IsNullOrEmpty(token))
+            if (string.IsNullOrEmpty(token) || forceRefresh)
             {
                 //token已过期，刷新token
                 //Console.WriteLine($"没有找到token，刷新token=>{token}");
@@ -149,7 +150,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Service
             if (result.code.Equals(10001))
             {
                 //token已过期，刷新token
-                apiInDto.token = await GetTokenAsync(_options.AppID);
+                apiInDto.token = await GetTokenAsync(_options.AppID, true);
                 //Console.WriteLine($"token已过期，刷新token=>{apiInDto.token}");
                 //重新推送
                 result = await _api.PushToAppAsync(apiInDto);
@@ -201,7 +202,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Service
             if (result.code.Equals(10001))
             {
                 //token已过期，刷新token
-                apiInDto.token = await GetTokenAsync(_options.AppID);
+                apiInDto.token = await GetTokenAsync(_options.AppID, true);
                 //Console.WriteLine($"token已过期，刷新token=>{apiInDto.token}");
                 //重新推送
                 result = await _api.PushToSingleAsync(apiInDto);
@@ -233,7 +234,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Service
             if (result.code.Equals(10001))
             {
                 //token已过期，刷新token
-                apiInDto.token = await GetTokenAsync(_options.AppID);
+                apiInDto.token = await GetTokenAsync(_options.AppID, true);
                 //Console.WriteLine($"token已过期，刷新token=>{apiInDto.token}");
                 //重新推送
                 result = await _api.PushToListAsync(apiInDto);
@@ -282,6 +283,14 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Service
             apiInDto.token = await GetTokenAsync(_options.AppID);
             apiInDto.appId = _options.AppID;
             var result = await _api.CreateListMessageAsync(apiInDto);
+            if (result.code.Equals(10001))
+            {
+                //token已过期，刷新token
+                apiInDto.token = await GetTokenAsync(_options.AppID, true);
+                //Console.WriteLine($"token已过期，刷新token=>{apiInDto.token}");
+                //重新创建消息
+                result = await _api.CreateListMessageAsync(apiInDto);
+            }
             if (!result.code.Equals(0))
             {
                 throw new Exception(result.msg);

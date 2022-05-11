@@ -1,4 +1,4 @@
-﻿namespace GeTuiPushApiV2.ServerSDK.Core.Service
+﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
     /// 消息推送参数

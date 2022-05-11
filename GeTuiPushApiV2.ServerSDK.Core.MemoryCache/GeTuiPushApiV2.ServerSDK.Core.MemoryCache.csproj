@@ -2,20 +2,19 @@
    <PropertyGroup> 
      <TargetFramework>net6.0</TargetFramework> 
      <ImplicitUsings>enable</ImplicitUsings> 
-     <Nullable>enable</Nullable> 
-	 <Description>GeTuiPushApiV2.ServerSDK.Core.Api</Description> 
-     <Description>个推PUSH V2接口</Description> 
+     <Nullable>enable</Nullable>
+     <Description>个推PUSH SDK For .NetCore中使用内存存储</Description> 
      <ApplicationIcon></ApplicationIcon> 
-     <PackageIcon>icon_128x128.png</PackageIcon>
-	 <iconUrl>https://s1.ax1x.com/2022/05/11/OUtE4J.jpg</iconUrl>
+     <PackageIcon>icon_128x128.png</PackageIcon> 
+	 <iconUrl>https://s1.ax1x.com/2022/05/11/OUtE4J.jpg</iconUrl> 
      <PackageReadmeFile>README.md</PackageReadmeFile> 
      <RepositoryType>git</RepositoryType> 
      <Authors>pinzi</Authors> 
-     <Product>GeTuiPushApiV2.ServerSDK.Core.Api</Product> 
+     <Product>GeTuiPushApiV2.ServerSDK.Core.MemoryCache</Product> 
      <GeneratePackageOnBuild>True</GeneratePackageOnBuild> 
      <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance> 
      <PackageLicenseFile>LICENSE.txt</PackageLicenseFile> 
-     <PackageId>GeTuiPushApiV2.ServerSDK.Core.Api</PackageId> 
+     <PackageId>GeTuiPushApiV2.ServerSDK.Core.MemoryCache</PackageId> 
      <PackageTags>GeTui;GeTuiPush</PackageTags> 
      <PackageReleaseNotes>第2次发布，更新图标</PackageReleaseNotes> 
      <Copyright>Copyright 2022 (c) pinzi. All rights reserved.</Copyright> 
@@ -33,19 +32,18 @@
       <PackagePath>\</PackagePath>
       <Pack>True</Pack>
     </None>
-    <None Include="..\README.md">
-      <Pack>True</Pack>
+    <None Include="..\README.md" Link="README.md">
       <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
     </None>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core.Utility\GeTuiPushApiV2.ServerSDK.Core.Utility.csproj" />
+    <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core.Storage\GeTuiPushApiV2.ServerSDK.Core.Storage.csproj" />
   </ItemGroup>
 
 </Project>

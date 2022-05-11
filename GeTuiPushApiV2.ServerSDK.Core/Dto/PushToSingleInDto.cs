@@ -1,4 +1,4 @@
-﻿namespace GeTuiPushApiV2.ServerSDK.Core.Service
+﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
     /// 推送-【toSingle】执行cid单推

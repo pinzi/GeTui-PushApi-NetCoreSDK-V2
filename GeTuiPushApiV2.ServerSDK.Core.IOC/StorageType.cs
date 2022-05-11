@@ -1,4 +1,4 @@
-﻿namespace GeTuiPushApiV2.ServerSDK.IOC
+﻿namespace GeTuiPushApiV2.ServerSDK.Core.IOC
 {
     /// <summary>
     /// 存储方式

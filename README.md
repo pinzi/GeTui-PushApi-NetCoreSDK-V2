@@ -1,15 +1,8 @@
-### 【注意】nuget包存在重大错误，无法正常安装使用，已经暂时下架，待重新打包后上架，可以先用源码项目。
-### 【注意】nuget包存在重大错误，无法正常安装使用，已经暂时下架，待重新打包后上架，可以先用源码项目。
-### 【注意】nuget包存在重大错误，无法正常安装使用，已经暂时下架，待重新打包后上架，可以先用源码项目。
-
-
-
-
-欢迎使用[个推PUSH RestAPI V2 SDK For .NetCore](https://docs.getui.com/getui/server/rest_v2/introduction/)。
-
 `个推PUSH RestAPI V2 SDK For .NetCore`的主要目标是提升开发者在**服务端**集成个推推送服务的开发效率。
 开发者不需要进行复杂编程即可使用个推推送服务的各项常用功能，SDK可以自动帮您满足调用过程中所需的鉴权、组装参数、发送HTTP请求等非功能性要求。
 目前SDK仅实现了单推，批量推，群推三种方式的推送服务。
+
+【注意】个推推送通道无法实时接收离线推送消息，如需实时接收离线推送消息，则需要接入厂家通道。
 
 
 ## 环境要求
@@ -22,7 +15,7 @@
 
 ## 安装依赖
 ```
-    Install-Package GeTuiPushApiV2.ServerSDK.Core
+Install-Package GeTuiPushApiV2.ServerSDK.Core
 ```
 
 ## 快速开始
@@ -182,7 +175,7 @@ catch (Exception ex)
     Console.WriteLine(ex.Message);
 }
 ```
-#### 3.2 IOC调用
+#### 3.2 IOC调用（推荐）
 
 IOC调用方式需要在appsettings.json中配置所需参数
 
@@ -202,10 +195,16 @@ IOC调用方式需要在appsettings.json中配置所需参数
 }
 ```
 
+安装依赖包
+
+```
+Install-Package GeTuiPushApiV2.ServerSDK.Core.IOC
+```
+
 默认使用Redis存储鉴权token，CID等关键数据，也支持使用MemoryCache。
 
 ```c#
-	services.UseIOC(StorageType.MemoryCache);
+services.UseGeTuiPushApiV2ServerSDKCore(StorageType.MemoryCache);
 ```
 如果需要使用其他方式存储数据，可自定义实现IStorage接口，并在初始化时通过StorageType参数进行指定。
 
@@ -253,7 +252,7 @@ public static class RedisServiceCollectionExtensions
 ```c#
 IServiceCollection services = new ServiceCollection();
 //注入推送服务
-services.UseIOC();
+services.UseGeTuiPushApiV2ServerSDKCore();
 //注入自定义的Redis客户端
 services.AddNewLifeRedis();
 ```

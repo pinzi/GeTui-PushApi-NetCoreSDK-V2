@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace GeTuiPushApiV2.ServerSDK.Core.Service
+namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
     /// 服务注册扩展类

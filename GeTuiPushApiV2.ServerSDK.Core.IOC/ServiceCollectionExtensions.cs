@@ -1,10 +1,9 @@
-﻿using GeTuiPushApiV2.ServerSDK.Core;
-using GeTuiPushApiV2.ServerSDK.Core.MemoryCache;
+﻿using GeTuiPushApiV2.ServerSDK.Core.MemoryCache;
 using GeTuiPushApiV2.ServerSDK.Core.Redis;
-using GeTuiPushApiV2.ServerSDK.Core.Service;
+using GeTuiPushApiV2.ServerSDK.Core;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GeTuiPushApiV2.ServerSDK.IOC
+namespace GeTuiPushApiV2.ServerSDK.Core.IOC
 {
     /// <summary>
     /// 服务注册扩展类
@@ -16,7 +15,7 @@ namespace GeTuiPushApiV2.ServerSDK.IOC
         /// </summary>
         /// <param name="services">IOC容器对象</param>
         /// <param name="storageType">存储方式，默认使用Redis</param>
-        public static void UseIOC(this IServiceCollection services, StorageType storageType = StorageType.Redis)
+        public static void UseGeTuiPushApiV2ServerSDKCore(this IServiceCollection services, StorageType storageType = StorageType.Redis)
         {
             services.AddBaseService();
             switch (storageType)
