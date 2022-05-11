@@ -11,6 +11,9 @@ jobs:
       - run: echo "该作业由${{github.event_name}}事件自动触发"
       - run: echo "此作业现在正在GitHub托管的${{runner.os}}服务器上运行"
       - run: echo "分支的名称是${{github.ref}}，存储库是${{github.repository}}"
+      - name: 列出package发布的文件
+        run: |
+          ls package
       - name: 添加GitHub源
         run: |
             dotnet nuget add source --name github "https://nuget.pkg.github.com/OWNER/index.json"
