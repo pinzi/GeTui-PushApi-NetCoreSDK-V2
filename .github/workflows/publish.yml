@@ -1,0 +1,23 @@
+name: GitHub Actions
+on:
+  push:
+    branches: [ publish ]
+  pull_request:
+    branches: [ publish ]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "该作业由${{github.event_name}}事件自动触发"
+      - run: echo "此作业现在正在GitHub托管的${{runner.os}}服务器上运行"
+      - run: echo "分支的名称是${{github.ref}}，存储库是${{github.repository}}"
+      - name: 添加GitHub源
+        run: |
+            dotnet nuget add source --name github "https://nuget.pkg.github.com/OWNER/index.json"
+      - name: 发布到Github
+        run: |
+            dotnet nuget push package/Release/*.nupkg  --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate
+      - name: 发布到NuGet
+        run: |
+             dotnet nuget push NugetPublish/Release/Nancy.FixQueryDictionary.1.1.3.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      - run: echo "此作业的状态为${{job.status}}"
