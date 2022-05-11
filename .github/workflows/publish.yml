@@ -17,29 +17,16 @@ jobs:
       - name: 列出存储库中的文件
         run: |
           ls ${{ github.workspace }}
-      - name: 列出package发布的文件
+      - name: 列出Package发布的文件
         run: |
-          ls package
+          ls Package
       - name: 添加GitHub源
         run: |
             dotnet nuget add source --name github "https://nuget.pkg.github.com/OWNER/index.json"
       - name: 发布到Github
         run: |
-            dotnet nuget push package/*.nupkg  --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate
+            dotnet nuget push Package/*.nupkg  --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate
       - name: 发布到NuGet
         run: |
-             dotnet nuget push package/*.nupkg --api-key ${{secrets.NUGET_API_KEY_Core}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-             echo "GeTuiPushApiV2.ServerSDK.Core已发布到NuGet"
-             dotnet nuget push package/*.nupkg --api-key ${{secrets.NUGET_API_KEY_Api}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-             echo "GeTuiPushApiV2.ServerSDK.Core.Api已发布到NuGet"
-             dotnet nuget push package/*.nupkg --api-key ${{secrets.NUGET_API_KEY_IOC}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-             echo "GeTuiPushApiV2.ServerSDK.Core.IOC已发布到NuGet"
-             dotnet nuget push package/*.nupkg --api-key ${{secrets.NUGET_API_KEY_MemoryCache}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-             echo "GeTuiPushApiV2.ServerSDK.Core.MemoryCache已发布到NuGet"
-             dotnet nuget push package/*.nupkg --api-key ${{secrets.NUGET_API_KEY_Redis}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-             echo "GeTuiPushApiV2.ServerSDK.Core.Redis已发布到NuGet"
-             dotnet nuget push package/*.nupkg --api-key ${{secrets.NUGET_API_KEY_Storage}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-             echo "GeTuiPushApiV2.ServerSDK.Core.Storage已发布到NuGet"
-             dotnet nuget push package/*.nupkg --api-key ${{secrets.NUGET_API_KEY_Utility}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-             echo "GeTuiPushApiV2.ServerSDK.Core.Utility已发布到NuGet"
+             dotnet nuget push Package/*.nupkg --api-key ${{secrets.NUGET_API_KEY_GeTuiPushApiV2_ServerSDK}} --source https://api.nuget.org/v3/index.json --skip-duplicate
       - run: echo "此作业的状态为${{job.status}}"
