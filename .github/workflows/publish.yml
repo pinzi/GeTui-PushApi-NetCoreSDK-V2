@@ -29,5 +29,4 @@ jobs:
       - name: 发布到NuGet
         run: |
              dotnet nuget push Package/*.nupkg --api-key ${{secrets.NUGET_API_KEY_GeTuiPushApiV2_ServerSDK}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-             echo "GeTuiPushApiV2.ServerSDK.Core已发布到NuGet"             
       - run: echo "此作业的状态为${{job.status}}"
