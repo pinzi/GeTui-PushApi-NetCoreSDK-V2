@@ -20,6 +20,15 @@ jobs:
       - name: 列出Package发布的文件
         run: |
           ls Package
+      - name: Create GitHub release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: ${{ env.GitAssemblyInformationalVersion }}
+          title: Version ${{ env.GitAssemblyInformationalVersion }}
+          prerelease: true
+          files: |
+            Package/*.nupkg
       - name: 添加GitHub源
         run: |
             dotnet nuget add source --name github "https://nuget.pkg.github.com/OWNER/index.json"
