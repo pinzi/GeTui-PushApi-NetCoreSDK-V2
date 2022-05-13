@@ -20,6 +20,27 @@ jobs:
       - name: 列出Package发布的文件
         run: |
           ls Package
+      - name: Build
+        shell: pwsh
+        run: .\build.ps1 --stable=true
+      - name: Get Release Version
+        shell: pwsh
+        run: .\build\getReleaseVersion.ps1
+      - name: create release
+        shell: pwsh
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create --generate-notes ${{ env.ReleaseVersion }}
+      - name: Create GitHub release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: ${{ env.GitAssemblyInformationalVersion }}
+          title: Version ${{ env.GitAssemblyInformationalVersion }}
+          prerelease: true
+          files: |
+            Package/*.nupkg
       - name: 添加GitHub源
         run: |
             dotnet nuget add source --name github "https://nuget.pkg.github.com/OWNER/index.json"
