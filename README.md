@@ -10,7 +10,20 @@
 
 ![stars](https://img.shields.io/github/stars/pinzi/GeTui-PushApi-ServerSDK-V2.svg?style=plastic)
 
-![release](https://img.shields.io/github/v/release/pinzi/GeTuiPushApiV2.ServerSDK.Core?include_prereleases)
+![release](https://img.shields.io/github/v/release/pinzi/GeTui-PushApi-ServerSDK-V2?include_prereleases)
+
+
+## Packages
+
+与这个 Repository 相关的 nuget 包：
+
+- [GeTuiPushApiV2.ServerSDK.Core](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core) 核心服务
+- [GeTuiPushApiV2.ServerSDK.Core.Api](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Api/)  GeTui消息推送V2接口封装
+- [GeTuiPushApiV2.ServerSDK.Core.IOC](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.IOC/)  使用IOC容器
+- [GeTuiPushApiV2.ServerSDK.Core.MemoryCache](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.MemoryCache) 使用内存存储数据
+- [GeTuiPushApiV2.ServerSDK.Core.Storage](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Storaget) 存储封装
+- [GeTuiPushApiV2.ServerSDK.Core.Utility](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Utility) 公共方法封装
+- [GeTuiPushApiV2.ServerSDK.Core.Redis](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Redis) 使用Redis存储数据
 
 ## 简介
 `个推PUSH RestAPI V2 SDK For .NetCore`的主要目标是提升开发者在**服务端**集成个推推送服务的开发效率。
