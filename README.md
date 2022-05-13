@@ -26,6 +26,7 @@
 - [GeTuiPushApiV2.ServerSDK.Core.Redis](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Redis) 使用Redis存储数据
 
 ## 简介
+
 `个推PUSH RestAPI V2 SDK For .NetCore`的主要目标是提升开发者在**服务端**集成个推推送服务的开发效率。
 开发者不需要进行复杂编程即可使用个推推送服务的各项常用功能，SDK可以自动帮您满足调用过程中所需的鉴权、组装参数、发送HTTP请求等非功能性要求。
 目前SDK仅实现了单推，批量推，群推三种方式的推送服务。
@@ -34,6 +35,7 @@
 
 
 ## 环境要求
+
 1. 支持.NET CORE 6.0，7.0。
 
 2. 使用`个推PUSH RestAPI V2 SDK For .NetCore`前，您需要先前往[个推开发者中心](https://dev.getui.com) 完成开发者接入的一些准备工作，创建应用。详细见[操作步骤](https://docs.getui.com/getui/start/devcenter/#1)
