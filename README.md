@@ -1,6 +1,6 @@
 ## Build status
 
-[![GeTui-PushApi-ServerSDK-V2 Latest Stable](https://img.shields.io/nuget/v/GeTui-PushApi-ServerSDK-V2.svg)](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core/)
+[![GeTui-PushApi-ServerSDK-V2 Latest Stable](https://img.shields.io/nuget/v/GeTuiPushApiV2.ServerSDK.Core.svg)](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core/)
 
 ![Github Build Status](https://img.shields.io/cirrus/github/pinzi/GeTui-PushApi-ServerSDK-V2/publish?style=plastic)
 
@@ -10,7 +10,7 @@
 
 ![stars](https://img.shields.io/github/stars/pinzi/GeTui-PushApi-ServerSDK-V2.svg?style=plastic)
 
-![release](https://img.shields.io/github/v/release/pinzi/GeTui-PushApi-ServerSDK-V2?include_prereleases)
+![release](https://img.shields.io/github/v/release/pinzi/GeTuiPushApiV2.ServerSDK.Core?include_prereleases)
 
 ## 简介
 `个推PUSH RestAPI V2 SDK For .NetCore`的主要目标是提升开发者在**服务端**集成个推推送服务的开发效率。
