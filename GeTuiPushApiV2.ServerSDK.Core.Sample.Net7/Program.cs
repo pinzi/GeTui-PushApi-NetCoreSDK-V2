@@ -1,7 +1,9 @@
 ﻿using GeTuiPushApiV2.ServerSDK.Core.IOC;
-using GeTuiPushApiV2.ServerSDK.Core.Sample;
+using GeTuiPushApiV2.ServerSDK.Core.Sample.Net7;
 using Microsoft.Extensions.DependencyInjection;
+using System.Runtime.InteropServices;
 
+Console.WriteLine(RuntimeInformation.FrameworkDescription);
 //普通方式
 await new CommTest().Run();
 //IOC方式

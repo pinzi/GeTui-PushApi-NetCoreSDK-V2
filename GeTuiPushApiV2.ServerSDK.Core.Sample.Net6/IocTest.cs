@@ -3,7 +3,7 @@ using GeTuiPushApiV2.ServerSDK.Storage;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
-namespace GeTuiPushApiV2.ServerSDK.Core.Sample
+namespace GeTuiPushApiV2.ServerSDK.Core.Sample.Net6
 {
     /// <summary>
     /// IOC方式

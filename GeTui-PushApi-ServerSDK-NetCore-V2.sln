@@ -25,13 +25,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeTuiPushApiV2.ServerSDK.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeTuiPushApiV2.ServerSDK.Core", "GeTuiPushApiV2.ServerSDK.Core\GeTuiPushApiV2.ServerSDK.Core.csproj", "{FF50581D-BBA7-4450-95A7-4AB3F449A1B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeTuiPushApiV2.ServerSDK.Core.Sample", "GeTuiPushApiV2.ServerSDK.Core.Sample\GeTuiPushApiV2.ServerSDK.Core.Sample.csproj", "{87898E4F-6B72-4BC3-9D80-3A9B54521F68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeTuiPushApiV2.ServerSDK.Core.Sample.Net6", "GeTuiPushApiV2.ServerSDK.Core.Sample.Net6\GeTuiPushApiV2.ServerSDK.Core.Sample.Net6.csproj", "{87898E4F-6B72-4BC3-9D80-3A9B54521F68}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeTuiPushApiV2.ServerSDK.Core.Storage", "GeTuiPushApiV2.ServerSDK.Core.Storage\GeTuiPushApiV2.ServerSDK.Core.Storage.csproj", "{E6F7D3B6-7F74-4FB3-BCC0-FCB811B68119}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeTuiPushApiV2.ServerSDK.Core.IOC", "GeTuiPushApiV2.ServerSDK.Core.IOC\GeTuiPushApiV2.ServerSDK.Core.IOC.csproj", "{11585FA1-23F1-4577-A17F-4DD2C4A59682}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{63F444AE-F582-4102-8A7B-3332040AFBC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeTuiPushApiV2.ServerSDK.Core.Sample.Net7", "GeTuiPushApiV2.ServerSDK.Core.Sample.Net7\GeTuiPushApiV2.ServerSDK.Core.Sample.Net7.csproj", "{91D8ABE9-D2ED-4133-A25E-B7948096E2EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{11585FA1-23F1-4577-A17F-4DD2C4A59682}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11585FA1-23F1-4577-A17F-4DD2C4A59682}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11585FA1-23F1-4577-A17F-4DD2C4A59682}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91D8ABE9-D2ED-4133-A25E-B7948096E2EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91D8ABE9-D2ED-4133-A25E-B7948096E2EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91D8ABE9-D2ED-4133-A25E-B7948096E2EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91D8ABE9-D2ED-4133-A25E-B7948096E2EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 		{87898E4F-6B72-4BC3-9D80-3A9B54521F68} = {63F444AE-F582-4102-8A7B-3332040AFBC4}
 		{E6F7D3B6-7F74-4FB3-BCC0-FCB811B68119} = {C2F2D815-EDE2-4FEE-BC7D-582E8CE29654}
 		{11585FA1-23F1-4577-A17F-4DD2C4A59682} = {C2F2D815-EDE2-4FEE-BC7D-582E8CE29654}
+		{91D8ABE9-D2ED-4133-A25E-B7948096E2EF} = {63F444AE-F582-4102-8A7B-3332040AFBC4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8797DE7E-E50B-483A-BEF7-93DE45C38260}
