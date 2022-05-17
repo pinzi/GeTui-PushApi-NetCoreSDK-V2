@@ -1,6 +1,6 @@
 ## Build status
 
-![Github Build Status](https://img.shields.io/cirrus/github/pinzi/GeTui-PushApi-ServerSDK-V2/publish?style=plastic)
+![Github Build Status](https://img.shields.io/appveyor/build/pinzi/GeTui-PushApi-ServerSDK-V2/publish?style=plastic)
 ![stars](https://img.shields.io/github/stars/pinzi/GeTui-PushApi-ServerSDK-V2.svg?style=plastic)
 ![release](https://img.shields.io/github/v/release/pinzi/GeTui-PushApi-ServerSDK-V2?include_prereleases)
 ![GitHub top language](https://img.shields.io/github/languages/top/pinzi/GeTui-PushApi-ServerSDK-V2?logo=github)
