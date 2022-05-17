@@ -1,19 +1,5 @@
 ## Build status
 
-[![GeTui-PushApi-ServerSDK-V2 Latest Stable](https://img.shields.io/nuget/v/GeTuiPushApiV2.ServerSDK.Core.svg)](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core/)
-
-![Github Build Status](https://img.shields.io/cirrus/github/pinzi/GeTui-PushApi-ServerSDK-V2/publish?style=plastic)
-
-![languages](https://img.shields.io/github/languages/top/pinzi/GeTui-PushApi-ServerSDK-V2.svg)
-
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
-
-![stars](https://img.shields.io/github/stars/pinzi/GeTui-PushApi-ServerSDK-V2.svg?style=plastic)
-
-![release](https://img.shields.io/github/v/release/pinzi/GeTui-PushApi-ServerSDK-V2?include_prereleases)
-
-
-
 ![Github Build Status](https://img.shields.io/cirrus/github/pinzi/GeTui-PushApi-ServerSDK-V2/publish?style=plastic)
 ![stars](https://img.shields.io/github/stars/pinzi/GeTui-PushApi-ServerSDK-V2.svg?style=plastic)
 ![release](https://img.shields.io/github/v/release/pinzi/GeTui-PushApi-ServerSDK-V2?include_prereleases)
