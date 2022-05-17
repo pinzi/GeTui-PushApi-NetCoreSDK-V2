@@ -16,12 +16,12 @@
 相关的nuget package：
 
 - ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core?logo=nuget) [GeTuiPushApiV2.ServerSDK.Core](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core) 核心服务
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Api?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Api](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Api/)  GeTui消息推送V2接口封装
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.IOC?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.IOC](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.IOC/)  使用IOC容器
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.MemoryCache?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.MemoryCache](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.MemoryCache) 使用内存存储数据
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Storage?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Storage](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Storaget) 存储封装
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Utility?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Utility](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Utility) 公共方法封装
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Redis?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Redis](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Redis) 使用Redis存储数据
+- ![Nuget Downloads] (https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Api?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Api](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Api/)  GeTui消息推送V2接口封装
+- ![Nuget Downloads] (https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.IOC?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.IOC](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.IOC/)  使用IOC容器
+- ![Nuget Downloads] (https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.MemoryCache?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.MemoryCache](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.MemoryCache) 使用内存存储数据
+- ![Nuget Downloads] (https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Storage?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Storage](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Storaget) 存储封装
+- ![Nuget Downloads] (https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Utility?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Utility](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Utility) 公共方法封装
+- ![Nuget Downloads] (https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Redis?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Redis](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Redis) 使用Redis存储数据
 
 ## 简介
 
@@ -30,7 +30,7 @@
 目前SDK仅实现了单推，批量推，群推三种方式的推送服务。
 
 ## 推送逻辑
-首先调用鉴权API获取token，然后根据业务需要选择推送API（单推，群推等等）。因为鉴权API的调用有一定的频率和次数限制，建议对token进行缓存。推送时需要获取用户标识CID，此CID由客户端获取并上传至业务服务器。所以，我们需要对用户ID和用户CID进行关联存储，可以选择存储在数据库中，推荐使用redis或者内存进行缓存。
+首先调用鉴权API获取token，然后根据业务需要选择推送API（单推，群推等等）。因为鉴权API的调用有一定的频率和次数限制，建议对token进行缓存。推送时需要获取用户标识CID，此CID由客户端获取并上传至业务服务器。所以，我们需要对业务系统中的用户uid和用户CID进行关联存储，可以选择存储在数据库中，推荐使用Redis或者内存进行缓存。
 调用推送API时，我们可以选择传入业务系统中的用户uid，根据uid获取存储的cid，完成消息推送。如果选择使用推荐的IOC调用方式，则无需关注token，cid和用户uid关系的存储处理。否则，则需要自行对token，cid等数据的存储，获取进行处理。
 【注意】个推推送通道无法实时接收离线推送消息，如需实时接收离线推送消息，则需要接入厂家通道。
 
