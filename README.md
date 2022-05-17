@@ -13,6 +13,18 @@
 ![release](https://img.shields.io/github/v/release/pinzi/GeTui-PushApi-ServerSDK-V2?include_prereleases)
 
 
+
+![Github Build Status](https://img.shields.io/cirrus/github/pinzi/GeTui-PushApi-ServerSDK-V2/publish?style=plastic)
+![stars](https://img.shields.io/github/stars/pinzi/GeTui-PushApi-ServerSDK-V2.svg?style=plastic)
+![release](https://img.shields.io/github/v/release/pinzi/GeTui-PushApi-ServerSDK-V2?include_prereleases)
+![GitHub top language](https://img.shields.io/github/languages/top/pinzi/GeTui-PushApi-ServerSDK-V2?logo=github)
+![GitHub License](https://img.shields.io/github/license/pinzi/GeTui-PushApi-ServerSDK-V2?logo=github)
+![Nuget Downloads](https://img.shields.io/nuget/dt/GeTui-PushApi-ServerSDK-V2?logo=nuget)
+![Nuget](https://img.shields.io/nuget/v/GeTui-PushApi-ServerSDK-V2?logo=nuget)
+![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/GeTui-PushApi-ServerSDK-V2?label=dev%20nuget&logo=nuget)
+
+
+
 ## Packages
 
 与这个 Repository 相关的 nuget 包：
