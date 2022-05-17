@@ -13,7 +13,7 @@
 
 ## Packages
 
-与这个 Repository 相关的 nuget 包：
+相关的nuget package：
 
 - ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core?logo=nuget) [GeTuiPushApiV2.ServerSDK.Core](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core) 核心服务
 - ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Api?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Api](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Api/)  GeTui消息推送V2接口封装
