@@ -16,12 +16,12 @@
 与这个 Repository 相关的 nuget 包：
 
 -![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core?logo=nuget) [GeTuiPushApiV2.ServerSDK.Core](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core) 核心服务
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Api](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Api/)  GeTui消息推送V2接口封装
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.IOC](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.IOC/)  使用IOC容器
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.MemoryCache](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.MemoryCache) 使用内存存储数据
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Storage](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Storaget) 存储封装
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Utility](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Utility) 公共方法封装
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Redis](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Redis) 使用Redis存储数据
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Api?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Api](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Api/)  GeTui消息推送V2接口封装
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.IOC?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.IOC](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.IOC/)  使用IOC容器
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.MemoryCache?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.MemoryCache](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.MemoryCache) 使用内存存储数据
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Storaget?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Storage](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Storaget) 存储封装
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Utility?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Utility](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Utility) 公共方法封装
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Redis?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Redis](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Redis) 使用Redis存储数据
 
 ## 简介
 
