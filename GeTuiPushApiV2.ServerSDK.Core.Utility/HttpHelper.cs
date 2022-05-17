@@ -14,7 +14,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Utility
         /// <param name="url">请求地址</param>    
         /// <param name="headers">header键值对</param>
         /// <returns></returns>
-        public static async Task<string> HttpGetAsync(string url, Dictionary<string, string> headers)
+        public async Task<string> HttpGetAsync(string url, Dictionary<string, string> headers)
         {
             HttpClient httpClient = new HttpClient();
             foreach (KeyValuePair<string, string> kv in headers)
@@ -103,6 +103,39 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Utility
             };
             HttpResponseMessage resp = client.SendAsync(request).Result;
             return resp.Content.ReadAsStringAsync().Result;
+        }
+        /// <summary>
+        /// 异步Delete请求
+        /// </summary>
+        /// <param name="url">请求地址</param>    
+        /// <param name="headers">header键值对</param>
+        /// <returns></returns>
+        public async Task<string> HttpDeleteAsync(string url, Dictionary<string, string> headers)
+        {
+            HttpClient httpClient = new HttpClient();
+            foreach (KeyValuePair<string, string> kv in headers)
+            {
+                httpClient.DefaultRequestHeaders.Add(kv.Key, kv.Value);
+            }
+            var resp = await httpClient.DeleteAsync(new Uri(url));
+            resp.EnsureSuccessStatusCode();
+            return await resp.Content.ReadAsStringAsync();
+        }
+        /// <summary>
+        /// 同步Delete请求
+        /// </summary>
+        /// <param name="url">请求地址</param>    
+        /// <param name="headers">header键值对</param>
+        /// <returns></returns>
+        public string HttpDelete(string url, Dictionary<string, string> headers)
+        {
+            HttpClient httpClient = new HttpClient();
+            foreach (KeyValuePair<string, string> kv in headers)
+            {
+                httpClient.DefaultRequestHeaders.Add(kv.Key, kv.Value);
+            }
+            var resp = httpClient.DeleteAsync(new Uri(url));
+            return resp.GetAwaiter().GetResult().Content.ReadAsStringAsync().Result;
         }
     }
 }
