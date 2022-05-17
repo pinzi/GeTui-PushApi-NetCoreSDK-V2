@@ -6,7 +6,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/pinzi/GeTui-PushApi-ServerSDK-V2?logo=github)
 ![GitHub License](https://img.shields.io/github/license/pinzi/GeTui-PushApi-ServerSDK-V2?logo=github)
 ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTui-PushApi-ServerSDK-V2?logo=nuget)
-![Nuget](https://img.shields.io/nuget/v/GeTui-PushApi-ServerSDK-V2?logo=nuget)
+![Nuget](https://img.shields.io/nuget/v/GeTuiPushApiV2.ServerSDK.Core?logo=nuget)
 ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/GeTui-PushApi-ServerSDK-V2?label=dev%20nuget&logo=nuget)
 
 
