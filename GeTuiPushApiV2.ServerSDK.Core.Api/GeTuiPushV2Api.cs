@@ -55,6 +55,19 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         }
         #endregion
 
+        #region 推送-【toSingle】执行别名单推
+        /// <summary>
+        ///  推送-【toSingle】执行别名单推
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiPushToSingleAliasOutDto>> PushToSingleAliasAsync(ApiPushToSingleAliasInDto inDto)
+        {
+            var result = await HttpPostGeTuiApiAsync<ApiPushToSingleAliasInDto, ApiPushToSingleAliasOutDto>($"{ApiBaseUrl}{inDto.appId}/push/single/alias", inDto);
+            return result;
+        }
+        #endregion
+
         #region 推送-【toList】创建消息
         /// <summary>
         ///  推送-【toList】创建消息
@@ -94,6 +107,52 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         }
         #endregion
         #endregion
+
+        #region 别名
+        #region 【别名】绑定别名
+        /// <summary>
+        /// 别名-绑定别名
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiAliasOutDto>> AliasAsync(ApiAliasInDto inDto)
+        {
+            if (inDto.data_list == null || inDto.data_list.Length == 0)
+            {
+                return new ApiResultOutDto<ApiAliasOutDto>() { code = -1, msg = "data_list不能为空" };
+            }
+            if (inDto.data_list.Length > 1000)
+            {
+                return new ApiResultOutDto<ApiAliasOutDto>() { code = -1, msg = "data_list长度不能超过1000" };
+            }
+            var result = await HttpPostGeTuiApiAsync<ApiAliasInDto, ApiAliasOutDto>($"{ApiBaseUrl}{inDto.appId}/user/alias", inDto);
+            return result;
+        }
+        #endregion
+
+        #region 【别名】根据cid查询别名
+        /// <summary>
+        /// 别名-根据cid查询别名
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiAliasCidOutDto>> AliasCidAsync(ApiAliasCidInDto inDto)
+        {
+            var result = await HttpGetGeTuiApiAsync<ApiAliasCidInDto, ApiAliasCidOutDto>($"{ApiBaseUrl}{inDto.appId}/user/alias/cid/{inDto.cid}", inDto);
+            return result;
+        }
+        #endregion
+        #endregion
+
+
+
+
+
+
+
+
+
+
 
         #region HTTP请求
         #region 发起Post请求

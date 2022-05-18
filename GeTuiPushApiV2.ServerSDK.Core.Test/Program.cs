@@ -2,12 +2,14 @@
 using GeTuiPushApiV2.ServerSDK.Core.Test;
 using Microsoft.Extensions.DependencyInjection;
 
+
+IServiceCollection services = new ServiceCollection();
+services.UseGeTuiPushApiV2ServerSDKCore();
+
 #region 鉴权API
 {
     //IOC方式
-    IServiceCollection services = new ServiceCollection();
-    services.UseGeTuiPushApiV2ServerSDKCore();
-    await new IocAuthTest().Run(services);
+    //await new IocAuthTest().Run(services);
 }
 #endregion
 
@@ -16,12 +18,16 @@ using Microsoft.Extensions.DependencyInjection;
     ////普通方式
     //await new CommPushTest().Run();
     ////IOC方式
-    //IServiceCollection services = new ServiceCollection();
-    //services.UseGeTuiPushApiV2ServerSDKCore();
     //await new IocPushTest().Run(services);
 }
 #endregion
 
+#region 鉴权API
+{
+    //IOC方式
+    await new IocAliasTest().Run(services);
+}
+#endregion
 
 Console.WriteLine("ok");
 Console.ReadKey();

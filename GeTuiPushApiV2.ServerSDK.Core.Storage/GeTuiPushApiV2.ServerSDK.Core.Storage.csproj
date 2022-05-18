@@ -36,6 +36,10 @@
       <PackagePath>\</PackagePath>
       <Pack>True</Pack>
     </None>
+  </ItemGroup> 
+
+  <ItemGroup>
+    <ProjectReference Include="..\GeTuiPushApiV2.ServerSDK.Core.Api\GeTuiPushApiV2.ServerSDK.Core.Api.csproj" />
   </ItemGroup>
 
 </Project>

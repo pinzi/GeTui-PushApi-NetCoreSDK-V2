@@ -1,9 +1,9 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 鉴权-获取鉴权token
+    /// 别名-绑定别名输出参数
     /// </summary>
-    public class ApiAuthInDto : ApiInDto
+    public class ApiAliasOutDto
     {
     }
 }

@@ -38,6 +38,98 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         }
         #endregion
 
+        #region 公共
+        #region 获取鉴权token
+        /// <summary>
+        /// 获取token
+        /// </summary>
+        /// <param name="appId">应用id</param>
+        /// <param name="forceRefresh">缓存为空时，是否强制刷新token</param>
+        /// <returns></returns>
+        public async Task<string> GetTokenAsync(string appId, bool forceRefresh = false)
+        {
+            //读取token缓存信息
+            string token = _iStorage.GetToken(appId);
+            if (string.IsNullOrEmpty(token) || forceRefresh)
+            {
+                //token已过期，刷新token
+                var resultAuth = await AuthAsync();
+                token = resultAuth.data.token;
+            }
+            return token;
+        }
+        #endregion
+
+        #region 获取用户的CID
+        /// <summary>
+        /// 获取用户的CID
+        /// </summary>
+        /// <param name="UIDs">用户ID</param>
+        /// <returns></returns>
+        public async Task<string[]> GetUserCIDAsync(string[] UIDs)
+        {
+            List<string> CIDs = new List<string>();
+            foreach (string uid in UIDs)
+            {
+                //从redis读取token缓存信息
+                string CID = _iStorage.GetCID(uid);
+                if (!string.IsNullOrEmpty(CID))
+                {
+                    CIDs.Add(CID);
+                }
+            }
+            return await Task.FromResult(CIDs.ToArray());
+        }
+        #endregion
+
+        #region 获取用户的别名
+        /// <summary>
+        /// 获取用户的别名
+        /// </summary>
+        /// <param name="uid">用户id</param>
+        /// <param name="forceQuery">缓存为空时，是否强制查询接口</param>
+        /// <returns></returns>
+        public async Task<string> GetUidAliasAsync(string uid, bool forceQuery = false)
+        {
+            //获取用户关联的cid
+            string[] cids = await GetUserCIDAsync(new string[] { uid });
+            if (cids.Length.Equals(0))
+            {
+                return await Task.FromResult(string.Empty);
+            }
+            //获取cid关联的别名
+            return await GetCidAliasAsync(cids[0]);
+        }
+        #endregion
+
+        #region 获取CID的别名
+        /// <summary>
+        /// 获取CID的别名
+        /// </summary>
+        /// <param name="cid">个推SDK的唯一识别号</param>
+        /// <param name="forceQuery">缓存为空时，是否强制查询接口</param>
+        /// <returns></returns>
+        public async Task<string> GetCidAliasAsync(string cid, bool forceQuery = false)
+        {
+            //读取token缓存信息
+            string Alias = _iStorage.GetAlias(cid);
+            if (string.IsNullOrWhiteSpace(Alias) || forceQuery)
+            {
+                //如果缓存为空，则调用接口查询
+                var result = await AliasCidAsync(new ApiAliasCidInDto() { cid = cid });
+                if (result.code.Equals(0))
+                {
+                    Alias = result.data.alias;
+                    //缓存cid关联的别名
+                    _iStorage.SaveAlias(new data_listDto[] { new data_listDto() { cid = cid, alias = Alias } });
+                }
+            }
+            return await Task.FromResult(Alias);
+        }
+        #endregion
+        #endregion
+
+        #region 鉴权
         #region 鉴权-获取鉴权token
         /// <summary>
         /// 鉴权-获取鉴权token
@@ -96,50 +188,9 @@ namespace GeTuiPushApiV2.ServerSDK.Core
             return result;
         }
         #endregion
-
-        #region 获取token
-        /// <summary>
-        /// 获取token
-        /// </summary>
-        /// <param name="appId">应用id</param>
-        /// <param name="forceRefresh">是否强制刷新token</param>
-        /// <returns></returns>
-        private async Task<string> GetTokenAsync(string appId, bool forceRefresh = false)
-        {
-            //读取token缓存信息
-            string token = _iStorage.GetToken(appId);
-            if (string.IsNullOrEmpty(token) || forceRefresh)
-            {
-                //token已过期，刷新token
-                var resultAuth = await AuthAsync();
-                token = resultAuth.data.token;
-            }
-            return token;
-        }
         #endregion
 
-        #region 获取用户的CID
-        /// <summary>
-        /// 获取用户的CID
-        /// </summary>
-        /// <param name="UIDs">用户ID</param>
-        /// <returns></returns>
-        public async Task<string[]> GetUserCIDAsync(string[] UIDs)
-        {
-            List<string> CIDs = new List<string>();
-            foreach (string uid in UIDs)
-            {
-                //从redis读取token缓存信息
-                string CID = _iStorage.GetCID(uid);
-                if (!string.IsNullOrEmpty(CID))
-                {
-                    CIDs.Add(CID);
-                }
-            }
-            return await Task.FromResult(CIDs.ToArray());
-        }
-        #endregion
-
+        #region 推送
         #region 推送-【toApp】执行群推
         /// <summary>
         ///  推送-【toApp】执行群推
@@ -327,6 +378,58 @@ namespace GeTuiPushApiV2.ServerSDK.Core
             }
             return result.data.taskid;
         }
+        #endregion
+        #endregion
+
+        #region 别名
+        #region 别名-绑定别名
+        /// <summary>
+        /// 别名-绑定别名
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiAliasOutDto>> AliasAsync(ApiAliasInDto inDto)
+        {
+            long _timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000;
+            var result = await _api.AliasAsync(new ApiAliasInDto()
+            {
+                token = await GetTokenAsync(_options.AppID),
+                appkey = _options.AppKey,
+                timestamp = _timestamp,
+                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
+                appId = _options.AppID,
+                data_list = inDto.data_list
+            });
+            //缓存别名
+            if (result.code.Equals(0))
+            {
+                _iStorage.SaveAlias(inDto.data_list);
+            }
+            return result;
+        }
+        #endregion
+
+        #region 别名-根据cid查询别名
+        /// <summary>
+        /// 别名-根据cid查询别名
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiAliasCidOutDto>> AliasCidAsync(ApiAliasCidInDto inDto)
+        {
+            long _timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000;
+            var result = await _api.AliasCidAsync(new ApiAliasCidInDto()
+            {
+                token = await GetTokenAsync(_options.AppID),
+                appkey = _options.AppKey,
+                timestamp = _timestamp,
+                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
+                appId = _options.AppID,
+                cid = inDto.cid
+            });
+            return result;
+        }
+        #endregion
         #endregion
 
         #region 推送消息给APP
