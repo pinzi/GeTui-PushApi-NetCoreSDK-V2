@@ -25,9 +25,17 @@ services.UseGeTuiPushApiV2ServerSDKCore();
 #region 用户API
 {
     //IOC方式
-    await new IocUserTest().Run(services);
+    //await new IocUserTest().Run(services);
 }
 #endregion
+
+#region MyRegion
+{
+    //IOC方式
+    new StorageTest().Run(services);
+}
+#endregion
+
 
 Console.WriteLine("ok");
 Console.ReadKey();

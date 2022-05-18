@@ -12,12 +12,27 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
             throw new NotImplementedException();
         }
 
+        public List<string> GetList(string key)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Remove(string key)
         {
             throw new NotImplementedException();
         }
 
         public void Set(string key, string value, TimeSpan? expireTime = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetAdd(string key, List<string> value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetRemove(string key, string value)
         {
             throw new NotImplementedException();
         }
