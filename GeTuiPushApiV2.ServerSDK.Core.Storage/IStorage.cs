@@ -13,6 +13,11 @@
         /// <param name="expireTime">接口调用凭据有效期</param>
         public void SaveToken(string appId, string token, TimeSpan? expireTime = null);
         /// <summary>
+        /// 删除接口调用凭据
+        /// </summary>
+        /// <param name="appId">应用id</param>
+        public void DeleteToken(string appId);
+        /// <summary>
         /// 获取接口调用凭据
         /// </summary>
         /// <param name="appId">应用id</param>

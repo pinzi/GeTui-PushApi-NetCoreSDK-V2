@@ -33,9 +33,9 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         /// </summary>
         /// <param name="inDto"></param>
         /// <returns></returns>
-        public async Task<ApiResultOutDto<ApiAuthOutDto>> AuthAsync(ApiAuthDeleteInDto inDto)
+        public async Task<ApiResultOutDto<ApiAuthDeleteOutDto>> AuthDeleteAsync(ApiInDto inDto)
         {
-            var result = await HttpDeleteGeTuiApiAsync<ApiAuthDeleteInDto, ApiAuthOutDto>($"{ApiBaseUrl}{inDto.appId}/auth/{inDto.token}", inDto);
+            var result = await HttpDeleteGeTuiApiAsync<ApiInDto, ApiAuthDeleteOutDto>($"{ApiBaseUrl}{inDto.appId}/auth/{inDto.token}", inDto);
             return result;
         }
         #endregion

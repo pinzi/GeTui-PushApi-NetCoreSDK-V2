@@ -39,6 +39,14 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
             }
         }
         /// <summary>
+        /// 删除接口调用凭据
+        /// </summary>
+        /// <param name="appId">应用id</param>
+        public void DeleteToken(string appId)
+        {
+            _memoryManager.Remove(appId);
+        }
+        /// <summary>
         /// 获取接口调用凭据
         /// </summary>
         /// <param name="appId">应用id</param>

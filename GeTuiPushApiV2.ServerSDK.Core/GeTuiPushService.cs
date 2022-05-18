@@ -65,6 +65,38 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         }
         #endregion
 
+        #region 鉴权-删除鉴权token
+        /// <summary>
+        /// 鉴权-删除鉴权token
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiAuthDeleteOutDto>> AuthDeleteAsync()
+        {
+            //读取token缓存信息
+            string token = _iStorage.GetToken(_options.AppID);
+            if (string.IsNullOrEmpty(token))
+            {
+                return new ApiResultOutDto<ApiAuthDeleteOutDto>()
+                {
+                    code = -1,
+                    msg = "token不存在"
+                };
+            }
+            var result = await _api.AuthDeleteAsync(new ApiInDto()
+            {
+                token = token,
+                appId = _options.AppID
+            });
+            //缓存token
+            if (result.code.Equals(0))
+            {
+                _iStorage.DeleteToken(_options.AppID);
+            }
+            return result;
+        }
+        #endregion
+
         #region 获取token
         /// <summary>
         /// 获取token
@@ -74,13 +106,11 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         /// <returns></returns>
         private async Task<string> GetTokenAsync(string appId, bool forceRefresh = false)
         {
-            //从redis读取token缓存信息
+            //读取token缓存信息
             string token = _iStorage.GetToken(appId);
             if (string.IsNullOrEmpty(token) || forceRefresh)
             {
                 //token已过期，刷新token
-                //Console.WriteLine($"没有找到token，刷新token=>{token}");
-                long _timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000;
                 var resultAuth = await AuthAsync();
                 token = resultAuth.data.token;
             }

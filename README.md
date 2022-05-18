@@ -51,7 +51,7 @@ Install-Package GeTuiPushApiV2.ServerSDK.Core
 ## 快速开始
 本SDK支持3种调用方式，请根据自己的业务情况进行选择。
 
-### 1.直接调用个推RestAPI V2的接口方法
+### 1.直接调用API HTTP请求方法
 这种方式需要自己对接口的请求参数及响应进行处理，对鉴权token，CID进行缓存等。
 ##### 使用示例
 ###### 1.**获取鉴权token**
@@ -105,7 +105,7 @@ await HttpPostGeTuiApiAsync<ApiPushToSingleInDto, ApiPushToSingleOutDto>($"https
 ```
 
 
-### 2.使用已封装好的统一发起及响应处理方法
+### 2.使用封装好的API调用方法
 这种方式是在第1种方式上进行了一层封装，统一对接口请求，响应进行了处理，但仍然需要对鉴权token，CID进行缓存等。
 
 ##### 使用示例
@@ -164,7 +164,7 @@ apiInDto.appId = AppID;
 await api.PushToSingleAsync(apiInDto);
 ```
 
-### 3.使用已封装好的个推推送服务（推荐）
+### 3.使用封装好的个推API服务（推荐）
 这种方式下，仅需要准备推送服务所需参数，即可进行推送。无需手动选择推送接口来决定使用单推，群推，批量推，程序会根据参数自动选择推送方式。
 该方式又支持普通调用和IOC调用两种方式，推荐使用IOC调用方式。
 
@@ -325,7 +325,8 @@ catch (Exception ex)
 
 | API类别 | 功能                                                         |
 | ------- | ------------------------------------------------------------ |
-| 鉴权API | [鉴权](https://docs.getui.com/getui/server/rest_v2/token/#0) |
+| 鉴权API | [获取鉴权](https://docs.getui.com/getui/server/rest_v2/token/#0) |
+| 鉴权API | [删除鉴权](https://docs.getui.com/getui/server/rest_v2/token/#1) |
 | 推送API | [cid单推](https://docs.getui.com/getui/server/rest_v2/push/#1) |
 | 推送API | [tolist创建消息](https://docs.getui.com/getui/server/rest_v2/push/#5) |
 | 推送API | [cid批量推](https://docs.getui.com/getui/server/rest_v2/push/#6) |

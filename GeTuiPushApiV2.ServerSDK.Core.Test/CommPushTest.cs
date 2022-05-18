@@ -3,12 +3,12 @@ using GeTuiPushApiV2.ServerSDK.Core.Utility;
 using GeTuiPushApiV2.ServerSDK.Storage;
 using Newtonsoft.Json;
 
-namespace GeTuiPushApiV2.ServerSDK.Core.Sample.Net7
+namespace GeTuiPushApiV2.ServerSDK.Core.Test
 {
     /// <summary>
     /// 普通方式
     /// </summary>
-    public class CommTest
+    public class CommPushTest
     {
         public async Task Run()
         {
@@ -27,7 +27,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Sample.Net7
                 appId = AppID
             };
 
-            //1.使用封装好的HTTP请求方法，需要自己实现Token的缓存，CID的保存及查询逻辑
+            //1.直接调用API HTTP请求方法，需要自己实现Token的缓存，CID的保存及查询逻辑
             {
                 var result = await GeTuiPushV2Api.HttpPostGeTuiApiAsync<ApiAuthInDto, ApiAuthOutDto>($"https://restapi.getui.com/v2/{AppID}/auth", indto);
                 Console.WriteLine(result.data.token);
@@ -64,7 +64,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Sample.Net7
 
             Console.WriteLine("*********************************************************************************************************************");
             Thread.Sleep(1000);
-            //2.使用自定义的HTTP请求方法，需要自己实现Token的缓存，CID的保存及查询逻辑
+            //2.使用封装好的API调用方法，需要自己实现Token的缓存，CID的保存及查询逻辑
             {
                 GeTuiPushV2Api api = new GeTuiPushV2Api();
                 var result = await api.AuthAsync(indto);
@@ -102,7 +102,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Sample.Net7
 
             Console.WriteLine("*********************************************************************************************************************");
             Thread.Sleep(1000);
-            //3.使用自定义的接口封装方法
+            //3.使用封装好的个推API服务
             {
                 IStorage iStorage = new RedisStorage(new StackExchangeRedis(new RedisOptions()
                 {

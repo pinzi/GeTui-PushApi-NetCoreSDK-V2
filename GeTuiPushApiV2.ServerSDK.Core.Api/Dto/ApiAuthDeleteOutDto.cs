@@ -3,7 +3,7 @@
     /// <summary>
     /// 鉴权-删除鉴权token
     /// </summary>
-    public class ApiAuthDeleteInDto : ApiInDto
+    public class ApiAuthDeleteOutDto
     {
     }
 }
