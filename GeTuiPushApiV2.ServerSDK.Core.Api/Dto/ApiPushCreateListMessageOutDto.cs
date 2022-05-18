@@ -3,7 +3,7 @@
     /// <summary>
     /// 推送-【toList】创建消息
     /// </summary>
-    public class ApiCreateListMessageOutDto
+    public class ApiPushCreateListMessageOutDto
     {
         /// <summary>
         /// 任务编号

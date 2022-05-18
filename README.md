@@ -331,9 +331,11 @@ catch (Exception ex)
 | 推送API | [tolist创建消息](https://docs.getui.com/getui/server/rest_v2/push/#5) |
 | 推送API | [cid批量推](https://docs.getui.com/getui/server/rest_v2/push/#6) |
 | 推送API | [群推](https://docs.getui.com/getui/server/rest_v2/push/#8)  |
-| 别名API | [绑定别名](https://docs.getui.com/getui/server/rest_v2/user/#1)  |
-| 别名API | [根据cid查询别名](https://docs.getui.com/getui/server/rest_v2/user/#2)  |
-
+| 用户API | [绑定别名](https://docs.getui.com/getui/server/rest_v2/user/#1)  |
+| 用户API | [根据cid查询别名](https://docs.getui.com/getui/server/rest_v2/user/#2)  |
+| 用户API | [根据别名查询cid](https://docs.getui.com/getui/server/rest_v2/user/#3)  |
+| 用户API | [批量解绑别名](https://docs.getui.com/getui/server/rest_v2/user/#4)  |
+| 用户API | [解绑所有别名](https://docs.getui.com/getui/server/rest_v2/user/#5)  |
 > 注：更多API持续更新中，敬请期待。
 
 

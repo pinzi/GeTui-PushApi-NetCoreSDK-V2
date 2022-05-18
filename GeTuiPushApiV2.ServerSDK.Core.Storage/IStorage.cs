@@ -54,5 +54,10 @@ namespace GeTuiPushApiV2.ServerSDK.Storage
         /// <param name="cid">个推SDK的唯一识别号</param>
         /// <returns>用户cid关联的别名</returns>
         public string GetAlias(string cid);
+        /// <summary>
+        /// 删除别名数据列表
+        /// </summary>
+        /// <param name="data_list">别名数据列表</param>
+        public void RemoveAlias(data_listDto[] data_list);
     }
 }

@@ -1,12 +1,12 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 别名-根据cid查询别名输出参数
+    /// 用户-【别名】根据别名查询cid输入参数
     /// </summary>
-    public class ApiAliasCidOutDto
+    public class ApiUserCidAliasInDto : ApiInDto
     {
         /// <summary>
-        /// 别名
+        /// 必填项，别名
         /// </summary>
         public string alias { get; set; }
     }

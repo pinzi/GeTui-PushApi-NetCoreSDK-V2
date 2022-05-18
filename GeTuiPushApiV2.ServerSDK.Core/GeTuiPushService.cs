@@ -116,7 +116,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core
             if (string.IsNullOrWhiteSpace(Alias) || forceQuery)
             {
                 //如果缓存为空，则调用接口查询
-                var result = await AliasCidAsync(new ApiAliasCidInDto() { cid = cid });
+                var result = await UserAliasCidAsync(new ApiUserAliasCidInDto() { cid = cid });
                 if (result.code.Equals(0))
                 {
                     Alias = result.data.alias;
@@ -332,7 +332,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         /// <returns></returns>
         public async Task<string> CreateListMessageAsync(PushMessageInDto inDto)
         {
-            var apiInDto = new ApiCreateListMessageInDto()
+            var apiInDto = new ApiPushCreateListMessageInDto()
             {
                 request_id = Guid.NewGuid().ToString(),
                 audience = new audience_cidDto()
@@ -381,17 +381,17 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         #endregion
         #endregion
 
-        #region 别名
-        #region 别名-绑定别名
+        #region 用户
+        #region 用户-【别名】绑定别名
         /// <summary>
-        /// 别名-绑定别名
+        /// 用户-【别名】绑定别名
         /// </summary>
         /// <param name="inDto"></param>
         /// <returns></returns>
-        public async Task<ApiResultOutDto<ApiAliasOutDto>> AliasAsync(ApiAliasInDto inDto)
+        public async Task<ApiResultOutDto<ApiUserAliasOutDto>> UserAliasAsync(ApiUserAliasInDto inDto)
         {
             long _timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000;
-            var result = await _api.AliasAsync(new ApiAliasInDto()
+            var result = await _api.UserAliasAsync(new ApiUserAliasInDto()
             {
                 token = await GetTokenAsync(_options.AppID),
                 appkey = _options.AppKey,
@@ -409,16 +409,16 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         }
         #endregion
 
-        #region 别名-根据cid查询别名
+        #region 用户-【别名】根据cid查询别名
         /// <summary>
-        /// 别名-根据cid查询别名
+        /// 用户-【别名】根据cid查询别名
         /// </summary>
         /// <param name="inDto"></param>
         /// <returns></returns>
-        public async Task<ApiResultOutDto<ApiAliasCidOutDto>> AliasCidAsync(ApiAliasCidInDto inDto)
+        public async Task<ApiResultOutDto<ApiUserAliasCidOutDto>> UserAliasCidAsync(ApiUserAliasCidInDto inDto)
         {
             long _timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000;
-            var result = await _api.AliasCidAsync(new ApiAliasCidInDto()
+            var result = await _api.UserAliasCidAsync(new ApiUserAliasCidInDto()
             {
                 token = await GetTokenAsync(_options.AppID),
                 appkey = _options.AppKey,
@@ -427,6 +427,83 @@ namespace GeTuiPushApiV2.ServerSDK.Core
                 appId = _options.AppID,
                 cid = inDto.cid
             });
+            return result;
+        }
+        #endregion
+
+        #region 用户-【别名】根据别名查询cid
+        /// <summary>
+        /// 用户-【别名】根据别名查询cid
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiUserCidAliasOutDto>> UserAliasCidAsync(ApiUserCidAliasInDto inDto)
+        {
+            long _timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000;
+            var result = await _api.UserCidAliasAsync(new ApiUserCidAliasInDto()
+            {
+                token = await GetTokenAsync(_options.AppID),
+                appkey = _options.AppKey,
+                timestamp = _timestamp,
+                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
+                appId = _options.AppID,
+                alias = inDto.alias
+            });
+            return result;
+        }
+        #endregion
+
+        #region 用户-【别名】批量解绑别名
+        /// <summary>
+        /// 用户-【别名】批量解绑别名
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiUserAliasBatchUnBoundOutDto>> UserAliasBatchUnBoundAsync(ApiUserAliasBatchUnBoundInDto inDto)
+        {
+            long _timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000;
+            var result = await _api.UserAliasBatchUnBoundAsync(new ApiUserAliasBatchUnBoundInDto()
+            {
+                token = await GetTokenAsync(_options.AppID),
+                appkey = _options.AppKey,
+                timestamp = _timestamp,
+                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
+                appId = _options.AppID,
+                data_list = inDto.data_list
+            });
+            //删除别名缓存
+            if (result.code.Equals(0))
+            {
+                _iStorage.RemoveAlias(inDto.data_list);
+            }
+            return result;
+        }
+        #endregion
+
+        #region 用户-【别名】解绑所有别名
+        /// <summary>
+        /// 用户-【别名】解绑所有别名
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiUserAliasUnBoundOutDto>> UserAliasUnBoundAsync(ApiUserAliasUnBoundInDto inDto)
+        {
+            long _timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000;
+            var result = await _api.UserAliasUnBoundAsync(new ApiUserAliasUnBoundInDto()
+            {
+                token = await GetTokenAsync(_options.AppID),
+                appkey = _options.AppKey,
+                timestamp = _timestamp,
+                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
+                appId = _options.AppID,
+                alias = inDto.alias
+            });
+            if (result.code.Equals(0))
+            {
+                //获取别名缓存
+                //删除别名缓存
+                //_iStorage.RemoveAlias(inDto.data_list);
+            }
             return result;
         }
         #endregion

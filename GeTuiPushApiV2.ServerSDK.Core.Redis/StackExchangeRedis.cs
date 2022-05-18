@@ -48,6 +48,17 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
             db = redis.GetDatabase(_redisOptions.DbNum);
         }
 
+
+        /// <summary>
+        /// 删除键值
+        /// </summary>
+        /// <param name="key">键</param>
+        public void Remove(string key)
+        {
+            db.KeyDelete(key);
+        }
+
+        #region 单键值
         /// <summary>
         /// 设置键值
         /// </summary>
@@ -66,13 +77,34 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         {
             return db.StringGet(key);
         }
+        #endregion
+
+        #region Set集合键值
         /// <summary>
-        /// 删除键值
+        /// 设置Set集合键值
         /// </summary>
         /// <param name="key">键</param>
-        public void Remove(string key)
+        /// <param name="value">Set集合键值</param>
+        public void SetAdd(string key, List<string> value)
         {
-            db.KeyDelete(key);
+            db.SetAdd(key, value.Select(i => new RedisValue(i)).ToArray());
         }
+        /// <summary>
+        /// 读取Set集合键值
+        /// </summary>
+        /// <param name="key">键</param>
+        public List<string> GetList(string key)
+        {
+            return db.SetMembers(key).Select(s => s.ToString()).ToList();
+        }
+        /// <summary>
+        /// 删除指定的Set集合键值
+        /// </summary>
+        /// <param name="key">键</param>
+        public void SetRemove(string key, string value)
+        {
+            db.SetRemove(key, value);
+        }
+        #endregion
     }
 }

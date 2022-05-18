@@ -22,10 +22,10 @@ services.UseGeTuiPushApiV2ServerSDKCore();
 }
 #endregion
 
-#region 鉴权API
+#region 用户API
 {
     //IOC方式
-    await new IocAliasTest().Run(services);
+    await new IocUserTest().Run(services);
 }
 #endregion
 

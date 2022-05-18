@@ -3,7 +3,7 @@
     /// <summary>
     /// 推送-【toList】创建消息
     /// </summary>
-    public class ApiCreateListMessageInDto : ApiPushToBaseInDto
+    public class ApiPushCreateListMessageInDto : ApiPushToBaseInDto
     {
     }
 }

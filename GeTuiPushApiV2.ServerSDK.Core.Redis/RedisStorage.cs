@@ -109,6 +109,16 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         {
             return _iRedis.Get(cid);
         }
-
+        /// <summary>
+        /// 删除别名数据列表
+        /// </summary>
+        /// <param name="data_list">别名数据列表</param>
+        public void RemoveAlias(data_listDto[] data_list)
+        {
+            foreach (var item in data_list)
+            {
+                _iRedis.Remove(item.cid);
+            }
+        }
     }
 }

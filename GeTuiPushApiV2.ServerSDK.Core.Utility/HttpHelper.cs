@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
+using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 
 namespace GeTuiPushApiV2.ServerSDK.Core.Utility
 {
@@ -117,7 +119,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Utility
             {
                 httpClient.DefaultRequestHeaders.Add(kv.Key, kv.Value);
             }
-            var resp = await httpClient.DeleteAsync(new Uri(url));
+            var resp = await httpClient.DeleteAsync(url);
             resp.EnsureSuccessStatusCode();
             return await resp.Content.ReadAsStringAsync();
         }
@@ -134,8 +136,52 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Utility
             {
                 httpClient.DefaultRequestHeaders.Add(kv.Key, kv.Value);
             }
-            var resp = httpClient.DeleteAsync(new Uri(url));
+            var resp = httpClient.DeleteAsync(url);
             return resp.GetAwaiter().GetResult().Content.ReadAsStringAsync().Result;
+        }
+        /// <summary>
+        /// 异步Delete请求
+        /// </summary>
+        /// <param name="url">请求地址</param>    
+        /// <param name="headers">header键值对</param>
+        /// <param name="deleteData">提交的数据</param>
+        /// <returns></returns>
+        public async Task<string> HttpDeleteAsync<T>(string url, Dictionary<string, string> headers, T deleteData)
+        {
+            var httpClient = new HttpClient();
+            foreach (KeyValuePair<string, string> kv in headers)
+            {
+                httpClient.DefaultRequestHeaders.Add(kv.Key, kv.Value);
+            }
+            var request = new HttpRequestMessage(HttpMethod.Delete, url)
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(deleteData), Encoding.UTF8, "application/json")
+            };
+            var resp = await httpClient.SendAsync(request);
+            resp.EnsureSuccessStatusCode();
+            return await resp.Content.ReadAsStringAsync();
+        }
+        /// <summary>
+        /// 同步Delete请求
+        /// </summary>
+        /// <param name="url">请求地址</param>    
+        /// <param name="headers">header键值对</param>
+        /// <param name="deleteData">提交的数据</param>
+        /// <returns></returns>
+        public string HttpDelete<T>(string url, Dictionary<string, string> headers, T deleteData)
+        {
+            var httpClient = new HttpClient();
+            foreach (KeyValuePair<string, string> kv in headers)
+            {
+                httpClient.DefaultRequestHeaders.Add(kv.Key, kv.Value);
+            }
+            var request = new HttpRequestMessage(HttpMethod.Delete, url)
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(deleteData), Encoding.UTF8, "application/json")
+            };
+            var resp = httpClient.SendAsync(request).Result;
+            resp.EnsureSuccessStatusCode();
+            return resp.Content.ReadAsStringAsync().Result;
         }
     }
 }

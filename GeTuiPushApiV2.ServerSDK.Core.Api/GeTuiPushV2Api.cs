@@ -74,9 +74,9 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         /// </summary>
         /// <param name="inDto"></param>
         /// <returns></returns>
-        public async Task<ApiResultOutDto<ApiCreateListMessageOutDto>> CreateListMessageAsync(ApiCreateListMessageInDto inDto)
+        public async Task<ApiResultOutDto<ApiPushCreateListMessageOutDto>> CreateListMessageAsync(ApiPushCreateListMessageInDto inDto)
         {
-            var result = await HttpPostGeTuiApiAsync<ApiCreateListMessageInDto, ApiCreateListMessageOutDto>($"{ApiBaseUrl}{inDto.appId}/push/list/message", inDto);
+            var result = await HttpPostGeTuiApiAsync<ApiPushCreateListMessageInDto, ApiPushCreateListMessageOutDto>($"{ApiBaseUrl}{inDto.appId}/push/list/message", inDto);
             return result;
         }
         #endregion
@@ -108,37 +108,84 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         #endregion
         #endregion
 
-        #region 别名
-        #region 【别名】绑定别名
+        #region 用户API
+        #region 用户-【别名】绑定别名
         /// <summary>
-        /// 别名-绑定别名
+        /// 用户-【别名】绑定别名
         /// </summary>
         /// <param name="inDto"></param>
         /// <returns></returns>
-        public async Task<ApiResultOutDto<ApiAliasOutDto>> AliasAsync(ApiAliasInDto inDto)
+        public async Task<ApiResultOutDto<ApiUserAliasOutDto>> UserAliasAsync(ApiUserAliasInDto inDto)
         {
             if (inDto.data_list == null || inDto.data_list.Length == 0)
             {
-                return new ApiResultOutDto<ApiAliasOutDto>() { code = -1, msg = "data_list不能为空" };
+                return new ApiResultOutDto<ApiUserAliasOutDto>() { code = -1, msg = "data_list不能为空" };
             }
             if (inDto.data_list.Length > 1000)
             {
-                return new ApiResultOutDto<ApiAliasOutDto>() { code = -1, msg = "data_list长度不能超过1000" };
+                return new ApiResultOutDto<ApiUserAliasOutDto>() { code = -1, msg = "data_list长度不能超过1000" };
             }
-            var result = await HttpPostGeTuiApiAsync<ApiAliasInDto, ApiAliasOutDto>($"{ApiBaseUrl}{inDto.appId}/user/alias", inDto);
+            var result = await HttpPostGeTuiApiAsync<ApiUserAliasInDto, ApiUserAliasOutDto>($"{ApiBaseUrl}{inDto.appId}/user/alias", inDto);
             return result;
         }
         #endregion
 
-        #region 【别名】根据cid查询别名
+        #region 用户-【别名】根据cid查询别名
         /// <summary>
-        /// 别名-根据cid查询别名
+        /// 用户-【别名】根据cid查询别名
         /// </summary>
         /// <param name="inDto"></param>
         /// <returns></returns>
-        public async Task<ApiResultOutDto<ApiAliasCidOutDto>> AliasCidAsync(ApiAliasCidInDto inDto)
+        public async Task<ApiResultOutDto<ApiUserAliasCidOutDto>> UserAliasCidAsync(ApiUserAliasCidInDto inDto)
         {
-            var result = await HttpGetGeTuiApiAsync<ApiAliasCidInDto, ApiAliasCidOutDto>($"{ApiBaseUrl}{inDto.appId}/user/alias/cid/{inDto.cid}", inDto);
+            var result = await HttpGetGeTuiApiAsync<ApiUserAliasCidInDto, ApiUserAliasCidOutDto>($"{ApiBaseUrl}{inDto.appId}/user/alias/cid/{inDto.cid}", inDto);
+            return result;
+        }
+        #endregion
+
+        #region 用户-【别名】根据别名查询cid
+        /// <summary>
+        /// 用户-【别名】根据别名查询cid
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiUserCidAliasOutDto>> UserCidAliasAsync(ApiUserCidAliasInDto inDto)
+        {
+            var result = await HttpGetGeTuiApiAsync<ApiUserCidAliasInDto, ApiUserCidAliasOutDto>($"{ApiBaseUrl}{inDto.appId}/user/cid/alias/{inDto.alias}", inDto);
+            return result;
+        }
+        #endregion
+
+        #region 用户-【别名】批量解绑别名
+        /// <summary>
+        /// 用户-【别名】批量解绑别名
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiUserAliasBatchUnBoundOutDto>> UserAliasBatchUnBoundAsync(ApiUserAliasBatchUnBoundInDto inDto)
+        {
+            if (inDto.data_list == null || inDto.data_list.Length == 0)
+            {
+                return new ApiResultOutDto<ApiUserAliasBatchUnBoundOutDto>() { code = -1, msg = "data_list不能为空" };
+            }
+            if (inDto.data_list.Length > 1000)
+            {
+                return new ApiResultOutDto<ApiUserAliasBatchUnBoundOutDto>() { code = -1, msg = "data_list长度不能超过1000" };
+            }
+            var result = await HttpDeleteGeTuiApiAsync<ApiUserAliasBatchUnBoundInDto, ApiUserAliasBatchUnBoundOutDto>($"{ApiBaseUrl}{inDto.appId}/user/alias", inDto);
+            return result;
+        }
+        #endregion
+
+        #region 用户-【别名】解绑所有别名
+        /// <summary>
+        /// 用户-【别名】解绑所有别名
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiUserAliasUnBoundOutDto>> UserAliasUnBoundAsync(ApiUserAliasUnBoundInDto inDto)
+        {
+            var result = await HttpDeleteGeTuiApiAsync<ApiUserAliasUnBoundInDto, ApiUserAliasUnBoundOutDto>($"{ApiBaseUrl}{inDto.appId}/user/alias/{inDto.alias}", inDto);
             return result;
         }
         #endregion
@@ -227,16 +274,16 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         /// <typeparam name="T1">请求参数类型</typeparam>
         /// <typeparam name="T2">响应参数data类型</typeparam>
         /// <param name="ApiUrl">请求地址</param>
-        /// <param name="PostData">请求参数</param>
+        /// <param name="deleteData">请求参数</param>
         /// <returns></returns>
-        public static async Task<ApiResultOutDto<T2>> HttpDeleteGeTuiApiAsync<T1, T2>(string ApiUrl, T1 PostData) where T1 : ApiInDto
+        public static async Task<ApiResultOutDto<T2>> HttpDeleteGeTuiApiAsync<T1, T2>(string ApiUrl, T1 deleteData) where T1 : ApiInDto
         {
             try
             {
                 HttpHelper http = new HttpHelper();
                 Dictionary<string, string> headers = new Dictionary<string, string>();
-                headers.Add("token", PostData.token);
-                string res = await http.HttpDeleteAsync(ApiUrl, headers);
+                headers.Add("token", deleteData.token);
+                string res = await http.HttpDeleteAsync(ApiUrl, headers, deleteData);
                 return JsonConvert.DeserializeObject<ApiResultOutDto<T2>>(res)!;
             }
             catch (Exception ex)

@@ -1,9 +1,9 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 别名-根据cid查询别名输入参数
+    /// 用户-【别名】根据cid查询别名输入参数
     /// </summary>
-    public class ApiAliasCidInDto : ApiInDto
+    public class ApiUserAliasCidInDto : ApiInDto
     {
         /// <summary>
         /// 必填项，用户唯一标识

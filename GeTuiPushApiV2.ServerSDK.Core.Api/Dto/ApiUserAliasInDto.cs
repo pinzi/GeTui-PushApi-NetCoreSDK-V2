@@ -1,12 +1,12 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 别名-绑定别名传入参数
+    /// 用户-【别名】绑定别名传入参数
     /// </summary>
-    public class ApiAliasInDto : ApiInDto
+    public class ApiUserAliasInDto : ApiInDto
     {
         /// <summary>
-        /// 数据列表，数组长度不大于1000
+        /// 别名数据列表，数组长度不大于1000
         /// </summary>
         public data_listDto[] data_list { get; set; }
     }

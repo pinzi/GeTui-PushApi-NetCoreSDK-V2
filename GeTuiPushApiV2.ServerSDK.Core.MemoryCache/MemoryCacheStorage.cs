@@ -108,6 +108,17 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         public string GetAlias(string cid)
         {
             return _memoryManager.Get<string>(cid);
-        } 
+        }
+        /// <summary>
+        /// 删除别名数据列表
+        /// </summary>
+        /// <param name="data_list">别名数据列表</param>
+        public void RemoveAlias(data_listDto[] data_list)
+        {
+            foreach (var item in data_list)
+            {
+                _memoryManager.Remove(item.cid);
+            }
+        }
     }
 }
