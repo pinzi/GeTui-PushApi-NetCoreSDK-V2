@@ -7,6 +7,7 @@ namespace GeTuiPushApiV2.ServerSDK.Storage
     /// </summary>
     public interface IStorage
     {
+        #region Token
         /// <summary>
         /// 保存接口调用凭据
         /// </summary>
@@ -25,39 +26,85 @@ namespace GeTuiPushApiV2.ServerSDK.Storage
         /// <param name="appId">应用id</param>
         /// <returns>接口调用凭据</returns>
         public string GetToken(string appId);
+        #endregion
+
+        #region CID
         /// <summary>
         /// 存储CID
         /// </summary>
         /// <param name="uid">用户id</param>
         /// <param name="cid">个推SDK的唯一识别号</param>
-        /// <param name="expireTime">CID有效期</param>
-        public void AddCID(string uid, string cid, TimeSpan? expireTime = null);
+        public void SaveCID(string uid, string cid);
         /// <summary>
         /// 获取用户关联的个推SDK的唯一识别号
         /// </summary>
         /// <param name="uid">用户id</param>
         /// <returns>个推SDK的唯一识别号</returns>
-        public string GetCID(string uid);
+        public List<string> GetCID(string uid);
         /// <summary>
-        /// 删除用户关联的个推SDK的唯一识别号
+        /// 删除用户关联的全部个推SDK的唯一识别号
         /// </summary>
         /// <param name="uid">用户id</param>
         public void DeleteCID(string uid);
         /// <summary>
+        /// 删除用户关联的指定个推SDK的唯一识别号
+        /// </summary>
+        /// <param name="uid">用户id</param>
+        /// <param name="cid">个推SDK的唯一识别号</param>
+        public void DeleteCID(string uid, string cid);
+        #endregion
+
+        #region 别名
+        /// <summary>
+        /// 保存别名数据
+        /// </summary>
+        /// <param name="alias">别名</param>
+        /// <param name="cid">个推SDK的唯一识别号</param>
+        public void SaveAlias(string alias, string cid);
+        /// <summary>
         /// 保存别名数据列表
         /// </summary>
-        /// <param name="data_list">别名数据列表</param>
-        public void SaveAlias(data_listDto[] data_list);
+        /// <param name="alias">别名</param>
+        /// <param name="cid">个推SDK的唯一识别号列表</param>
+        public void SaveAlias(string alias, List<string> cids);
         /// <summary>
-        /// 获取用户cid关联的别名
+        /// 删除别名关联的所有cid列表
         /// </summary>
+        /// <param name="alias">别名</param>
+        public void DeleteAlias(string alias);
+        /// <summary>
+        /// 删除别名关联的指定cid
+        /// </summary>
+        /// <param name="alias">别名</param>
         /// <param name="cid">个推SDK的唯一识别号</param>
-        /// <returns>用户cid关联的别名</returns>
-        public string GetAlias(string cid);
+        public void DeleteAlias(string alias, string cid);
         /// <summary>
-        /// 删除别名数据列表
+        /// 批量删除别名关联的指定cid列表
         /// </summary>
-        /// <param name="data_list">别名数据列表</param>
-        public void RemoveAlias(data_listDto[] data_list);
+        /// <param name="alias">别名</param>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void DeleteAlias(string alias, List<string> cids);
+        /// <summary>
+        /// 获取别名关联的cid列表
+        /// </summary>
+        /// <param name="alias">别名</param>
+        /// <returns>个推SDK的唯一识别号列表</returns>
+        public List<string> GetAlias(string alias);
+        #endregion
+
+        #region 标签
+        /// <summary>
+        /// 保存标签数据
+        /// </summary>
+        /// <param name="tag">别名</param>
+        /// <param name="cid">个推SDK的唯一识别号列表</param>
+        public void SaveTag(string tag, string cid);
+        /// <summary>
+        /// 保存标签数据
+        /// </summary>
+        /// <param name="tag">别名</param>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void SaveTag(string tag, List<string> cids);
+        #endregion
     }
 }

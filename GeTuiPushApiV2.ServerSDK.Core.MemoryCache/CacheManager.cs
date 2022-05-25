@@ -26,8 +26,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentNullException(nameof(key));
-            T value;
-            _cache.TryGetValue<T>(key, out value);
+            _cache.TryGetValue<T>(key, out T value);
             return value;
         }
 
@@ -45,6 +44,52 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
             if (_cache.TryGetValue(key, out v))
                 _cache.Remove(key);
             _cache.Set(key, value);
+        }
+
+        /// <summary>
+        /// 设置集合缓存(永不过期)
+        /// </summary>
+        /// <param name="key">关键字</param>
+        /// <param name="value">缓存值</param>
+        public void SetList_NotExpire<T>(string key, T value)
+        {
+            if (string.IsNullOrWhiteSpace(key))
+                throw new ArgumentNullException(nameof(key));
+            if (_cache.TryGetValue(key, out List<T> vlist))
+            {
+                //读取已有缓存数据成功
+                vlist.Add(value);
+                vlist = vlist.Distinct().ToList();
+                _cache.Set(key, vlist);
+            }
+            else
+            {
+                //读取已有缓存数据失败
+                _cache.Set(key, new List<T>() { value });
+            }
+        }
+
+        /// <summary>
+        /// 设置集合缓存(永不过期)
+        /// </summary>
+        /// <param name="key">关键字</param>
+        /// <param name="value">缓存值</param>
+        public void SetList_NotExpire<T>(string key, List<T> value)
+        {
+            if (string.IsNullOrWhiteSpace(key))
+                throw new ArgumentNullException(nameof(key));
+            if (_cache.TryGetValue(key, out List<T> vlist))
+            {
+                //读取已有缓存数据成功
+                vlist.AddRange(value);
+                vlist = vlist.Distinct().ToList();
+                _cache.Set(key, vlist);
+            }
+            else
+            {
+                //读取已有缓存数据失败
+                _cache.Set(key, value);
+            }
         }
 
         /// <summary>
@@ -112,6 +157,25 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
                 throw new ArgumentNullException(nameof(key));
 
             _cache.Remove(key);
+        }
+
+        /// <summary>
+        /// 移除集合缓存指定元素
+        /// </summary>
+        /// <typeparam name="T">集合数据类型</typeparam>
+        /// <param name="key">关键字</param>
+        /// <param name="value">集合元素值</param>
+        /// <exception cref="ArgumentNullException">关键字不存在</exception>
+        public void SetRemove<T>(string key, T value)
+        {
+            if (string.IsNullOrWhiteSpace(key))
+                throw new ArgumentNullException(nameof(key));
+            var list = Get<List<T>>(key);
+            if (list != null)
+            {
+                list.RemoveAll(t => value!.Equals(t));
+                _cache.Set(key, list);
+            }
         }
 
         /// <summary>

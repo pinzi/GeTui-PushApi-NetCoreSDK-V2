@@ -107,6 +107,59 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Utility
             return resp.Content.ReadAsStringAsync().Result;
         }
         /// <summary>
+        /// 异步put请求
+        /// </summary>
+        /// <param name="url">请求地址</param>
+        /// <param name="headers">header键值对</param>
+        /// <param name="formData">表单参数</param>
+        /// <returns></returns>
+        public async Task<string> HttpPutAsync<T>(string url, Dictionary<string, string> headers, T formData)
+        {
+            var client = new HttpClient();
+            var content = new StringContent(JsonConvert.SerializeObject(formData));
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            content.Headers.ContentType.CharSet = "UTF-8";
+            foreach (KeyValuePair<string, string> kv in headers)
+            {
+                client.DefaultRequestHeaders.Add(kv.Key, kv.Value);
+            }
+            var request = new HttpRequestMessage()
+            {
+                RequestUri = new Uri(url),
+                Method = HttpMethod.Put,
+                Content = content
+            };
+            HttpResponseMessage resp = await client.SendAsync(request);
+            //resp.EnsureSuccessStatusCode();
+            return await resp.Content.ReadAsStringAsync();
+        }
+        /// <summary>
+        /// 同步put请求
+        /// </summary>
+        /// <param name="url">请求地址</param>
+        /// <param name="headers">header键值对</param>
+        /// <param name="formData">表单参数</param>
+        /// <returns></returns>
+        public string HttpPut<T>(string url, Dictionary<string, string> headers, T formData)
+        {
+            var client = new HttpClient();
+            var content = new StringContent(JsonConvert.SerializeObject(formData));
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            content.Headers.ContentType.CharSet = "UTF-8";
+            foreach (KeyValuePair<string, string> kv in headers)
+            {
+                client.DefaultRequestHeaders.Add(kv.Key, kv.Value);
+            }
+            var request = new HttpRequestMessage()
+            {
+                RequestUri = new Uri(url),
+                Method = HttpMethod.Put,
+                Content = content
+            };
+            HttpResponseMessage resp = client.SendAsync(request).Result;
+            return resp.Content.ReadAsStringAsync().Result;
+        }
+        /// <summary>
         /// 异步Delete请求
         /// </summary>
         /// <param name="url">请求地址</param>    

@@ -14,6 +14,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// <param name="services">IOC容器对象</param>
         public static void AddMemoryCacheStorage(this IServiceCollection services)
         {
+            services.AddSingleton<MemoryManager>();
             services.AddSingleton<IStorage, MemoryCacheStorage>();
         }
     }

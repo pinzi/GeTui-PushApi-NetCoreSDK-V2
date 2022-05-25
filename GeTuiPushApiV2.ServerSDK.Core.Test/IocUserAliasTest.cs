@@ -6,7 +6,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
     /// <summary>
     /// IOC方式
     /// </summary>
-    public class IocUserTest
+    public class IocUserAliasTest
     {
         public async Task Run(IServiceCollection services)
         {
@@ -135,21 +135,34 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
 
             //3.使用封装好的个推API服务
             {
-                ////绑定
-                //var result = await service.UserAliasAsync(new ApiUserAliasInDto()
-                //{
-                //    data_list = _data_list
-                //});
-                //Console.WriteLine(result.msg);
-                ////查询
-                //var result2 = await service.UserAliasCidAsync(new ApiUserAliasCidInDto()
-                //{
-                //    cid = "2bfd19ad80d679853a690ceb72c7c041"
-                //});
-                //Console.WriteLine(result2.data.alias);
-                ////批量解绑
-
-                ////解绑所有
+                //绑定
+                var result = await service.UserAliasAsync(new UserAliasInDto()
+                {
+                    data_list = _data_list
+                });
+                Console.WriteLine(result.msg);
+                //查询
+                var result2 = await service.UserAliasCidAsync(new UserAliasCidInDto()
+                {
+                    cid = "2bfd19ad80d679853a690ceb72c7c041"
+                });
+                Console.WriteLine(result2.data.alias);
+                //批量解绑
+                var result3 = await service.UserAliasBatchUnBoundAsync(new UserAliasBatchUnBoundInDto()
+                {
+                    data_list = new data_listDto[]
+                    {
+                        new data_listDto(){cid="2bfd19ad80d679853a690ceb72c7c041",alias="新用户"},
+                        new data_listDto(){cid="2bfd19ad80d679853a690ceb72c7c045",alias="中奖用户"}
+                    }
+                });
+                Console.WriteLine(result3.msg);
+                //解绑所有
+                var result4 = await service.UserAliasUnBoundAsync(new UserAliasUnBoundInDto()
+                {
+                    alias = "新用户"
+                });
+                Console.WriteLine(result4.msg);
             }
             Console.WriteLine("*************************************************IOC方式*************************************************");
         }

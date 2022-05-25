@@ -3,7 +3,7 @@
     /// <summary>
     /// 公共返回参数
     /// </summary>
-    public class ApiResultOutDto<T>
+    public class ApiResultOutDto
     {
         /// <summary>
         /// 成功或失败code码，详细含义见业务返回码说明
@@ -13,6 +13,13 @@
         /// 失败时返回此说明
         /// </summary>
         public string msg { get; set; }
+    }
+
+    /// <summary>
+    /// 公共返回参数
+    /// </summary>
+    public class ApiResultOutDto<T> : ApiResultOutDto
+    {
         /// <summary>
         /// 详见接口说明
         /// </summary>

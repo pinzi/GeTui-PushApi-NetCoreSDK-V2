@@ -1,6 +1,4 @@
-﻿using StackExchange.Redis;
-
-namespace GeTuiPushApiV2.ServerSDK.Core.Redis
+﻿namespace GeTuiPushApiV2.ServerSDK.Core.Redis
 {
     /// <summary>
     /// Redis操作对象抽象接口
@@ -12,6 +10,11 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// </summary>
         /// <param name="key">键</param>
         public void Remove(string key);
+        /// <summary>
+        /// 批量删除键值
+        /// </summary>
+        /// <param name="keys">键列表</param>
+        public void Remove(List<string> keys);
 
         #region 单键值
         /// <summary>
@@ -29,6 +32,12 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         #endregion
 
         #region Set集合键值
+        /// <summary>
+        /// 设置Set集合键值
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="value">Set集合键值</param>
+        public void SetAdd(string key, string value);
         /// <summary>
         /// 设置Set集合键值
         /// </summary>

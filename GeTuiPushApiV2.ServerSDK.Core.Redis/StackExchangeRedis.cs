@@ -1,4 +1,5 @@
-﻿using StackExchange.Redis;
+﻿using Newtonsoft.Json.Linq;
+using StackExchange.Redis;
 using System.Collections.Concurrent;
 
 namespace GeTuiPushApiV2.ServerSDK.Core.Redis
@@ -49,6 +50,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         }
 
 
+        #region 删除键
         /// <summary>
         /// 删除键值
         /// </summary>
@@ -57,6 +59,15 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         {
             db.KeyDelete(key);
         }
+        /// <summary>
+        /// 批量删除键值
+        /// </summary>
+        /// <param name="keys">键列表</param>
+        public void Remove(List<string> keys)
+        {
+            db.KeyDelete(keys.Select(s => new RedisKey(s)).ToArray());
+        }
+        #endregion
 
         #region 单键值
         /// <summary>
@@ -80,6 +91,15 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         #endregion
 
         #region Set集合键值
+        /// <summary>
+        /// 设置Set集合键值
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="value">Set集合键值</param>
+        public void SetAdd(string key, string value)
+        {
+            db.SetAdd(key, value);
+        }
         /// <summary>
         /// 设置Set集合键值
         /// </summary>

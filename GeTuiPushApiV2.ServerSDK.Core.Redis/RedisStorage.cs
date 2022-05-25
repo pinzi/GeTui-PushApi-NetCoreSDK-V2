@@ -21,6 +21,8 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
             _iRedis = iRedis;
         }
 
+
+        #region Token        
         /// <summary>
         /// 保存接口调用凭据
         /// </summary>
@@ -55,34 +57,30 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         {
             return _iRedis.Get(appId);
         }
+        #endregion
+
+        #region CID
         /// <summary>
         /// 存储CID
         /// </summary>
         /// <param name="uid">用户id</param>
         /// <param name="cid">个推SDK的唯一识别号</param>
         /// <param name="expireTime">CID有效期</param>
-        public void AddCID(string uid, string cid, TimeSpan? expireTime = null)
+        public void SaveCID(string uid, string cid)
         {
-            if (expireTime.HasValue)
-            {
-                _iRedis.Set(uid, cid, expireTime.Value);
-            }
-            else
-            {
-                _iRedis.Set(uid, cid);
-            }
+            _iRedis.SetAdd(uid, new List<string>() { cid });
         }
         /// <summary>
         /// 获取用户关联的个推SDK的唯一识别号
         /// </summary>
         /// <param name="uid">用户id</param>
         /// <returns>个推SDK的唯一识别号</returns>
-        public string GetCID(string uid)
+        public List<string> GetCID(string uid)
         {
-            return _iRedis.Get(uid);
+            return _iRedis.GetList(uid);
         }
         /// <summary>
-        /// 删除用户关联的个推SDK的唯一识别号
+        /// 删除用户关联的全部个推SDK的唯一识别号
         /// </summary>
         /// <param name="uid">用户id</param>
         public void DeleteCID(string uid)
@@ -90,35 +88,94 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
             _iRedis.Remove(uid);
         }
         /// <summary>
-        /// 保存别名数据列表
+        /// 删除用户关联的指定个推SDK的唯一识别号
         /// </summary>
-        /// <param name="data_list">别名数据列表</param>
-        public void SaveAlias(data_listDto[] data_list)
+        /// <param name="uid">用户id</param>
+        /// <param name="cid">个推SDK的唯一识别号</param>
+        public void DeleteCID(string uid, string cid)
         {
-            foreach (var item in data_list)
-            {
-                _iRedis.Set(item.cid, item.alias);
-            }
+            _iRedis.SetRemove(uid, cid);
         }
+        #endregion
+
+        #region 别名
         /// <summary>
-        /// 获取用户cid关联的别名
+        /// 保存别名数据
         /// </summary>
         /// <param name="cid">个推SDK的唯一识别号</param>
-        /// <returns>用户cid关联的别名</returns>
-        public string GetAlias(string cid)
+        /// <param name="alias">别名数据列表</param>
+        public void SaveAlias(string cid, string alias)
         {
-            return _iRedis.Get(cid);
+            _iRedis.SetAdd(cid, new List<string>() { alias });
         }
         /// <summary>
-        /// 删除别名数据列表
+        /// 保存别名数据列表
         /// </summary>
-        /// <param name="data_list">别名数据列表</param>
-        public void RemoveAlias(data_listDto[] data_list)
+        /// <param name="cid">个推SDK的唯一识别号</param>
+        /// <param name="alias">别名数据列表</param>
+        public void SaveAlias(string cid, List<string> alias)
         {
-            foreach (var item in data_list)
+            _iRedis.SetAdd(cid, alias);
+        }
+        /// <summary>
+        /// 删除别名关联的所有cid列表
+        /// </summary>
+        /// <param name="alias">别名</param>
+        public void DeleteAlias(string alias)
+        {
+            _iRedis.Remove(alias);
+        }
+        /// <summary>
+        /// 删除别名关联的指定cid
+        /// </summary>
+        /// <param name="alias">别名</param>
+        /// <param name="cid">个推SDK的唯一识别号</param>
+        public void DeleteAlias(string alias, string cid)
+        {
+            _iRedis.SetRemove(alias, cid);
+        }
+        /// <summary>
+        /// 批量删除别名关联的指定cid列表
+        /// </summary>
+        /// <param name="alias">别名</param>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void DeleteAlias(string alias, List<string> cids)
+        {
+            foreach (var cid in cids)
             {
-                _iRedis.Remove(item.cid);
+                _iRedis.SetRemove(alias, cid);
             }
         }
+        /// <summary>
+        /// 获取别名关联的cid列表
+        /// </summary>
+        /// <param name="alias">别名</param>
+        /// <returns>个推SDK的唯一识别号列表</returns>
+        public List<string> GetAlias(string alias)
+        {
+            return _iRedis.GetList(alias);
+        }
+        #endregion
+
+        #region 标签
+        /// <summary>
+        /// 保存标签数据
+        /// </summary>
+        /// <param name="tag">别名</param>
+        /// <param name="cid">个推SDK的唯一识别号列表</param>
+        public void SaveTag(string tag, string cid)
+        {
+            SaveTag(cid, new List<string>() { cid });
+        }
+        /// <summary>
+        /// 保存标签数据
+        /// </summary>
+        /// <param name="tag">别名</param>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void SaveTag(string tag, List<string> cids)
+        {
+            _iRedis.SetAdd(tag, cids);
+        }
+        #endregion
     }
 }

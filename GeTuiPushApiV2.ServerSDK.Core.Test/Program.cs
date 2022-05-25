@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 
 IServiceCollection services = new ServiceCollection();
-services.UseGeTuiPushApiV2ServerSDKCore();
+services.UseGeTuiPushApiV2ServerSDKCore(StorageType.MemoryCache);//
 
 #region 鉴权API
 {
@@ -25,17 +25,18 @@ services.UseGeTuiPushApiV2ServerSDKCore();
 #region 用户API
 {
     //IOC方式
-    //await new IocUserTest().Run(services);
+    //await new IocUserAliasTest().Run(services);
+    //IOC方式
+    //await new IocUserTagTest().Run(services);
 }
 #endregion
 
-#region MyRegion
+#region Storage
 {
     //IOC方式
     new StorageTest().Run(services);
 }
 #endregion
-
 
 Console.WriteLine("ok");
 Console.ReadKey();
