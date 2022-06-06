@@ -109,7 +109,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core
                     isall = inDto.isall,
                     cid = inDto.cid
                 };
-                var result = await PushToSingleAsync(dto);
+                var result = await PushToSingleCIDAsync(dto);
                 if (!result.code.Equals(0))
                 {
                     throw new Exception(result.msg);

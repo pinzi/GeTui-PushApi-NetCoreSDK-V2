@@ -34,5 +34,9 @@
         /// 个推业务层中的对外用户标识，用于标识客户端身份，由第三方客户端获取并保存到第三方服务端，是个推SDK的唯一识别号,简称CID。
         /// </summary>
         public string[] cid { get; set; }
+        /// <summary>
+        /// 别名数组，只能填一个别名
+        /// </summary>
+        public string[] alias { get; set; }
     }
 }
