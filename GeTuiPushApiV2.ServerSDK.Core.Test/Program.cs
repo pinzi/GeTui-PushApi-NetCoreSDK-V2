@@ -34,7 +34,7 @@ services.UseGeTuiPushApiV2ServerSDKCore(StorageType.MemoryCache);//
 #region Storage
 {
     //IOC方式
-    new StorageTest().Run(services);
+    //new StorageTest().Run(services);
 }
 #endregion
 

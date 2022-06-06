@@ -62,7 +62,7 @@ namespace GeTuiPushApiV2.ServerSDK.Storage
         /// <param name="cid">个推SDK的唯一识别号</param>
         public void SaveAlias(string alias, string cid);
         /// <summary>
-        /// 保存别名数据列表
+        /// 批量保存别名数据列表
         /// </summary>
         /// <param name="alias">别名</param>
         /// <param name="cid">个推SDK的唯一识别号列表</param>
@@ -100,11 +100,34 @@ namespace GeTuiPushApiV2.ServerSDK.Storage
         /// <param name="cid">个推SDK的唯一识别号列表</param>
         public void SaveTag(string tag, string cid);
         /// <summary>
-        /// 保存标签数据
+        /// 批量保存标签数据
         /// </summary>
         /// <param name="tag">别名</param>
         /// <param name="cids">个推SDK的唯一识别号列表</param>
         public void SaveTag(string tag, List<string> cids);
+        #endregion
+
+        #region 黑名单
+        /// <summary>
+        /// 保存用户黑名单
+        /// </summary>
+        /// <param name="cid">个推SDK的唯一识别号列表</param>
+        public void SaveUserBlack(string cid);
+        /// <summary>
+        /// 批量保存用户黑名单
+        /// </summary>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void SaveUserBlack(List<string> cids);
+        /// <summary>
+        /// 删除用户黑名单
+        /// </summary>
+        /// <param name="cid">个推SDK的唯一识别号</param>
+        public void DeleteUserBlack(string cid);
+        /// <summary>
+        /// 批量删除用户黑名单
+        /// </summary>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void DeleteUserBlack(List<string> cids);
         #endregion
     }
 }

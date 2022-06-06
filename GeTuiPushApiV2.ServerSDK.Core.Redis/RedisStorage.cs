@@ -11,14 +11,20 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// Redis操作对象
         /// </summary>
         private readonly IRedis _iRedis;
+        /// <summary>
+        /// 个推配置信息
+        /// </summary>
+        private readonly GeTuiPushOptions _geTuiPushOptions;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="iRedis">Redis操作对象</param>
-        public RedisStorage(IRedis iRedis)
+        /// <param name="geTuiPushOptions">个推配置信息</param>
+        public RedisStorage(IRedis iRedis, GeTuiPushOptions geTuiPushOptions)
         {
             _iRedis = iRedis;
+            _geTuiPushOptions = geTuiPushOptions;
         }
 
 
@@ -109,7 +115,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
             _iRedis.SetAdd(cid, new List<string>() { alias });
         }
         /// <summary>
-        /// 保存别名数据列表
+        /// 批量保存别名数据列表
         /// </summary>
         /// <param name="cid">个推SDK的唯一识别号</param>
         /// <param name="alias">别名数据列表</param>
@@ -168,13 +174,51 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
             SaveTag(cid, new List<string>() { cid });
         }
         /// <summary>
-        /// 保存标签数据
+        /// 批量保存标签数据
         /// </summary>
         /// <param name="tag">别名</param>
         /// <param name="cids">个推SDK的唯一识别号列表</param>
         public void SaveTag(string tag, List<string> cids)
         {
             _iRedis.SetAdd(tag, cids);
+        }
+        #endregion
+
+        #region 黑名单
+        /// <summary>
+        /// 保存用户黑名单
+        /// </summary>
+        /// <param name="cid">个推SDK的唯一识别号列表</param>
+        public void SaveUserBlack(string cid)
+        {
+            SaveUserBlack(new List<string>() { cid });
+        }
+        /// <summary>
+        /// 批量保存用户黑名单
+        /// </summary>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void SaveUserBlack(List<string> cids)
+        {
+            _iRedis.SetAdd($"getui:blacklist:{_geTuiPushOptions.AppID}", cids);
+        }
+        /// <summary>
+        /// 删除用户黑名单
+        /// </summary>
+        /// <param name="cid">个推SDK的唯一识别号</param>
+        public void DeleteUserBlack(string cid)
+        {
+            _iRedis.SetRemove($"getui:blacklist:{_geTuiPushOptions.AppID}", cid);
+        }
+        /// <summary>
+        /// 批量删除用户黑名单
+        /// </summary>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void DeleteUserBlack(List<string> cids)
+        {
+            foreach (var cid in cids)
+            {
+                _iRedis.SetRemove($"getui:blacklist:{_geTuiPushOptions.AppID}", cid);
+            }
         }
         #endregion
     }

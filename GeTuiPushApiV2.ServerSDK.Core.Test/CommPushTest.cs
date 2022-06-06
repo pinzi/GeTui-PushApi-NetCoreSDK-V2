@@ -109,7 +109,12 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
                     Host = "127.0.0.1",
                     Port = 6379,
                     DbNum = 10
-                }));
+                }), new GeTuiPushOptions()
+                {
+                    AppID = AppID,
+                    AppKey = AppKey,
+                    MasterSecret = MasterSecret
+                });
                 iStorage.SaveCID("123456789", "2bfd19ad80d679853a690ceb72c7c041");
                 var options = new GeTuiPushOptions()
                 {

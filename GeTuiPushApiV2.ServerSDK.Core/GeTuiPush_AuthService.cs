@@ -49,7 +49,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core
             if (result.code.Equals(0))
             {
                 //token有效期，毫秒时间戳，将缓存有效期在token有效期基础上减少30秒，防止因网络传输导致获取到已过期的token，并提前刷新token
-                long expire_time = result.data.expire_time - 30 * 1000;
+                long expire_time = result.data.expire_time - GetTimeStamp() - 30 * 1000;
                 _iStorage.SaveToken(_options.AppID, result.data.token, TimeSpan.FromMilliseconds(expire_time));
             }
             return result;

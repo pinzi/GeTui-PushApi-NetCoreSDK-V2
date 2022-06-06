@@ -1,4 +1,5 @@
 ﻿using GeTuiPushApiV2.ServerSDK.Storage;
+using System.Security.Cryptography;
 
 namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
 {
@@ -11,14 +12,19 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// 内存缓存对象
         /// </summary>
         private readonly MemoryManager _memoryManager;
+        /// <summary>
+        /// 个推配置信息
+        /// </summary>
+        private readonly GeTuiPushOptions _geTuiPushOptions;
 
         /// <summary>
         /// 构造函数
         /// </summary>
-        /// <param name="memoryCache">内存缓存对象</param>
-        public MemoryCacheStorage()
+        /// <param name="geTuiPushOptions">个推配置信息</param>
+        public MemoryCacheStorage(GeTuiPushOptions geTuiPushOptions)
         {
             _memoryManager = MemoryManager.Default;
+            _geTuiPushOptions = geTuiPushOptions;
         }
 
         #region Token
@@ -228,6 +234,53 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
             list.AddRange(cids);
             list = list.Distinct().ToList();
             _memoryManager.SetList_NotExpire(tag, list);
+        }
+        #endregion
+
+        #region 黑名单
+        /// <summary>
+        /// 保存用户黑名单
+        /// </summary>
+        /// <param name="cid">个推SDK的唯一识别号列表</param>
+        public void SaveUserBlack(string cid)
+        {
+            SaveUserBlack(new List<string>() { cid });
+        }
+        /// <summary>
+        /// 批量保存用户黑名单
+        /// </summary>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void SaveUserBlack(List<string> cids)
+        {
+            _memoryManager.SetList_NotExpire($"getui:blacklist:{_geTuiPushOptions.AppID}", cids);
+        }
+        /// <summary>
+        /// 删除用户黑名单
+        /// </summary>
+        /// <param name="cid">个推SDK的唯一识别号</param>
+        public void DeleteUserBlack(string cid)
+        {
+            var list = _memoryManager.Get<List<string>>($"getui:blacklist:{_geTuiPushOptions.AppID}");
+            if (list == null)
+            {
+                list = new List<string>();
+            }
+            list.Remove(cid);
+            _memoryManager.SetList_NotExpire($"getui:blacklist:{_geTuiPushOptions.AppID}", list);
+        }
+        /// <summary>
+        /// 批量删除用户黑名单
+        /// </summary>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void DeleteUserBlack(List<string> cids)
+        {
+            var list = _memoryManager.Get<List<string>>($"getui:blacklist:{_geTuiPushOptions.AppID}");
+            if (list == null)
+            {
+                list = new List<string>();
+            }
+            list.RemoveAll(b => cids.Contains(b));
+            _memoryManager.SetList_NotExpire($"getui:blacklist:{_geTuiPushOptions.AppID}", list);
         }
         #endregion
     }

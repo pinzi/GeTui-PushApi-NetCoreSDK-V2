@@ -56,11 +56,11 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         }
         #endregion
 
-        #region 获取时间戳
+        #region 获取当前时间的毫秒时间戳
         /// <summary>
-        /// 获取时间戳
+        /// 获取当前时间的毫秒时间戳
         /// </summary>
-        /// <returns>时间戳</returns>
+        /// <returns>当前时间的毫秒时间戳</returns>
         private long GetTimeStamp()
         {
             return (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000;
