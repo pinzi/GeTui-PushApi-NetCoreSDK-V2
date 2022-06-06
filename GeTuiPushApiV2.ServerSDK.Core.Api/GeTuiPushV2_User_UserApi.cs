@@ -50,7 +50,22 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         }
         #endregion
 
-
+        #region 【用户】查询设备状态
+        /// <summary>
+        /// 用户-【用户】查询设备状态
+        /// 注意：
+        /// 1.该接口返回设备在线时，仅表示存在集成了个推SDK的应用在线
+        /// 2.该接口返回设备不在线时，仅表示不存在集成了个推SDK的应用在线
+        /// 3.该接口需要开通权限，如需开通，请联系右侧技术咨询
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<Dictionary<string, ApiUserDeviceStatusOutDto>>> UserDeviceStatusAsync(ApiUserDeviceStatusInDto inDto)
+        {
+            var result = await HttpGetGeTuiApiAsync<ApiUserDeviceStatusInDto, Dictionary<string, ApiUserDeviceStatusOutDto>>($"{ApiBaseUrl}{inDto.appId}/user/deviceStatus/{inDto.cids}", inDto);
+            return result;
+        }
+        #endregion
         #endregion        
         #endregion
     }

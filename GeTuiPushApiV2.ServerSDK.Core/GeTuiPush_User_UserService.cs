@@ -1,4 +1,5 @@
-﻿using GeTuiPushApiV2.ServerSDK.Core.Utility;
+﻿using GeTuiPushApiV2.ServerSDK.Core.Api;
+using GeTuiPushApiV2.ServerSDK.Core.Utility;
 
 namespace GeTuiPushApiV2.ServerSDK.Core
 {
@@ -93,6 +94,46 @@ namespace GeTuiPushApiV2.ServerSDK.Core
                         cid = cid,
                         last_login_time = result.data[cid].last_login_time,
                         status = result.data[cid].status
+                    });
+                }
+            }
+            return list;
+        }
+        #endregion
+
+        #region 【用户】查询设备状态
+        /// <summary>
+        /// 用户-【用户】查询设备状态
+        /// 注意：
+        /// 1.该接口返回设备在线时，仅表示存在集成了个推SDK的应用在线
+        /// 2.该接口返回设备不在线时，仅表示不存在集成了个推SDK的应用在线
+        /// 3.该接口需要开通权限，如需开通，请联系右侧技术咨询
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<List<UserDeviceStatusOutDto>> UserDeviceStatusAsync(UserDeviceStatusInDto inDto)
+        {
+
+            List<UserDeviceStatusOutDto> list = new List<UserDeviceStatusOutDto>();
+            long _timestamp = GetTimeStamp();
+            var result = await _api.UserDeviceStatusAsync(new ApiUserDeviceStatusInDto()
+            {
+                token = await GetTokenAsync(_options.AppID),
+                appkey = _options.AppKey,
+                timestamp = _timestamp,
+                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
+                appId = _options.AppID,
+                cids = string.Join(",", inDto.cids)
+            });
+            if (result.code.Equals(0))
+            {
+                foreach (string cid in result.data.Keys)
+                {
+                    list.Add(new UserDeviceStatusOutDto()
+                    {
+                        cid = cid,
+                        cid_status = result.data[cid].cid_status,
+                        device_status = result.data[cid].device_status
                     });
                 }
             }
