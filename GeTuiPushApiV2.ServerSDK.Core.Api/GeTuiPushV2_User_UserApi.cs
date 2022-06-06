@@ -1,6 +1,4 @@
-﻿using GeTuiPushApiV2.ServerSDK.Core.Api;
-
-namespace GeTuiPushApiV2.ServerSDK.Core
+﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
     /// 个推消息推送V2接口-用户-用户
@@ -94,7 +92,19 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         }
         #endregion
 
-
+        #region 【用户】查询用户总量
+        /// <summary>
+        /// 用户-【用户】查询用户总量
+        /// 通过指定查询条件来查询满足条件的用户数量
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiUserCountOutDto>> UserCountAsync(ApiUserCountInDto inDto)
+        {
+            var result = await HttpPostGeTuiApiAsync<ApiUserCountInDto, ApiUserCountOutDto>($"{ApiBaseUrl}{inDto.appId}/user/count", inDto);
+            return result;
+        }
+        #endregion
         #endregion        
         #endregion
     }

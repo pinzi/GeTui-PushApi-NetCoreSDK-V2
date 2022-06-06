@@ -1,4 +1,4 @@
-﻿namespace GeTuiPushApiV2.ServerSDK.Core.Api
+﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
     /// 用户API-用户-【用户】设置角标(仅支持IOS)输入参数

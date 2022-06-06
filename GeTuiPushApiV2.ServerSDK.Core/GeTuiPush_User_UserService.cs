@@ -1,5 +1,4 @@
-﻿using GeTuiPushApiV2.ServerSDK.Core.Api;
-using GeTuiPushApiV2.ServerSDK.Core.Utility;
+﻿using GeTuiPushApiV2.ServerSDK.Core.Utility;
 
 namespace GeTuiPushApiV2.ServerSDK.Core
 {
@@ -201,6 +200,38 @@ namespace GeTuiPushApiV2.ServerSDK.Core
                 badge = inDto.badge
             });
             return result;
+        }
+        #endregion
+
+        #region 【用户】查询用户总量
+        /// <summary>
+        /// 用户-【用户】查询用户总量
+        /// 通过指定查询条件来查询满足条件的用户数量
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<int> UserCountAsync(UserCountInDto inDto)
+        {
+            long _timestamp = GetTimeStamp();
+            var result = await _api.UserCountAsync(new ApiUserCountInDto()
+            {
+                token = await GetTokenAsync(_options.AppID),
+                appkey = _options.AppKey,
+                timestamp = _timestamp,
+                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
+                appId = _options.AppID,
+                tag = inDto.tag.Select(s => new ApiTagDto()
+                {
+                    key = s.key,
+                    values = s.values,
+                    opt_type = s.opt_type
+                }).ToArray()
+            });
+            if (result.code.Equals(0))
+            {
+                return result.data.user_count;
+            }
+            return -1;
         }
         #endregion
         #endregion

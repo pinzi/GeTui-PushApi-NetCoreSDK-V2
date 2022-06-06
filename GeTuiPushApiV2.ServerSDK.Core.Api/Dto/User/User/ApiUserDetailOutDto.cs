@@ -1,4 +1,4 @@
-﻿namespace GeTuiPushApiV2.ServerSDK.Core.Api
+﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
     /// 用户API-用户-【用户】查询用户信息输出参数
