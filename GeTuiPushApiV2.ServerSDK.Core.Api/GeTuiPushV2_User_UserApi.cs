@@ -1,4 +1,6 @@
-﻿namespace GeTuiPushApiV2.ServerSDK.Core
+﻿using GeTuiPushApiV2.ServerSDK.Core.Api;
+
+namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
     /// 个推消息推送V2接口-用户-用户
@@ -6,6 +8,7 @@
     public partial class GeTuiPushV2Api
     {
         #region 用户API-用户
+        #region 用户
         #region 【用户】添加黑名单用户
         /// <summary>
         /// 用户-【用户】添加黑名单用户
@@ -33,6 +36,22 @@
             return result;
         }
         #endregion
+
+        #region 【用户】查询用户状态
+        /// <summary>
+        /// 用户-【用户】查询用户状态
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<Dictionary<string, ApiUserStatusOutDto>>> UserStatusAsync(ApiUserStatusInDto inDto)
+        {
+            var result = await HttpGetGeTuiApiAsync<ApiUserStatusInDto, Dictionary<string, ApiUserStatusOutDto>>($"{ApiBaseUrl}{inDto.appId}/user/status/{inDto.cids}", inDto);
+            return result;
+        }
+        #endregion
+
+
+        #endregion        
         #endregion
     }
 }

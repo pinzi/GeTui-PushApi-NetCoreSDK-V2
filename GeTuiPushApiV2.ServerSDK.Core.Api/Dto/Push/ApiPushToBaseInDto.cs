@@ -3,7 +3,7 @@
 namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 推送
+    /// 推送输入参数
     /// </summary>
     public class ApiPushToBaseInDto : ApiInDto
     {

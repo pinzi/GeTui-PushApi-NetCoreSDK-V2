@@ -1,7 +1,7 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 推送-【toSingle】执行别名单推
+    /// 推送-【toSingle】执行别名单推输入参数
     /// </summary>
     public class ApiPushToSingleAliasInDto : ApiPushToBaseInDto
     {

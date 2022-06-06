@@ -64,6 +64,41 @@ namespace GeTuiPushApiV2.ServerSDK.Core
             return result;
         }
         #endregion
+
+        #region 【用户】查询用户状态
+        /// <summary>
+        /// 用户-【用户】查询用户状态
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<List<UserStatusOutDto>> UserStatusAsync(UserStatusInDto inDto)
+        {
+            List<UserStatusOutDto> list = new List<UserStatusOutDto>();
+            long _timestamp = GetTimeStamp();
+            var result = await _api.UserStatusAsync(new ApiUserStatusInDto()
+            {
+                token = await GetTokenAsync(_options.AppID),
+                appkey = _options.AppKey,
+                timestamp = _timestamp,
+                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
+                appId = _options.AppID,
+                cids = string.Join(",", inDto.cids)
+            });
+            if (result.code.Equals(0))
+            {
+                foreach (string cid in result.data.Keys)
+                {
+                    list.Add(new UserStatusOutDto()
+                    {
+                        cid = cid,
+                        last_login_time = result.data[cid].last_login_time,
+                        status = result.data[cid].status
+                    });
+                }
+            }
+            return list;
+        }
+        #endregion
         #endregion
         #endregion
     }

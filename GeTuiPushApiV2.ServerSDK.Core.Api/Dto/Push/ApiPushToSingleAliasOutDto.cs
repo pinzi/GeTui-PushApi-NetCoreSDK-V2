@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeTuiPushApiV2.ServerSDK.Core
+﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 
+    /// 推送-【toSingle】执行别名单推输出参数
     /// </summary>
     public class ApiPushToSingleAliasOutDto
     {
