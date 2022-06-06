@@ -100,7 +100,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
                 };
                 apiInDto.token = result.data.token;
                 apiInDto.appId = geTuiPushOptions.AppID;
-                var result2 = await api.PushToSingleAsync(apiInDto);
+                var result2 = await api.PushToSingleCIDAsync(apiInDto);
                 Console.WriteLine($"IOC-2=>{result2.msg}");
             }
 

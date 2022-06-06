@@ -6,13 +6,15 @@
     public partial class GeTuiPushV2Api
     {
         #region 推送API
+
+        #region toSingle
         #region 推送-【toSingle】执行cid单推
         /// <summary>
         ///  推送-【toSingle】执行cid单推
         /// </summary>
         /// <param name="inDto"></param>
         /// <returns></returns>
-        public async Task<ApiResultOutDto<ApiPushToSingleOutDto>> PushToSingleAsync(ApiPushToSingleInDto inDto)
+        public async Task<ApiResultOutDto<ApiPushToSingleOutDto>> PushToSingleCIDAsync(ApiPushToSingleInDto inDto)
         {
             var result = await HttpPostGeTuiApiAsync<ApiPushToSingleInDto, ApiPushToSingleOutDto>($"{ApiBaseUrl}{inDto.appId}/push/single/cid", inDto);
             return result;
@@ -22,6 +24,7 @@
         #region 推送-【toSingle】执行别名单推
         /// <summary>
         ///  推送-【toSingle】执行别名单推
+        ///  通过别名推送消息，绑定别名请参考接口
         /// </summary>
         /// <param name="inDto"></param>
         /// <returns></returns>
@@ -31,7 +34,9 @@
             return result;
         }
         #endregion
+        #endregion
 
+        #region toList
         #region 推送-【toList】创建消息
         /// <summary>
         ///  推送-【toList】创建消息
@@ -57,7 +62,9 @@
             return result;
         }
         #endregion
+        #endregion
 
+        #region toApp
         #region 推送-【toApp】执行群推
         /// <summary>
         ///  推送-【toApp】执行群推
@@ -69,6 +76,15 @@
             var result = await HttpPostGeTuiApiAsync<ApiPushToAppInDto, ApiPushToAppOutDto>($"{ApiBaseUrl}{inDto.appId}/push/all", inDto);
             return result;
         }
+        #endregion        #endregion
+        #endregion
+
+        #region 任务
+
+        #endregion
+
+        #region 推送
+
         #endregion
         #endregion
     }
