@@ -80,7 +80,19 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         }
         #endregion
 
-
+        #region 【用户】设置角标(仅支持IOS)
+        /// <summary>
+        /// 用户-【用户】设置角标(仅支持IOS)
+        /// 通过cid通知个推服务器当前iOS设备的角标情况
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto> UserBadgeAsync(ApiUserBadgeInDto inDto)
+        {
+            var result = await HttpPostGeTuiApiNoDataAsync<ApiUserBadgeInDto>($"{ApiBaseUrl}{inDto.appId}/user/badge/cid/{inDto.cids}", inDto);
+            return result;
+        }
+        #endregion
 
 
         #endregion        

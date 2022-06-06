@@ -1,6 +1,5 @@
 ﻿using GeTuiPushApiV2.ServerSDK.Core.Api;
 using GeTuiPushApiV2.ServerSDK.Core.Utility;
-using System.Linq;
 
 namespace GeTuiPushApiV2.ServerSDK.Core
 {
@@ -178,6 +177,30 @@ namespace GeTuiPushApiV2.ServerSDK.Core
                 }).ToList();
             }
             return res;
+        }
+        #endregion
+
+        #region 【用户】设置角标(仅支持IOS)
+        /// <summary>
+        /// 用户-【用户】设置角标(仅支持IOS)
+        /// 通过cid通知个推服务器当前iOS设备的角标情况
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto> UserBadgeAsync(UserBadgeInDto inDto)
+        {
+            long _timestamp = GetTimeStamp();
+            var result = await _api.UserBadgeAsync(new ApiUserBadgeInDto()
+            {
+                token = await GetTokenAsync(_options.AppID),
+                appkey = _options.AppKey,
+                timestamp = _timestamp,
+                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
+                appId = _options.AppID,
+                cids = string.Join(",", inDto.cids),
+                badge = inDto.badge
+            });
+            return result;
         }
         #endregion
         #endregion
