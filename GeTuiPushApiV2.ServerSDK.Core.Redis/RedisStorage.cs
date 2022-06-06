@@ -1,4 +1,5 @@
-﻿using GeTuiPushApiV2.ServerSDK.Storage;
+﻿using GeTuiPushApiV2.ServerSDK.Core.Storage;
+using GeTuiPushApiV2.ServerSDK.Storage;
 
 namespace GeTuiPushApiV2.ServerSDK.Core.Redis
 {
@@ -39,11 +40,11 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         {
             if (expireTime.HasValue)
             {
-                _iRedis.Set(appId, token, expireTime.Value);
+                _iRedis.Set($"{StorageKeyPrefix.AUTH_TOKEN}{appId}", token, expireTime.Value);
             }
             else
             {
-                _iRedis.Set(appId, token);
+                _iRedis.Set($"{StorageKeyPrefix.AUTH_TOKEN}{appId}", token);
             }
         }
         /// <summary>
@@ -52,7 +53,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <param name="appId">应用id</param>
         public void DeleteToken(string appId)
         {
-            _iRedis.Remove(appId);
+            _iRedis.Remove($"{StorageKeyPrefix.AUTH_TOKEN}{appId}");
         }
         /// <summary>
         /// 获取接口调用凭据
@@ -61,7 +62,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <returns>接口调用凭据</returns>
         public string GetToken(string appId)
         {
-            return _iRedis.Get(appId);
+            return _iRedis.Get($"{StorageKeyPrefix.AUTH_TOKEN}{appId}");
         }
         #endregion
 
@@ -74,7 +75,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <param name="expireTime">CID有效期</param>
         public void SaveCID(string uid, string cid)
         {
-            _iRedis.SetAdd(uid, new List<string>() { cid });
+            _iRedis.SetAdd($"{StorageKeyPrefix.PUSH_CID}{uid}", new List<string>() { cid });
         }
         /// <summary>
         /// 获取用户关联的个推SDK的唯一识别号
@@ -83,7 +84,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <returns>个推SDK的唯一识别号</returns>
         public List<string> GetCID(string uid)
         {
-            return _iRedis.GetList(uid);
+            return _iRedis.GetList($"{StorageKeyPrefix.PUSH_CID}{uid}");
         }
         /// <summary>
         /// 删除用户关联的全部个推SDK的唯一识别号
@@ -91,7 +92,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <param name="uid">用户id</param>
         public void DeleteCID(string uid)
         {
-            _iRedis.Remove(uid);
+            _iRedis.Remove($"{StorageKeyPrefix.PUSH_CID}{uid}");
         }
         /// <summary>
         /// 删除用户关联的指定个推SDK的唯一识别号
@@ -100,7 +101,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <param name="cid">个推SDK的唯一识别号</param>
         public void DeleteCID(string uid, string cid)
         {
-            _iRedis.SetRemove(uid, cid);
+            _iRedis.SetRemove($"{StorageKeyPrefix.PUSH_CID}{uid}", cid);
         }
         #endregion
 
@@ -108,20 +109,22 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <summary>
         /// 保存别名数据
         /// </summary>
-        /// <param name="cid">个推SDK的唯一识别号</param>
-        /// <param name="alias">别名数据列表</param>
-        public void SaveAlias(string cid, string alias)
+        /// <param name="alias">别名</param>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void SaveAlias(string alias, string cids)
         {
-            _iRedis.SetAdd(cid, new List<string>() { alias });
+            string key = $"{StorageKeyPrefix.PUSH_ALIAS}{alias}";
+            _iRedis.SetAdd(key, new List<string>() { cids });
         }
         /// <summary>
         /// 批量保存别名数据列表
         /// </summary>
-        /// <param name="cid">个推SDK的唯一识别号</param>
-        /// <param name="alias">别名数据列表</param>
-        public void SaveAlias(string cid, List<string> alias)
+        /// <param name="alias">别名</param>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void SaveAlias(string alias, List<string> cids)
         {
-            _iRedis.SetAdd(cid, alias);
+            string key = $"{StorageKeyPrefix.PUSH_ALIAS}{alias}";
+            _iRedis.SetAdd(key, cids);
         }
         /// <summary>
         /// 删除别名关联的所有cid列表
@@ -129,7 +132,8 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <param name="alias">别名</param>
         public void DeleteAlias(string alias)
         {
-            _iRedis.Remove(alias);
+            string key = $"{StorageKeyPrefix.PUSH_ALIAS}{alias}";
+            _iRedis.Remove(key);
         }
         /// <summary>
         /// 删除别名关联的指定cid
@@ -138,7 +142,8 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <param name="cid">个推SDK的唯一识别号</param>
         public void DeleteAlias(string alias, string cid)
         {
-            _iRedis.SetRemove(alias, cid);
+            string key = $"{StorageKeyPrefix.PUSH_ALIAS}{alias}";
+            _iRedis.SetRemove(key, cid);
         }
         /// <summary>
         /// 批量删除别名关联的指定cid列表
@@ -147,9 +152,10 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <param name="cids">个推SDK的唯一识别号列表</param>
         public void DeleteAlias(string alias, List<string> cids)
         {
+            string key = $"{StorageKeyPrefix.PUSH_ALIAS}{alias}";
             foreach (var cid in cids)
             {
-                _iRedis.SetRemove(alias, cid);
+                _iRedis.SetRemove(key, cid);
             }
         }
         /// <summary>
@@ -159,7 +165,8 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <returns>个推SDK的唯一识别号列表</returns>
         public List<string> GetAlias(string alias)
         {
-            return _iRedis.GetList(alias);
+            string key = $"{StorageKeyPrefix.PUSH_ALIAS}{alias}";
+            return _iRedis.GetList(key);
         }
         #endregion
 
@@ -171,7 +178,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <param name="cid">个推SDK的唯一识别号列表</param>
         public void SaveTag(string tag, string cid)
         {
-            SaveTag(cid, new List<string>() { cid });
+            SaveTag(tag, new List<string>() { cid });
         }
         /// <summary>
         /// 批量保存标签数据
@@ -180,7 +187,31 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <param name="cids">个推SDK的唯一识别号列表</param>
         public void SaveTag(string tag, List<string> cids)
         {
-            _iRedis.SetAdd(tag, cids);
+            string key = $"{StorageKeyPrefix.PUSH_TAG}{tag}";
+            _iRedis.SetAdd(key, cids);
+        }
+        /// <summary>
+        /// 删除标签数据
+        /// </summary>
+        /// <param name="tag">别名</param>
+        /// <param name="cid">个推SDK的唯一识别号</param>
+        public void DeleteTag(string tag, string cid)
+        {
+            string key = $"{StorageKeyPrefix.PUSH_TAG}{tag}";
+            _iRedis.SetRemove(key, cid);
+        }
+        /// <summary>
+        /// 批量删除标签数据
+        /// </summary>
+        /// <param name="tag">别名</param>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void DeleteTag(string tag, List<string> cids)
+        {
+            string key = $"{StorageKeyPrefix.PUSH_TAG}{tag}";
+            foreach (var cid in cids)
+            {
+                _iRedis.SetRemove(key, cid);
+            }
         }
         #endregion
 
@@ -199,7 +230,8 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <param name="cids">个推SDK的唯一识别号列表</param>
         public void SaveUserBlack(List<string> cids)
         {
-            _iRedis.SetAdd($"getui:blacklist:{_geTuiPushOptions.AppID}", cids);
+            string key = $"{StorageKeyPrefix.USER_BLACK}{_geTuiPushOptions.AppID}";
+            _iRedis.SetAdd(key, cids);
         }
         /// <summary>
         /// 删除用户黑名单
@@ -207,7 +239,8 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <param name="cid">个推SDK的唯一识别号</param>
         public void DeleteUserBlack(string cid)
         {
-            _iRedis.SetRemove($"getui:blacklist:{_geTuiPushOptions.AppID}", cid);
+            string key = $"{StorageKeyPrefix.USER_BLACK}{_geTuiPushOptions.AppID}";
+            _iRedis.SetRemove(key, cid);
         }
         /// <summary>
         /// 批量删除用户黑名单
@@ -215,9 +248,10 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Redis
         /// <param name="cids">个推SDK的唯一识别号列表</param>
         public void DeleteUserBlack(List<string> cids)
         {
+            string key = $"{StorageKeyPrefix.USER_BLACK}{_geTuiPushOptions.AppID}";
             foreach (var cid in cids)
             {
-                _iRedis.SetRemove($"getui:blacklist:{_geTuiPushOptions.AppID}", cid);
+                _iRedis.SetRemove(key, cid);
             }
         }
         #endregion

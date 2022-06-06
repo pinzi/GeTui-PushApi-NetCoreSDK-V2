@@ -1,5 +1,5 @@
-﻿using GeTuiPushApiV2.ServerSDK.Storage;
-using System.Security.Cryptography;
+﻿using GeTuiPushApiV2.ServerSDK.Core.Storage;
+using GeTuiPushApiV2.ServerSDK.Storage;
 
 namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
 {
@@ -73,7 +73,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         public void SaveCID(string uid, string cid)
         {
             //读取缓存CID列表
-            var list = _memoryManager.Get<List<string>>(uid);
+            var list = _memoryManager.Get<List<string>>($"{StorageKeyPrefix.PUSH_CID}{uid}");
             if (list == null)
             {
                 list = new List<string>();
@@ -82,7 +82,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
             list.Add(cid);
             //去处重复CID
             list = list.Distinct().ToList();
-            _memoryManager.SetList_NotExpire(uid, list);
+            _memoryManager.SetList_NotExpire($"{StorageKeyPrefix.PUSH_CID}{uid}", list);
         }
         /// <summary>
         /// 获取用户关联的个推SDK的唯一识别号
@@ -91,7 +91,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// <returns>个推SDK的唯一识别号</returns>
         public List<string> GetCID(string uid)
         {
-            return _memoryManager.Get<List<string>>(uid);
+            return _memoryManager.Get<List<string>>($"{StorageKeyPrefix.PUSH_CID}{uid}");
         }
         /// <summary>
         /// 删除用户关联的全部个推SDK的唯一识别号
@@ -99,7 +99,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// <param name="uid">用户id</param>
         public void DeleteCID(string uid)
         {
-            _memoryManager.Remove(uid);
+            _memoryManager.Remove($"{StorageKeyPrefix.PUSH_CID}{uid}");
         }
         /// <summary>
         /// 删除用户关联的指定个推SDK的唯一识别号
@@ -108,11 +108,11 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// <param name="cid">个推SDK的唯一识别号</param>
         public void DeleteCID(string uid, string cid)
         {
-            var list = _memoryManager.Get<List<string>>(uid);
+            var list = _memoryManager.Get<List<string>>($"{StorageKeyPrefix.PUSH_CID}{uid}");
             if (list != null)
             {
                 list.Remove(cid);
-                _memoryManager.SetList_NotExpire(uid, list);
+                _memoryManager.SetList_NotExpire($"{StorageKeyPrefix.PUSH_CID}{uid}", list);
             }
         }
         #endregion
@@ -121,40 +121,42 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// <summary>
         /// 保存别名数据
         /// </summary>
+        /// <param name="alias">别名</param>
         /// <param name="cid">个推SDK的唯一识别号</param>
-        /// <param name="alias">别名数据列表</param>
-        public void SaveAlias(string cid, string alias)
+        public void SaveAlias(string alias, string cid)
         {
+            string key = $"{StorageKeyPrefix.PUSH_ALIAS}{alias}";
             //读取别名缓存列表
-            var list = _memoryManager.Get<List<string>>(cid);
+            var list = _memoryManager.Get<List<string>>(key);
             if (list == null)
             {
                 list = new List<string>();
             }
-            //添加新的别名到缓存列表
-            list.Add(alias);
-            //去除重复别名
+            //添加新的cid到缓存列表
+            list.Add(cid);
+            //去除重复cid
             list = list.Distinct().ToList();
-            _memoryManager.SetList_NotExpire(cid, list);
+            _memoryManager.SetList_NotExpire(key, list);
         }
         /// <summary>
         /// 保存别名数据列表
         /// </summary>
-        /// <param name="cid">个推SDK的唯一识别号</param>
-        /// <param name="alias">别名数据列表</param>
-        public void SaveAlias(string cid, List<string> alias)
+        /// <param name="alias">别名</param>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void SaveAlias(string alias, List<string> cids)
         {
+            string key = $"{StorageKeyPrefix.PUSH_ALIAS}{alias}";
             //读取别名缓存列表
-            var list = _memoryManager.Get<List<string>>(cid);
+            var list = _memoryManager.Get<List<string>>(key);
             if (list == null)
             {
                 list = new List<string>();
             }
-            //添加新的别名到缓存列表
-            list.AddRange(alias);
+            //添加新的cid到缓存列表
+            list.AddRange(cids);
             //去除重复别名
             list = list.Distinct().ToList();
-            _memoryManager.SetList_NotExpire(cid, list);
+            _memoryManager.SetList_NotExpire(key, list);
         }
         /// <summary>
         /// 删除别名关联的所有cid列表
@@ -162,7 +164,8 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// <param name="alias">别名</param>
         public void DeleteAlias(string alias)
         {
-            _memoryManager.Remove(alias);
+            string key = $"{StorageKeyPrefix.PUSH_ALIAS}{alias}";
+            _memoryManager.Remove(key);
         }
         /// <summary>
         /// 删除别名关联的指定cid
@@ -180,15 +183,16 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// <param name="cids">个推SDK的唯一识别号列表</param>
         public void DeleteAlias(string alias, List<string> cids)
         {
+            string key = $"{StorageKeyPrefix.PUSH_ALIAS}{alias}";
             //读取缓存别名cid列表
-            var list = _memoryManager.Get<List<string>>(alias);
+            var list = _memoryManager.Get<List<string>>(key);
             if (list == null)
             {
                 list = new List<string>();
             }
             //移除指定的cid
             list.RemoveAll(a => cids.Contains(a));
-            _memoryManager.SetList_NotExpire(alias, list);
+            _memoryManager.SetList_NotExpire(key, list);
         }
         /// <summary>
         /// 获取别名关联的cid列表
@@ -197,7 +201,8 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// <returns>个推SDK的唯一识别号列表</returns>
         public List<string> GetAlias(string alias)
         {
-            return _memoryManager.Get<List<string>>(alias);
+            string key = $"{StorageKeyPrefix.PUSH_ALIAS}{alias}";
+            return _memoryManager.Get<List<string>>(key);
         }
         #endregion
 
@@ -209,8 +214,9 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// <param name="cid">个推SDK的唯一识别号列表</param>
         public void SaveTag(string tag, string cid)
         {
+            string key = $"{StorageKeyPrefix.PUSH_TAG}{tag}";
             //读取标签缓存列表
-            var list = _memoryManager.Get<List<string>>(tag);
+            var list = _memoryManager.Get<List<string>>(key);
             if (list == null)
             {
                 list = new List<string>();
@@ -225,15 +231,50 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// <param name="cids">个推SDK的唯一识别号列表</param>
         public void SaveTag(string tag, List<string> cids)
         {
+            string key = $"{StorageKeyPrefix.PUSH_TAG}{tag}";
             //读取标签缓存列表
-            var list = _memoryManager.Get<List<string>>(tag);
+            var list = _memoryManager.Get<List<string>>(key);
             if (list == null)
             {
                 list = new List<string>();
             }
             list.AddRange(cids);
             list = list.Distinct().ToList();
-            _memoryManager.SetList_NotExpire(tag, list);
+            _memoryManager.SetList_NotExpire(key, list);
+        }
+        /// <summary>
+        /// 删除标签数据
+        /// </summary>
+        /// <param name="tag">别名</param>
+        /// <param name="cid">个推SDK的唯一识别号</param>
+        public void DeleteTag(string tag, string cid)
+        {
+            string key = $"{StorageKeyPrefix.PUSH_TAG}{tag}";
+            //读取标签缓存列表
+            var list = _memoryManager.Get<List<string>>(key);
+            if (list == null)
+            {
+                list = new List<string>();
+            }
+            list.Remove(cid);
+            _memoryManager.SetList_NotExpire(key, list);
+        }
+        /// <summary>
+        /// 批量删除标签数据
+        /// </summary>
+        /// <param name="tag">别名</param>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void DeleteTag(string tag, List<string> cids)
+        {
+            string key = $"{StorageKeyPrefix.PUSH_TAG}{tag}";
+            //读取标签缓存列表
+            var list = _memoryManager.Get<List<string>>(key);
+            if (list == null)
+            {
+                list = new List<string>();
+            }
+            list.RemoveAll(t => cids.Contains(t));
+            _memoryManager.SetList_NotExpire(key, list);
         }
         #endregion
 
@@ -252,7 +293,8 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// <param name="cids">个推SDK的唯一识别号列表</param>
         public void SaveUserBlack(List<string> cids)
         {
-            _memoryManager.SetList_NotExpire($"getui:blacklist:{_geTuiPushOptions.AppID}", cids);
+            string key = $"{StorageKeyPrefix.USER_BLACK}{_geTuiPushOptions.AppID}";
+            _memoryManager.SetList_NotExpire(key, cids);
         }
         /// <summary>
         /// 删除用户黑名单
@@ -260,13 +302,14 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// <param name="cid">个推SDK的唯一识别号</param>
         public void DeleteUserBlack(string cid)
         {
-            var list = _memoryManager.Get<List<string>>($"getui:blacklist:{_geTuiPushOptions.AppID}");
+            string key = $"{StorageKeyPrefix.USER_BLACK}{_geTuiPushOptions.AppID}";
+            var list = _memoryManager.Get<List<string>>(key);
             if (list == null)
             {
                 list = new List<string>();
             }
             list.Remove(cid);
-            _memoryManager.SetList_NotExpire($"getui:blacklist:{_geTuiPushOptions.AppID}", list);
+            _memoryManager.SetList_NotExpire(key, list);
         }
         /// <summary>
         /// 批量删除用户黑名单
@@ -274,13 +317,14 @@ namespace GeTuiPushApiV2.ServerSDK.Core.MemoryCache
         /// <param name="cids">个推SDK的唯一识别号列表</param>
         public void DeleteUserBlack(List<string> cids)
         {
-            var list = _memoryManager.Get<List<string>>($"getui:blacklist:{_geTuiPushOptions.AppID}");
+            string key = $"{StorageKeyPrefix.USER_BLACK}{_geTuiPushOptions.AppID}";
+            var list = _memoryManager.Get<List<string>>(key);
             if (list == null)
             {
                 list = new List<string>();
             }
             list.RemoveAll(b => cids.Contains(b));
-            _memoryManager.SetList_NotExpire($"getui:blacklist:{_geTuiPushOptions.AppID}", list);
+            _memoryManager.SetList_NotExpire(key, list);
         }
         #endregion
     }

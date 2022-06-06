@@ -56,6 +56,11 @@ namespace GeTuiPushApiV2.ServerSDK.Core
                 appId = _options.AppID,
                 cid = inDto.cid
             });
+            //删除缓存用户黑名单用户
+            if (result.code.Equals(0))
+            {
+                _iStorage.DeleteUserBlack(inDto.cid);
+            }
             return result;
         }
         #endregion

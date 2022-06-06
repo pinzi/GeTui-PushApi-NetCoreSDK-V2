@@ -8,48 +8,104 @@ namespace GeTuiPushApiV2.ServerSDK.Core
     public partial class GeTuiPushService
     {
         #region 用户
-        #region 别名
-        #region 用户-【别名】绑定别名
+        #region 标签
+        #region 用户-【标签】一个用户绑定一批标签
         /// <summary>
-        /// 用户-【别名】绑定别名
+        /// 用户-【标签】一个用户绑定一批标签
         /// </summary>
         /// <param name="inDto"></param>
         /// <returns></returns>
-        public async Task<ApiResultOutDto<ApiUserAliasOutDto>> UserAliasAsync(UserAliasInDto inDto)
+        public async Task<ApiResultOutDto<ApiUserTagBindOutDto>> UserTagBindAsync(UserTagBindInDto inDto)
         {
             long _timestamp = GetTimeStamp();
-            var result = await _api.UserAliasAsync(new ApiUserAliasInDto()
+            var result = await _api.UserTagBindAsync(new ApiUserTagBindInDto()
             {
                 token = await GetTokenAsync(_options.AppID),
                 appkey = _options.AppKey,
                 timestamp = _timestamp,
                 sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
                 appId = _options.AppID,
-                data_list = inDto.data_list
+                cid = inDto.cid,
+                custom_tag = inDto.custom_tag
             });
-            //缓存别名
             if (result.code.Equals(0))
             {
-                //按照别名分组缓存cid数据列表
-                inDto.data_list.GroupBy(g => g.alias).ToList().ForEach(g =>
+                //缓存用户标签
+                inDto.custom_tag.GroupBy(g => g).ToList().ForEach(g =>
                 {
-                    _iStorage.SaveAlias(g.Key, g.Select(s => s.cid).ToList());
+                    _iStorage.SaveTag(g.Key, inDto.cid);
                 });
             }
             return result;
         }
         #endregion
 
-        #region 用户-【别名】根据cid查询别名
+        #region 用户-【标签】一批用户绑定一个标签
         /// <summary>
-        /// 用户-【别名】根据cid查询别名
+        /// 用户-【标签】一批用户绑定一个标签
         /// </summary>
         /// <param name="inDto"></param>
         /// <returns></returns>
-        public async Task<ApiResultOutDto<ApiUserAliasCidOutDto>> UserAliasCidAsync(UserAliasCidInDto inDto)
+        public async Task<ApiResultOutDto<ApiUserTagBatchBindOutDto>> UserTagBatchBindAsync(UserTagBatchBindInDto inDto)
         {
             long _timestamp = GetTimeStamp();
-            var result = await _api.UserAliasCidAsync(new ApiUserAliasCidInDto()
+            var result = await _api.UserTagBatchBindAsync(new ApiUserTagBatchBindInDto()
+            {
+                token = await GetTokenAsync(_options.AppID),
+                appkey = _options.AppKey,
+                timestamp = _timestamp,
+                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
+                appId = _options.AppID,
+                custom_tag = inDto.custom_tag,
+                cid = inDto.cid
+            });
+            if (result.code.Equals(0))
+            {
+                //缓存用户标签
+                _iStorage.SaveTag(inDto.custom_tag, inDto.cid.ToList());
+            }
+            return result;
+        }
+        #endregion
+
+        #region 用户-【标签】一批用户解绑一个标签
+        /// <summary>
+        /// 用户-【标签】一批用户解绑一个标签
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns>key为cid，value为结果，true表示成功，否则失败</returns>
+        public async Task<ApiResultOutDto<Dictionary<string, bool>>> UserTagBatchUnBindAsync(UserTagBatchUnBindInDto inDto)
+        {
+            long _timestamp = GetTimeStamp();
+            var result = await _api.UserTagBatchUnBindAsync(new ApiUserTagBatchUnBindInDto()
+            {
+                token = await GetTokenAsync(_options.AppID),
+                appkey = _options.AppKey,
+                timestamp = _timestamp,
+                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
+                appId = _options.AppID,
+                custom_tag = inDto.custom_tag,
+                cid = inDto.cid
+            });
+            if (result.code.Equals(0))
+            {
+                //移除缓存标签cid
+                _iStorage.DeleteTag(inDto.custom_tag, result.data.Where(t => t.Value == true).Select(t => t.Key).ToList());
+            }
+            return result;
+        }
+        #endregion
+
+        #region 用户-【标签】查询用户标签
+        /// <summary>
+        /// 用户-【标签】查询用户标签
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns>key: cid，value: 标签列表，列表中只会有一个元素，多个以空格隔开</returns>
+        public async Task<ApiResultOutDto<Dictionary<string, string[]>>> UserTagQueryAsync(UserTagQueryInDto inDto)
+        {
+            long _timestamp = GetTimeStamp();
+            var result = await _api.UserTagQueryAsync(new ApiUserTagQueryInDto()
             {
                 token = await GetTokenAsync(_options.AppID),
                 appkey = _options.AppKey,
@@ -61,87 +117,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core
             return result;
         }
         #endregion
-
-        #region 用户-【别名】根据别名查询cid
-        /// <summary>
-        /// 用户-【别名】根据别名查询cid
-        /// </summary>
-        /// <param name="inDto"></param>
-        /// <returns></returns>
-        public async Task<ApiResultOutDto<ApiUserCidAliasOutDto>> UserAliasCidAsync(UserCidAliasInDto inDto)
-        {
-            long _timestamp = GetTimeStamp();
-            var result = await _api.UserCidAliasAsync(new ApiUserCidAliasInDto()
-            {
-                token = await GetTokenAsync(_options.AppID),
-                appkey = _options.AppKey,
-                timestamp = _timestamp,
-                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
-                appId = _options.AppID,
-                alias = inDto.alias
-            });
-            return result;
-        }
         #endregion
-
-        #region 用户-【别名】批量解绑别名
-        /// <summary>
-        /// 用户-【别名】批量解绑别名
-        /// </summary>
-        /// <param name="inDto"></param>
-        /// <returns></returns>
-        public async Task<ApiResultOutDto<ApiUserAliasBatchUnBoundOutDto>> UserAliasBatchUnBoundAsync(UserAliasBatchUnBoundInDto inDto)
-        {
-            long _timestamp = GetTimeStamp();
-            var result = await _api.UserAliasBatchUnBoundAsync(new ApiUserAliasBatchUnBoundInDto()
-            {
-                token = await GetTokenAsync(_options.AppID),
-                appkey = _options.AppKey,
-                timestamp = _timestamp,
-                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
-                appId = _options.AppID,
-                data_list = inDto.data_list
-            });
-            //删除别名缓存
-            if (result.code.Equals(0))
-            {
-                //按照别名分组删除别名数据列表
-                inDto.data_list.GroupBy(g => g.alias).ToList().ForEach(g =>
-                {
-                    _iStorage.DeleteAlias(g.Key, g.Select(s => s.cid).ToList());
-                });
-            }
-            return result;
-        }
-        #endregion
-
-        #region 用户-【别名】解绑所有别名
-        /// <summary>
-        /// 用户-【别名】解绑所有别名
-        /// </summary>
-        /// <param name="inDto"></param>
-        /// <returns></returns>
-        public async Task<ApiResultOutDto<ApiUserAliasUnBoundOutDto>> UserAliasUnBoundAsync(UserAliasUnBoundInDto inDto)
-        {
-            long _timestamp = GetTimeStamp();
-            var result = await _api.UserAliasUnBoundAsync(new ApiUserAliasUnBoundInDto()
-            {
-                token = await GetTokenAsync(_options.AppID),
-                appkey = _options.AppKey,
-                timestamp = _timestamp,
-                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
-                appId = _options.AppID,
-                alias = inDto.alias
-            });
-            if (result.code.Equals(0))
-            {
-                //删除别名缓存
-                _iStorage.DeleteAlias(inDto.alias);
-            }
-            return result;
-        }
-        #endregion
-        #endregion        
         #endregion        
     }
 }

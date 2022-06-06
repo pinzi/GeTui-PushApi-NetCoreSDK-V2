@@ -105,6 +105,18 @@ namespace GeTuiPushApiV2.ServerSDK.Storage
         /// <param name="tag">别名</param>
         /// <param name="cids">个推SDK的唯一识别号列表</param>
         public void SaveTag(string tag, List<string> cids);
+        /// <summary>
+        /// 删除标签数据
+        /// </summary>
+        /// <param name="tag">别名</param>
+        /// <param name="cid">个推SDK的唯一识别号</param>
+        public void DeleteTag(string tag, string cid);
+        /// <summary>
+        /// 批量删除标签数据
+        /// </summary>
+        /// <param name="tag">别名</param>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
+        public void DeleteTag(string tag, List<string> cids);
         #endregion
 
         #region 黑名单

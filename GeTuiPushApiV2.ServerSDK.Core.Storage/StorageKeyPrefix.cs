@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeTuiPushApiV2.ServerSDK.Core.Storage
+﻿namespace GeTuiPushApiV2.ServerSDK.Core.Storage
 {
     /// <summary>
     /// 缓存key前缀
@@ -15,29 +9,38 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Storage
         /// <summary>
         /// 鉴权token
         /// </summary>
-        public static string AUTH_TOKEN = "GeTui:AuthToken";
+        public static string AUTH_TOKEN = "GeTui:AuthToken:";
         #endregion
 
-        #region 别名
-
-        #endregion
-
-        #region 标签
-
-        #endregion
-
-        #region 用户
+        #region 推送
         /// <summary>
         /// 个推用户唯一标识CID
         /// </summary>
-        public static string AUTH_CID = "GeTui:CID:";
+        public static string PUSH_CID = "GeTui:CID:";
+        #endregion
+
+        #region 别名
+        /// <summary>
+        /// 别名
+        /// </summary>
+        public static string PUSH_ALIAS = "GeTui:Alias:";
+        #endregion
+
+        #region 标签
+        /// <summary>
+        /// 标签
+        /// </summary>
+        public static string PUSH_TAG = "GeTui:Tag:";
+        #endregion
+
+        #region 用户
         #endregion
 
         #region 黑名单
         /// <summary>
         /// 用户黑名单
         /// </summary>
-        public static string USER_BLACK = "GeTui:BlackList:";
+        public static string USER_BLACK = "GeTui:Black:";
         #endregion
     }
 }
