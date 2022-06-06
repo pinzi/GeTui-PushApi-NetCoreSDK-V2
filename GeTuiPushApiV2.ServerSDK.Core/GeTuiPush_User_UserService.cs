@@ -1,5 +1,6 @@
 ﻿using GeTuiPushApiV2.ServerSDK.Core.Api;
 using GeTuiPushApiV2.ServerSDK.Core.Utility;
+using System.Linq;
 
 namespace GeTuiPushApiV2.ServerSDK.Core
 {
@@ -138,6 +139,45 @@ namespace GeTuiPushApiV2.ServerSDK.Core
                 }
             }
             return list;
+        }
+        #endregion
+
+        #region 【用户】查询用户信息
+        /// <summary>
+        /// 用户-【用户】查询用户信息
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<UserDetailOutDto> UserDetailAsync(UserDetailInDto inDto)
+        {
+            UserDetailOutDto res = new UserDetailOutDto();
+            long _timestamp = GetTimeStamp();
+            var result = await _api.UserDetailAsync(new ApiUserDetailInDto()
+            {
+                token = await GetTokenAsync(_options.AppID),
+                appkey = _options.AppKey,
+                timestamp = _timestamp,
+                sign = SHA256Helper.SHA256Encrypt(_options.AppKey + _timestamp + _options.MasterSecret),
+                appId = _options.AppID,
+                cids = string.Join(",", inDto.cids)
+            });
+            if (result.code.Equals(0))
+            {
+                res.invalidCids = result.data.invalidCids;
+                res.validCids = result.data.validCids.Select(s => new ValidCidsOutDto()
+                {
+                    cid = s.Key,
+                    client_app_id = s.Value.client_app_id,
+                    package_name = s.Value.package_name,
+                    device_token = s.Value.device_token,
+                    phone_type = s.Value.phone_type,
+                    phoneModel = s.Value.phoneModel,
+                    notificationSwitch = s.Value.notificationSwitch,
+                    createTime = s.Value.createTime,
+                    loginFreq = s.Value.loginFreq
+                }).ToList();
+            }
+            return res;
         }
         #endregion
         #endregion

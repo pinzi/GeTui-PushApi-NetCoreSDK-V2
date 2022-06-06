@@ -1,7 +1,7 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 用户-【用户】移除黑名单用户输入参数
+    /// 用户API-用户-【用户】移除黑名单用户输入参数
     /// </summary>
     public class ApiUserBlackRemoveInDto : ApiInDto
     {

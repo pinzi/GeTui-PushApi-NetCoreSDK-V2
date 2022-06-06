@@ -66,6 +66,23 @@ namespace GeTuiPushApiV2.ServerSDK.Core
             return result;
         }
         #endregion
+
+        #region 【用户】查询用户信息
+        /// <summary>
+        /// 用户-【用户】查询用户信息
+        /// </summary>
+        /// <param name="inDto"></param>
+        /// <returns></returns>
+        public async Task<ApiResultOutDto<ApiUserDetailOutDto>> UserDetailAsync(ApiUserDetailInDto inDto)
+        {
+            var result = await HttpGetGeTuiApiAsync<ApiUserDetailInDto, ApiUserDetailOutDto>($"{ApiBaseUrl}{inDto.appId}/user/detail/{inDto.cids}", inDto);
+            return result;
+        }
+        #endregion
+
+
+
+
         #endregion        
         #endregion
     }
