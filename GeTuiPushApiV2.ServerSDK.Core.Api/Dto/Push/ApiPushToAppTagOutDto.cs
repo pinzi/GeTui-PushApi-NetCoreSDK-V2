@@ -1,9 +1,9 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 推送-【toSingle】执行cid单推输出参数
+    /// 推送-【toApp】根据条件筛选用户推送输出参数
     /// </summary>
-    public class ApiPushToSingleOutDto
+    public class ApiPushToAppTagOutDto
     {
         /// <summary>
         /// 任务编号

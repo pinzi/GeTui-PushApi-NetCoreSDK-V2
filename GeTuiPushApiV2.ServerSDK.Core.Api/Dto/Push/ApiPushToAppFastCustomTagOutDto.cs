@@ -1,9 +1,9 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 推送-【toList】执行cid批量推输出参数
+    /// 推送-【toApp】使用标签快速推送输出参数
     /// </summary>
-    public class ApiPushToListOutDto
+    public class ApiPushToAppFastCustomTagOutDto
     {
         /// <summary>
         /// 任务编号

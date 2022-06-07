@@ -12,7 +12,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core
         /// </summary>
         public string request_id { get; set; }
         /// <summary>
-        /// 任务组名
+        /// 任务组名（只允许填写数字、字母、横杠、下划线）
         /// </summary>
         public string group_name { get; set; }
         /// <summary>

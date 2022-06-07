@@ -35,7 +35,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
             {
                 var result = await GeTuiPushV2Api.HttpPostGeTuiApiAsync<ApiAuthInDto, ApiAuthOutDto>($"https://restapi.getui.com/v2/{geTuiPushOptions.AppID}/auth", indto);
                 Console.WriteLine(result.data.token);
-                var apiInDto = new ApiPushToSingleInDto()
+                var apiInDto = new ApiPushToSingleCIDInDto()
                 {
                     request_id = Guid.NewGuid().ToString(),
                     audience = new audience_cidDto()
@@ -62,7 +62,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
                 };
                 apiInDto.token = result.data.token;
                 apiInDto.appId = geTuiPushOptions.AppID;
-                var result2 = await GeTuiPushV2Api.HttpPostGeTuiApiAsync<ApiPushToSingleInDto, ApiPushToSingleOutDto>($"https://restapi.getui.com/v2/{geTuiPushOptions.AppID}/push/single/cid", apiInDto);
+                var result2 = await GeTuiPushV2Api.HttpPostGeTuiApiAsync<ApiPushToSingleCIDInDto, ApiPushToSingleCIDOutDto>($"https://restapi.getui.com/v2/{geTuiPushOptions.AppID}/push/single/cid", apiInDto);
                 Console.WriteLine($"IOC-1=>{result2.msg}");
             }
 
@@ -73,7 +73,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
                 GeTuiPushV2Api api = provider.GetRequiredService<GeTuiPushV2Api>();
                 var result = await api.AuthAsync(indto);
                 Console.WriteLine(result.data.token);
-                var apiInDto = new ApiPushToSingleInDto()
+                var apiInDto = new ApiPushToSingleCIDInDto()
                 {
                     request_id = Guid.NewGuid().ToString(),
                     audience = new audience_cidDto()

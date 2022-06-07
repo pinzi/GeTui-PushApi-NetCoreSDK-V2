@@ -31,7 +31,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
             {
                 var result = await GeTuiPushV2Api.HttpPostGeTuiApiAsync<ApiAuthInDto, ApiAuthOutDto>($"https://restapi.getui.com/v2/{AppID}/auth", indto);
                 Console.WriteLine(result.data.token);
-                var apiInDto = new ApiPushToSingleInDto()
+                var apiInDto = new ApiPushToSingleCIDInDto()
                 {
                     request_id = Guid.NewGuid().ToString(),
                     audience = new audience_cidDto()
@@ -58,7 +58,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
                 };
                 apiInDto.token = result.data.token;
                 apiInDto.appId = AppID;
-                var result2 = await GeTuiPushV2Api.HttpPostGeTuiApiAsync<ApiPushToSingleInDto, ApiPushToSingleOutDto>($"https://restapi.getui.com/v2/{AppID}/push/single/cid", apiInDto);
+                var result2 = await GeTuiPushV2Api.HttpPostGeTuiApiAsync<ApiPushToSingleCIDInDto, ApiPushToSingleCIDOutDto>($"https://restapi.getui.com/v2/{AppID}/push/single/cid", apiInDto);
                 Console.WriteLine($"普通-1=>{result2.msg}");
             }
 
@@ -69,7 +69,7 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
                 GeTuiPushV2Api api = new GeTuiPushV2Api();
                 var result = await api.AuthAsync(indto);
                 Console.WriteLine(result.data.token);
-                var apiInDto = new ApiPushToSingleInDto()
+                var apiInDto = new ApiPushToSingleCIDInDto()
                 {
                     request_id = Guid.NewGuid().ToString(),
                     audience = new audience_cidDto()
@@ -126,18 +126,18 @@ namespace GeTuiPushApiV2.ServerSDK.Core.Test
                 GeTuiPushService service = new GeTuiPushService(iStorage, options, api);
                 try
                 {
-                    await service.PushMessageAsync(new PushMessageInDto()
-                    {
-                        title = "停机警告-普通-3",
-                        body = "已停机，请及时处理",
-                        payload = JsonConvert.SerializeObject(new
-                        {
-                            msgId = new string[] { Guid.NewGuid().ToStr() },
-                            text = $"停机时间：{DateTime.Now}"
-                        }),
-                        isall = false,
-                        uid = new string[] { "123456789" }
-                    });
+                    //await service.PushMessageAsync(new PushMessageInDto()
+                    //{
+                    //    title = "停机警告-普通-3",
+                    //    body = "已停机，请及时处理",
+                    //    payload = JsonConvert.SerializeObject(new
+                    //    {
+                    //        msgId = new string[] { Guid.NewGuid().ToStr() },
+                    //        text = $"停机时间：{DateTime.Now}"
+                    //    }),
+                    //    isall = false,
+                    //    uid = new string[] { "123456789" }
+                    //});
                     Console.WriteLine("普通-3=>推送成功");
                 }
                 catch (Exception ex)
