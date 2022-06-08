@@ -6,7 +6,7 @@
     public class PushToAppFastCustomTagInDto : PushMessageInDto
     {
         /// <summary>
-        /// 目标用户标签
+        /// 必填项，目标用户标签
         /// </summary>
         public string fastcustomtag { get; set; }
     }

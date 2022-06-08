@@ -19,7 +19,7 @@
                 request_id = Guid.NewGuid().ToString(),
                 audience = new audience_cidDto()
                 {
-                    cid = inDto.cid
+                    cid = inDto.filterCondition
                 },
                 push_message = new push_messageDto()
             };
@@ -74,7 +74,7 @@
             {
                 audience = new audience_listcidDto()
                 {
-                    cid = inDto.cid
+                    cid = inDto.filterCondition
                 },
                 is_async = inDto.is_async,
                 taskid = inDto.taskid
@@ -120,7 +120,7 @@
             {
                 audience = new audience_listaliasDto()
                 {
-                    alias = inDto.alias
+                    alias = inDto.filterCondition
                 },
                 is_async = inDto.is_async,
                 taskid = inDto.taskid

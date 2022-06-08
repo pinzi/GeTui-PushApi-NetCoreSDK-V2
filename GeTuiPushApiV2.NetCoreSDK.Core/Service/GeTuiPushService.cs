@@ -68,81 +68,170 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
         #endregion
         #endregion
 
-        #region 推送消息-根据用户标识cid
+        #region 快速统一推送消息
         /// <summary>
-        /// 推送消息-根据用户标识cid
+        /// 快速统一推送消息
         /// </summary>
-        /// <param name="inDto">消息推送-根据用户标识cid输入参数</param>
+        /// <param name="inDto"></param>
         /// <returns></returns>
-        //public async Task PushMessageAsync(PushMessageInDto inDto)
-        //{
-        //    inDto.cid = await GetUserCIDAsync(inDto.uid);
-        //    string[] cids = inDto.cid;
-        //    if (inDto.isall)
-        //    {
-        //        #region 群推
-        //        var dto = new PushToAppInDto()
-        //        {
-        //            title = inDto.title,
-        //            body = inDto.body,
-        //            payload = inDto.payload,
-        //            istransmsg = inDto.istransmsg,
-        //            isall = inDto.isall,
-        //            cid = inDto.cid
-        //        };
-        //        var result = await PushToAppAsync(dto);
-        //        if (!result.code.Equals(0))
-        //        {
-        //            throw new Exception(result.msg);
-        //        }
-        //        #endregion
-        //    }
-        //    else if (cids.Length.Equals(1))
-        //    {
-        //        #region 单推
-        //        var dto = new PushToSingleInDto()
-        //        {
-        //            title = inDto.title,
-        //            body = inDto.body,
-        //            payload = inDto.payload,
-        //            istransmsg = inDto.istransmsg,
-        //            isall = inDto.isall,
-        //            cid = inDto.cid
-        //        };
-        //        var result = await PushToSingleCIDAsync(dto);
-        //        if (!result.code.Equals(0))
-        //        {
-        //            throw new Exception(result.msg);
-        //        }
-        //        #endregion
-        //    }
-        //    else if (cids.Length > 1)
-        //    {
-        //        #region 批量推
-        //        var dto = new PushToListCIDInDto()
-        //        {
-        //            title = inDto.title,
-        //            body = inDto.body,
-        //            payload = inDto.payload,
-        //            istransmsg = inDto.istransmsg,
-        //            isall = inDto.isall,
-        //            cid = inDto.cid,
-        //            is_async = false,
-        //            taskid = await CreateListMessageAsync(inDto)//创建消息
-        //        };
-        //        //执行cid批量推
-        //        var result = await PushToListAsync(dto);
-        //        if (!result.code.Equals(0))
-        //        {
-        //            throw new Exception(result.msg);
-        //        }
-        //        #endregion
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("未指定接收人设备cid");
-        //    }
-        //}
+        public async Task<List<PushMessageOutDto>> QuickPushMessageAsync(PushMessageInDto inDto)
+        {
+            List<PushMessageOutDto> list = new List<PushMessageOutDto>();
+            switch (inDto.filter)
+            {
+                case TargetUserFilter.all:
+                    {
+                        #region 群推
+                        var dto = new PushToAppInDto()
+                        {
+                            title = inDto.title,
+                            body = inDto.body,
+                            payload = inDto.payload,
+                            istransmsg = inDto.istransmsg,
+                            filterCondition = inDto.filterCondition
+                        };
+                        list.Add(new PushMessageOutDto() { taskid = await PushToAppAsync(dto) });
+                        #endregion
+                    }
+                    break;
+                case TargetUserFilter.cid:
+                    {
+                        #region cid
+                        if (inDto.filterCondition.Length.Equals(0))
+                        {
+                            throw new Exception("至少需要提供一个推送目标用户的CID");
+                        }
+                        if (inDto.filterCondition.Length.Equals(1))
+                        {
+                            #region 单推
+                            var dto = new PushToSingleInDto()
+                            {
+                                title = inDto.title,
+                                body = inDto.body,
+                                payload = inDto.payload,
+                                istransmsg = inDto.istransmsg,
+                                filterCondition = inDto.filterCondition,
+                                is_async = inDto.is_async
+                            };
+                            list = await PushToSingleCIDAsync(dto);
+                            #endregion
+                        }
+                        else
+                        {
+                            #region 批量推
+                            List<string> cids = new List<string>();
+                            for (int i = 0; i < inDto.filterCondition.Length; i++)
+                            {
+                                cids.Add(inDto.filterCondition[i]);
+                                if (i % 1000 == 0)
+                                {
+                                    //每1000组推送一次
+                                    var dto = new PushToListCIDInDto()
+                                    {
+                                        title = inDto.title,
+                                        body = inDto.body,
+                                        payload = inDto.payload,
+                                        istransmsg = inDto.istransmsg,
+                                        filterCondition = cids.ToArray(),
+                                        is_async = inDto.is_async,
+                                        taskid = await CreateListMessageAsync(inDto)//创建消息
+                                    };
+                                    //执行cid批量推
+                                    list.AddRange(await PushToListAsync(dto));
+                                    cids.Clear();
+                                }
+                            }
+                            #endregion
+                        }
+                        #endregion
+                    }
+                    break;
+                case TargetUserFilter.uid:
+                    {
+                        #region uid
+                        //获取用户cid数组
+                        inDto.filterCondition = await GetUserCIDAsync(inDto.filterCondition);
+                        //使用cid方式推送消息
+                        goto case TargetUserFilter.cid;
+                        #endregion
+                    }
+                case TargetUserFilter.alias:
+                    {
+                        #region 别名
+                        if (inDto.filterCondition.Length.Equals(0))
+                        {
+                            throw new Exception("至少需要提供一个推送目标用户的别名");
+                        }
+                        if (inDto.filterCondition.Length.Equals(1))
+                        {
+                            #region 单推
+                            var dto = new PushToSingleAliasInDto()
+                            {
+                                title = inDto.title,
+                                body = inDto.body,
+                                payload = inDto.payload,
+                                istransmsg = inDto.istransmsg,
+                                filterCondition = inDto.filterCondition,
+                                is_async = inDto.is_async
+                            };
+                            list = await PushToSingleAliasAsync(dto);
+                            #endregion
+                        }
+                        else
+                        {
+                            #region 批量推
+                            List<string> alias = new List<string>();
+                            for (int i = 0; i < inDto.filterCondition.Length; i++)
+                            {
+                                alias.Add(inDto.filterCondition[i]);
+                                if (i % 1000 == 0)
+                                {
+                                    //每1000组推送一次
+                                    var dto = new PushToListAliasInDto()
+                                    {
+                                        title = inDto.title,
+                                        body = inDto.body,
+                                        payload = inDto.payload,
+                                        istransmsg = inDto.istransmsg,
+                                        filterCondition = alias.ToArray(),
+                                        is_async = inDto.is_async
+                                    };
+                                    list.AddRange(await PushToListAliasAsync(dto));
+                                    alias.Clear();
+                                }
+                            }
+                            #endregion
+                        }
+                        #endregion
+                    }
+                    break;
+                case TargetUserFilter.tag:
+                    {
+                        #region 标签
+                        #region 快速推
+                        if (!inDto.filterCondition.Length.Equals(0))
+                        {
+                            throw new Exception("只能提供一个推送目标用户的标签");
+                        }
+                        var dto = new PushToAppTagInDto()
+                        {
+                            title = inDto.title,
+                            body = inDto.body,
+                            payload = inDto.payload,
+                            istransmsg = inDto.istransmsg,
+                            filterCondition = inDto.filterCondition,
+                            is_async = inDto.is_async
+                        };
+                        list.Add(new PushMessageOutDto() { taskid = await PushToAppTagAsync(dto) });
+                        #endregion
+                        #endregion
+                    }
+                    break;
+                default:
+                    goto case TargetUserFilter.cid;
+            }
+            return list;
+        }
         #endregion
     }
 }

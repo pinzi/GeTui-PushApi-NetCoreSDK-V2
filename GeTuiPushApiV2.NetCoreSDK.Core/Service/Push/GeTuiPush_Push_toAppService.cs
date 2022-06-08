@@ -13,7 +13,7 @@
         ///  注：此接口频次限制100次/天，每分钟不能超过5次(推送限制和接口根据条件筛选用户推送共享限制)
         /// </summary>
         /// <param name="inDto">消息推送参数</param>
-        /// <returns></returns>
+        /// <returns>任务编号</returns>
         public async Task<string> PushToAppAsync(PushToAppInDto inDto)
         {
             var apiInDto = new ApiPushToAppInDto()
@@ -68,7 +68,7 @@
         ///  注：个推用户画像中的“016100|中小学生“标签将于2022年5月31日下线，请开发者及时关注和处理
         /// </summary>
         /// <param name="inDto"></param>
-        /// <returns></returns>
+        /// <returns>任务编号</returns>
         public async Task<string> PushToAppTagAsync(PushToAppTagInDto inDto)
         {
             var apiInDto = new ApiPushToAppTagInDto()

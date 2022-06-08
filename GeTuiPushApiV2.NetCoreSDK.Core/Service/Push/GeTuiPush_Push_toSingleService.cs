@@ -20,7 +20,7 @@
                 request_id = Guid.NewGuid().ToString(),
                 audience = new audience_cidDto()
                 {
-                    cid = inDto.cid
+                    cid = inDto.filterCondition
                 },
                 push_message = new push_messageDto()
             };
@@ -76,7 +76,7 @@
                 request_id = Guid.NewGuid().ToString(),
                 audience = new audience_aliasDto()
                 {
-                    alias = inDto.alias
+                    alias = inDto.filterCondition
                 },
                 push_message = new push_messageDto()
             };
@@ -135,7 +135,7 @@
                     request_id = Guid.NewGuid().ToString(),
                     audience = new audience_cidDto()
                     {
-                        cid = inDto.cid
+                        cid = inDto.filterCondition
                     },
                     push_message = new push_messageDto()
                 };
@@ -210,7 +210,7 @@
                     request_id = Guid.NewGuid().ToString(),
                     audience = new audience_cidDto()
                     {
-                        cid = inDto.cid
+                        cid = inDto.filterCondition
                     },
                     push_message = new push_messageDto()
                 };

@@ -1,7 +1,7 @@
 ﻿namespace GeTuiPushApiV2.NetCoreSDK.Core
 {
     /// <summary>
-    /// 推送-【toList】执行cid批量推输入参数
+    /// 推送API-【toList】执行cid批量推输入参数
     /// </summary>
     public class PushToListAliasInDto : PushMessageInDto
     {
