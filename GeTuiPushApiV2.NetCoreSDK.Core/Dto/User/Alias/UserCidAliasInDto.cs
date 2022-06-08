@@ -1,0 +1,13 @@
+﻿namespace GeTuiPushApiV2.NetCoreSDK.Core
+{
+    /// <summary>
+    /// 用户API-【别名】根据别名查询cid输入参数
+    /// </summary>
+    public class UserCidAliasInDto
+    {
+        /// <summary>
+        /// 必填项，别名
+        /// </summary>
+        public string alias { get; set; }
+    }
+}

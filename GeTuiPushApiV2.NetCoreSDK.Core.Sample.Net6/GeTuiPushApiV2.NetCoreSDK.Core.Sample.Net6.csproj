@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\Dell\.nuget\packages\getuipushapiv2.NetCoreSDK.core\1.0.0\contentFiles\any\net6.0\icon_48x48.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GeTuiPushApiV2.ServerSDK.Core" Version="1.0.4" />
+    <PackageReference Include="GeTuiPushApiV2.ServerSDK.Core.IOC" Version="1.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

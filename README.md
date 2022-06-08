@@ -1,12 +1,12 @@
 ## Build status
 
-![stars](https://img.shields.io/github/stars/pinzi/GeTui-PushApi-ServerSDK-V2.svg?style=plastic)
-![release](https://img.shields.io/github/v/release/pinzi/GeTui-PushApi-ServerSDK-V2?include_prereleases)
-![GitHub top language](https://img.shields.io/github/languages/top/pinzi/GeTui-PushApi-ServerSDK-V2?logo=github)
-![GitHub License](https://img.shields.io/github/license/pinzi/GeTui-PushApi-ServerSDK-V2?logo=github)
-![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core?logo=nuget)
-![Nuget](https://img.shields.io/nuget/v/GeTuiPushApiV2.ServerSDK.Core?logo=nuget)
-![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/GeTuiPushApiV2.ServerSDK.Core?label=dev%20nuget&logo=nuget)
+![stars](https://img.shields.io/github/stars/pinzi/GeTui-PushApi-NetCoreSDK-V2.svg?style=plastic)
+![release](https://img.shields.io/github/v/release/pinzi/GeTui-PushApi-NetCoreSDK-V2?include_prereleases)
+![GitHub top language](https://img.shields.io/github/languages/top/pinzi/GeTui-PushApi-NetCoreSDK-V2?logo=github)
+![GitHub License](https://img.shields.io/github/license/pinzi/GeTui-PushApi-NetCoreSDK-V2?logo=github)
+![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core?logo=nuget)
+![Nuget](https://img.shields.io/nuget/v/GeTuiPushApiV2.NetCoreSDK.Core?logo=nuget)
+![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/GeTuiPushApiV2.NetCoreSDK.Core?label=dev%20nuget&logo=nuget)
 
 
 
@@ -14,13 +14,13 @@
 
 相关的nuget package：
 
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core?logo=nuget) [GeTuiPushApiV2.ServerSDK.Core](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core) 核心服务
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Api?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Api](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Api/)  GeTui消息推送V2接口封装
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.IOC?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.IOC](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.IOC/)  使用IOC容器
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.MemoryCache?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.MemoryCache](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.MemoryCache) 使用内存存储数据
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Storage?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Storage](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Storaget) 存储封装
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Utility?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Utility](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Utility) 公共方法封装
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.ServerSDK.Core.Redis?logo=nuget)[GeTuiPushApiV2.ServerSDK.Core.Redis](https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core.Redis) 使用Redis存储数据
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core?logo=nuget) [GeTuiPushApiV2.NetCoreSDK.Core](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core) 核心服务
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core.Api?logo=nuget)[GeTuiPushApiV2.NetCoreSDK.Core.Api](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core.Api/)  GeTui消息推送V2接口封装
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core.IOC?logo=nuget)[GeTuiPushApiV2.NetCoreSDK.Core.IOC](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core.IOC/)  使用IOC容器
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core.MemoryCache?logo=nuget)[GeTuiPushApiV2.NetCoreSDK.Core.MemoryCache](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core.MemoryCache) 使用内存存储数据
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core.Storage?logo=nuget)[GeTuiPushApiV2.NetCoreSDK.Core.Storage](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core.Storaget) 存储封装
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core.Utility?logo=nuget)[GeTuiPushApiV2.NetCoreSDK.Core.Utility](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core.Utility) 公共方法封装
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core.Redis?logo=nuget)[GeTuiPushApiV2.NetCoreSDK.Core.Redis](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core.Redis) 使用Redis存储数据
 
 ## 简介
 
@@ -44,7 +44,7 @@
 
 ## 安装依赖
 ```
-Install-Package GeTuiPushApiV2.ServerSDK.Core
+Install-Package GeTuiPushApiV2.NetCoreSDK.Core
 ```
 
 ## 快速开始
@@ -227,13 +227,13 @@ IOC调用方式需要在appsettings.json中配置所需参数
 安装依赖包
 
 ```
-Install-Package GeTuiPushApiV2.ServerSDK.Core.IOC
+Install-Package GeTuiPushApiV2.NetCoreSDK.Core.IOC
 ```
 
 默认使用Redis存储鉴权token，CID等关键数据，也支持使用MemoryCache。
 
 ```c#
-services.UseGeTuiPushApiV2ServerSDKCore(StorageType.MemoryCache);
+services.UseGeTuiPushApiV2NetCoreSDKCore(StorageType.MemoryCache);
 ```
 如果需要使用其他方式存储数据，可自定义实现IStorage接口，并在初始化时通过StorageType参数进行指定。
 
@@ -281,7 +281,7 @@ public static class RedisServiceCollectionExtensions
 ```c#
 IServiceCollection services = new ServiceCollection();
 //注入推送服务
-services.UseGeTuiPushApiV2ServerSDKCore();
+services.UseGeTuiPushApiV2NetCoreSDKCore();
 //注入自定义的Redis客户端
 services.AddNewLifeRedis();
 ```
@@ -324,10 +324,8 @@ catch (Exception ex)
 
 | API类别 | 功能                                                         |
 | ------- | ------------------------------------------------------------ |
-
 | 鉴权API | [获取鉴权](https://docs.getui.com/getui/server/rest_v2/token/#0) |
 | 鉴权API | [删除鉴权](https://docs.getui.com/getui/server/rest_v2/token/#1) |
-
 | 推送API |[[toSingle]执行cid单推](https://docs.getui.com/getui/server/rest_v2/push/#1) |
 | 推送API |[[toSingle]执行别名单推](https://docs.getui.com/getui/server/rest_v2/push/#2) |
 | 推送API |[[toSingle]执行cid批量单推](https://docs.getui.com/getui/server/rest_v2/push/#3) |
@@ -342,7 +340,6 @@ catch (Exception ex)
 | 推送API |[[任务]查询定时任务](https://docs.getui.com/getui/server/rest_v2/push/#12) |
 | 推送API |[[任务]删除定时任务](https://docs.getui.com/getui/server/rest_v2/push/#13) |
 | 推送API |[[推送]查询消息明细](https://docs.getui.com/getui/server/rest_v2/push/#14) |
-
 | 统计API | [[推送]获取推送结果（不含自定义事件）](https://docs.getui.com/getui/server/rest_v2/report/#1)  |
 | 统计API | [[推送]获取推送结果（含自定义事件）](https://docs.getui.com/getui/server/rest_v2/report/#2)  |
 | 统计API | [[推送]任务组名查报表](https://docs.getui.com/getui/server/rest_v2/report/#3)  |
@@ -351,7 +348,6 @@ catch (Exception ex)
 | 统计API | [[推送]查询推送量](https://docs.getui.com/getui/server/rest_v2/report/#6)  |
 | 统计API | [[用户]获取单日用户数据接口](https://docs.getui.com/getui/server/rest_v2/report/#7)  |
 | 统计API | [[用户]获取24个小时在线用户数](https://docs.getui.com/getui/server/rest_v2/report/#8)  |
-
 | 用户API | [[别名]绑定别名](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-1)  |
 | 用户API | [[别名]根据cid查询别名](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-2)  |
 | 用户API | [[别名]根据别名查询cid](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-3)  |
