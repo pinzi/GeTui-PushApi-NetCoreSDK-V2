@@ -1,6 +1,5 @@
 ## Build status
 
-![Github Build Status](https://img.shields.io/appveyor/build/pinzi/GeTui-PushApi-ServerSDK-V2/publish?style=plastic)
 ![stars](https://img.shields.io/github/stars/pinzi/GeTui-PushApi-ServerSDK-V2.svg?style=plastic)
 ![release](https://img.shields.io/github/v/release/pinzi/GeTui-PushApi-ServerSDK-V2?include_prereleases)
 ![GitHub top language](https://img.shields.io/github/languages/top/pinzi/GeTui-PushApi-ServerSDK-V2?logo=github)
@@ -325,18 +324,50 @@ catch (Exception ex)
 
 | API类别 | 功能                                                         |
 | ------- | ------------------------------------------------------------ |
+
 | 鉴权API | [获取鉴权](https://docs.getui.com/getui/server/rest_v2/token/#0) |
 | 鉴权API | [删除鉴权](https://docs.getui.com/getui/server/rest_v2/token/#1) |
-| 推送API | [cid单推](https://docs.getui.com/getui/server/rest_v2/push/#1) |
-| 推送API | [tolist创建消息](https://docs.getui.com/getui/server/rest_v2/push/#5) |
-| 推送API | [cid批量推](https://docs.getui.com/getui/server/rest_v2/push/#6) |
-| 推送API | [群推](https://docs.getui.com/getui/server/rest_v2/push/#8)  |
-| 用户API | [绑定别名](https://docs.getui.com/getui/server/rest_v2/user/#1)  |
-| 用户API | [根据cid查询别名](https://docs.getui.com/getui/server/rest_v2/user/#2)  |
-| 用户API | [根据别名查询cid](https://docs.getui.com/getui/server/rest_v2/user/#3)  |
-| 用户API | [批量解绑别名](https://docs.getui.com/getui/server/rest_v2/user/#4)  |
-| 用户API | [解绑所有别名](https://docs.getui.com/getui/server/rest_v2/user/#5)  |
-> 注：更多API持续更新中，敬请期待。
+
+| 推送API |[[toSingle]执行cid单推](https://docs.getui.com/getui/server/rest_v2/push/#1) |
+| 推送API |[[toSingle]执行别名单推](https://docs.getui.com/getui/server/rest_v2/push/#2) |
+| 推送API |[[toSingle]执行cid批量单推](https://docs.getui.com/getui/server/rest_v2/push/#3) |
+| 推送API |[[toSingle]执行别名批量单推](https://docs.getui.com/getui/server/rest_v2/push/#4) |
+| 推送API |[[toList]创建消息](https://docs.getui.com/getui/server/rest_v2/push/#5) |
+| 推送API |[[toList]执行cid批量推](https://docs.getui.com/getui/server/rest_v2/push/#6) |
+| 推送API |[[toList]执行别名批量推](https://docs.getui.com/getui/server/rest_v2/push/#7) |
+| 推送API |[[toApp]执行群推](https://docs.getui.com/getui/server/rest_v2/push/#8) |
+| 推送API |[[toApp]根据条件筛选用户推送](https://docs.getui.com/getui/server/rest_v2/push/#9) |
+| 推送API |[[toApp]使用标签快速推送](https://docs.getui.com/getui/server/rest_v2/push/#10) |
+| 推送API |[[任务]停止任务](https://docs.getui.com/getui/server/rest_v2/push/#11) |
+| 推送API |[[任务]查询定时任务](https://docs.getui.com/getui/server/rest_v2/push/#12) |
+| 推送API |[[任务]删除定时任务](https://docs.getui.com/getui/server/rest_v2/push/#13) |
+| 推送API |[[推送]查询消息明细](https://docs.getui.com/getui/server/rest_v2/push/#14) |
+
+| 统计API | [[推送]获取推送结果（不含自定义事件）](https://docs.getui.com/getui/server/rest_v2/report/#1)  |
+| 统计API | [[推送]获取推送结果（含自定义事件）](https://docs.getui.com/getui/server/rest_v2/report/#2)  |
+| 统计API | [[推送]任务组名查报表](https://docs.getui.com/getui/server/rest_v2/report/#3)  |
+~~| 统计API | [[推送]获取推送实时结果](https://docs.getui.com/getui/server/rest_v2/report/#4)  |~~
+~~| 统计API | [[推送]获取单日推送数据](https://docs.getui.com/getui/server/rest_v2/report/#5)  |~~
+| 统计API | [[推送]查询推送量](https://docs.getui.com/getui/server/rest_v2/report/#6)  |
+| 统计API | [[用户]获取单日用户数据接口](https://docs.getui.com/getui/server/rest_v2/report/#7)  |
+| 统计API | [[用户]获取24个小时在线用户数](https://docs.getui.com/getui/server/rest_v2/report/#8)  |
+
+| 用户API | [[别名]绑定别名](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-1)  |
+| 用户API | [[别名]根据cid查询别名](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-2)  |
+| 用户API | [[别名]根据别名查询cid](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-3)  |
+| 用户API | [[别名]批量解绑别名](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-4)  |
+| 用户API | [[别名]解绑所有别名](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-5)  |
+| 用户API | [[标签]一个用户绑定一批标签](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-6)  |
+| 用户API | [[标签]一批用户绑定一个标签](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-7)  |
+| 用户API | [[标签]一批用户解绑一个标签](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-8)  |
+| 用户API | [[标签]查询用户标签](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-9)  |
+| 用户API | [[用户]添加黑名单用户](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-10)  |
+| 用户API | [[用户]移除黑名单用户](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-11)  |
+| 用户API | [[用户]查询用户状态](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-12)  |
+| 用户API | [[用户]查询设备状态](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-13)  |
+| 用户API | [[用户]查询用户信息](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-14)  |
+| 用户API | [[用户]设置角标(仅支持IOS)](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-15)  |
+| 用户API | [[用户]查询用户总量](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-16)  |
 
 
 
