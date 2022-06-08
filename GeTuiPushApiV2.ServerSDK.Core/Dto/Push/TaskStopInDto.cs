@@ -1,7 +1,7 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 推送-【任务】停止任务输入参数
+    /// 推送API-【任务】停止任务输入参数
     /// </summary>
     public class TaskStopInDto
     {

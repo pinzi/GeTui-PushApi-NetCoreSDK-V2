@@ -1,7 +1,7 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 消息推送-根据用户标识cid输入参数
+    /// 推送API-消息推送公共参数
     /// </summary>
     public class PushMessageInDto
     {

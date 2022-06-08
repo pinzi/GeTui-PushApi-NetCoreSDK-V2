@@ -1,7 +1,7 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 输出参数
+    /// 推送API-公共输出参数
     /// </summary>
     public class PushMessageOutDto
     {

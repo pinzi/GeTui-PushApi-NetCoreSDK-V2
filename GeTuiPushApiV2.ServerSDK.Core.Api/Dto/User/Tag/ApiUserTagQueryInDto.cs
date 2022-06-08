@@ -1,7 +1,7 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 用户-【标签】查询用户标签输入参数
+    /// 用户API-【标签】查询用户标签输入参数
     /// </summary>
     public class ApiUserTagQueryInDto : ApiInDto
     {

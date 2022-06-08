@@ -3,6 +3,7 @@
     /// <summary>
     /// 统计API-【推送】获取推送结果（不含自定义事件）输出参数
     /// 统计API-【推送】获取推送结果（含自定义事件）输出参数
+    /// 统计API-【推送】任务组名查报表输出参数
     /// </summary>
     public class ReportPushDataOutDto
     {

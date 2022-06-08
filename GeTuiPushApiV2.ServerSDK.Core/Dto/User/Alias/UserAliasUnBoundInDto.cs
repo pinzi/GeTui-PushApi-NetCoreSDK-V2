@@ -1,7 +1,7 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 用户-【别名】解绑所有别名输入参数
+    /// 用户API-【别名】解绑所有别名输入参数
     /// </summary>
     public class UserAliasUnBoundInDto
     {

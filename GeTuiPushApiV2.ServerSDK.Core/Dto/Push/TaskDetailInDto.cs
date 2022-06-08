@@ -1,7 +1,7 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 推送-【推送】查询消息明细输入参数
+    /// 推送API-【推送】查询消息明细输入参数
     /// </summary>
     public class TaskDetailInDto
     {

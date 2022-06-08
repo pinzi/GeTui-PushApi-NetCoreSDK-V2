@@ -1,7 +1,7 @@
 ﻿namespace GeTuiPushApiV2.ServerSDK.Core
 {
     /// <summary>
-    /// 推送-【toApp】根据条件筛选用户推送输入参数
+    /// 推送API-【toApp】根据条件筛选用户推送输入参数
     /// </summary>
     public class PushToAppTagInDto : PushMessageInDto
     {
