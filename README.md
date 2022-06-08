@@ -343,8 +343,8 @@ catch (Exception ex)
 | 统计API | [[推送]获取推送结果（不含自定义事件）](https://docs.getui.com/getui/server/rest_v2/report/#1)  |
 | 统计API | [[推送]获取推送结果（含自定义事件）](https://docs.getui.com/getui/server/rest_v2/report/#2)  |
 | 统计API | [[推送]任务组名查报表](https://docs.getui.com/getui/server/rest_v2/report/#3)  |
-~~| 统计API | [[推送]获取推送实时结果](https://docs.getui.com/getui/server/rest_v2/report/#4)  |~~
-~~| 统计API | [[推送]获取单日推送数据](https://docs.getui.com/getui/server/rest_v2/report/#5)  |~~
+| ~~统计API~~ | ~~[[推送]获取推送实时结果](https://docs.getui.com/getui/server/rest_v2/report/#4)~~  |
+| ~~统计API~~ | ~~[[推送]获取单日推送数据](https://docs.getui.com/getui/server/rest_v2/report/#5)~~  |
 | 统计API | [[推送]查询推送量](https://docs.getui.com/getui/server/rest_v2/report/#6)  |
 | 统计API | [[用户]获取单日用户数据接口](https://docs.getui.com/getui/server/rest_v2/report/#7)  |
 | 统计API | [[用户]获取24个小时在线用户数](https://docs.getui.com/getui/server/rest_v2/report/#8)  |
