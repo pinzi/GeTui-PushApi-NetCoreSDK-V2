@@ -327,10 +327,10 @@ catch (Exception ex)
 ## 已支持的API列表
 以下是消息推送功能与推送API的对应关系
 
-| API类别 | 功能                                                         |
-| ------- | ------------------------------------------------------------ |
-| 鉴权API | AuthAsync | [获取鉴权](https://docs.getui.com/getui/server/rest_v2/token/#0) |
-| 鉴权API | AuthDeleteAsync | [删除鉴权](https://docs.getui.com/getui/server/rest_v2/token/#1) |
+| API类别| 方法名 | 功能 |
+| ------- | ------------- |------------------------------------------------------------ |
+| 鉴权API | AuthAsync |[获取鉴权](https://docs.getui.com/getui/server/rest_v2/token/#0) |
+| 鉴权API | AuthDeleteAsync |[删除鉴权](https://docs.getui.com/getui/server/rest_v2/token/#1) |
 | 推送API | PushToSingleCIDAsync |[[toSingle]执行cid单推](https://docs.getui.com/getui/server/rest_v2/push/#1) |
 | 推送API | PushToSingleAliasAsync |[[toSingle]执行别名单推](https://docs.getui.com/getui/server/rest_v2/push/#2) |
 | 推送API | PushToSingleBatchCIDAsync |[[toSingle]执行cid批量单推](https://docs.getui.com/getui/server/rest_v2/push/#3) |
