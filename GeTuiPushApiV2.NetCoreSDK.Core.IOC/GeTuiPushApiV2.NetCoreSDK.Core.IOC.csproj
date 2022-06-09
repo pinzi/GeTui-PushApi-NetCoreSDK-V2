@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<Description>GeTuiPushApiV2.NetCoreSDK.Core.IOC</Description>
+    <Description>个推PUSH SDK For .NetCore中使用IOC容器</Description>
+    <ApplicationIcon></ApplicationIcon>
+    <PackageIcon>icon_128x128.png</PackageIcon>
+	<iconUrl>https://s1.ax1x.com/2022/05/11/OUtE4J.jpg</iconUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <Authors>pinzi</Authors>
+    <Product>GeTuiPushApiV2.NetCoreSDK.Core.IOC</Product>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageId>GeTuiPushApiV2.NetCoreSDK.Core.IOC</PackageId>
+    <PackageTags>GeTui;GeTuiPush;IOC</PackageTags>
+    <PackageReleaseNotes>第3次发布，完成推送API，用户API，统计API的接入</PackageReleaseNotes>
+    <Copyright>Copyright 2022 (c) pinzi. All rights reserved.</Copyright>
+    <RepositoryUrl>https://github.com/pinzi/GeTui-PushApi-NetCoreSDK-V2.git</RepositoryUrl>
+    <PackageProjectUrl>https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core</PackageProjectUrl>
+    <Version>1.0.2</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\icon_128x128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\LICENSE.txt" Link="LICENSE.txt">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GeTuiPushApiV2.NetCoreSDK.Core.MemoryCache\GeTuiPushApiV2.NetCoreSDK.Core.MemoryCache.csproj" />
+    <ProjectReference Include="..\GeTuiPushApiV2.NetCoreSDK.Core.Redis\GeTuiPushApiV2.NetCoreSDK.Core.Redis.csproj" />
+    <ProjectReference Include="..\GeTuiPushApiV2.NetCoreSDK.Core\GeTuiPushApiV2.NetCoreSDK.Core.csproj" />
+  </ItemGroup>
+
+</Project>
