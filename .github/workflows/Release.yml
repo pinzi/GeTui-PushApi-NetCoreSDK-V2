@@ -20,21 +20,12 @@ jobs:
       - name: 列出Package发布的文件
         run: |
           ls Package
-      - name: Get Release Version
-        shell: pwsh
-        run: .\build\getReleaseVersion.ps1
-      - name: Create release
-        shell: pwsh
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release create --generate-notes ${{ env.ReleaseVersion }}
-      - name: Create GitHub release
+      - name: Create GitHub Release
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: V${{ env.GitAssemblyInformationalVersion }}
-          title: Version ${{ env.GitAssemblyInformationalVersion }}
+          automatic_release_tag: V1.0.5
+          title: V1.0.5
           prerelease: true
           files: |
             Package/*.nupkg
