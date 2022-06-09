@@ -26,7 +26,7 @@ jobs:
       - name: Get Release Version
         shell: pwsh
         run: .\build\getReleaseVersion.ps1
-      - name: create release
+      - name: Create release
         shell: pwsh
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
