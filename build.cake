@@ -16,7 +16,7 @@ Task("Build")
     .IsDependentOn("Clean")
     .Does(() =>
 {
-    DotNetBuild("./GeTui-PushApi-ServerSDK-NetCore-V2.sln", new DotNetBuildSettings
+    DotNetBuild("./GeTui-PushApi-NetCoreSDK-V2.sln", new DotNetBuildSettings
     {
         Configuration = configuration,
     });
@@ -26,7 +26,7 @@ Task("Test")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    DotNetTest("./GeTui-PushApi-ServerSDK-NetCore-V2.sln", new DotNetTestSettings
+    DotNetTest("./GeTui-PushApi-NetCoreSDK-V2.sln", new DotNetTestSettings
     {
         Configuration = configuration,
         NoBuild = true,
