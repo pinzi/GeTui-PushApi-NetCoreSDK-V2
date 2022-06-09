@@ -126,18 +126,18 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Test
                 GeTuiPushService service = new GeTuiPushService(iStorage, options, api);
                 try
                 {
-                    //await service.PushMessageAsync(new PushMessageInDto()
-                    //{
-                    //    title = "停机警告-普通-3",
-                    //    body = "已停机，请及时处理",
-                    //    payload = JsonConvert.SerializeObject(new
-                    //    {
-                    //        msgId = new string[] { Guid.NewGuid().ToStr() },
-                    //        text = $"停机时间：{DateTime.Now}"
-                    //    }),
-                    //    isall = false,
-                    //    uid = new string[] { "123456789" }
-                    //});
+                    await service.QuickPushMessageAsync(new PushMessageInDto()
+                    {
+                        title = "停机警告-普通-3",
+                        body = "已停机，请及时处理",
+                        payload = JsonConvert.SerializeObject(new
+                        {
+                            msgId = new string[] { Guid.NewGuid().ToStr() },
+                            text = $"停机时间：{DateTime.Now}"
+                        }),
+                        filter = TargetUserFilter.uid,
+                        filterCondition = new string[] { "123456789" }
+                    });
                     Console.WriteLine("普通-3=>推送成功");
                 }
                 catch (Exception ex)

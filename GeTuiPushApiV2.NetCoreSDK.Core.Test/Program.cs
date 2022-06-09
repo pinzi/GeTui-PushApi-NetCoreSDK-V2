@@ -15,10 +15,10 @@ services.UseGeTuiPushApiV2NetCoreSDKCore(StorageType.MemoryCache);//
 
 #region 推送API
 {
-    ////普通方式
-    //await new CommPushTest().Run();
-    ////IOC方式
-    //await new IocPushTest().Run(services);
+    //普通方式
+    await new CommPushTest().Run();
+    //IOC方式
+    await new IocPushTest().Run(services);
 }
 #endregion
 

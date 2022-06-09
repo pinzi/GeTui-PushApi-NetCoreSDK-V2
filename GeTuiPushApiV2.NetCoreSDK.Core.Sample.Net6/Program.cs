@@ -1,5 +1,5 @@
-﻿using GeTuiPushApiV2.NetCoreSDK.Core.Sample;
-using GeTuiPushApiV2.ServerSDK.Core.IOC;
+﻿using GeTuiPushApiV2.NetCoreSDK.Core.IOC;
+using GeTuiPushApiV2.NetCoreSDK.Core.Sample;
 using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.InteropServices;
 
@@ -8,7 +8,7 @@ Console.WriteLine(RuntimeInformation.FrameworkDescription);
 await new CommPushTest().Run();
 //IOC方式
 IServiceCollection services = new ServiceCollection();
-services.UseGeTuiPushApiV2ServerSDKCore();
+services.UseGeTuiPushApiV2NetCoreSDKCore();
 await new IocPushTest().Run(services);
 
 Console.WriteLine("ok");

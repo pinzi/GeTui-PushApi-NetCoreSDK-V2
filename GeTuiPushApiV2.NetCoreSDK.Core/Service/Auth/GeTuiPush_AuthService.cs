@@ -10,27 +10,6 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
         #region 鉴权API
         #region 鉴权API-获取鉴权token
         /// <summary>
-        /// 获取token
-        /// </summary>
-        /// <param name="appId">应用id</param>
-        /// <param name="forceRefresh">缓存为空时，是否强制刷新token</param>
-        /// <returns></returns>
-        public async Task<string> GetTokenAsync(string appId, bool forceRefresh = false)
-        {
-            //读取token缓存信息
-            string token = _iStorage.GetToken(appId);
-            if (string.IsNullOrEmpty(token) || forceRefresh)
-            {
-                //token已过期，刷新token
-                var resultAuth = await AuthAsync();
-                token = resultAuth.data.token;
-            }
-            return token;
-        }
-        #endregion
-
-        #region 鉴权API-获取鉴权token
-        /// <summary>
         /// 鉴权-获取鉴权token
         /// </summary>
         /// <param name="inDto"></param>

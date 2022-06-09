@@ -22,6 +22,9 @@
     <PackageProjectUrl>https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core</PackageProjectUrl>
     <Version>1.0.4</Version>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Service\GeTuiPushService.cs~RF1ee5b4a4.TMP" />
+  </ItemGroup>
 
   <ItemGroup>
 	<None Include="..\icon_128x128.png">

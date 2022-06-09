@@ -70,7 +70,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
         /// </summary>
         /// <param name="inDto"></param>
         /// <returns></returns>
-        public async Task<ApiResultOutDto<ApiUserCidAliasOutDto>> UserAliasCidAsync(UserCidAliasInDto inDto)
+        public async Task<ApiResultOutDto<ApiUserCidAliasOutDto>> UserCidAliasAsync(UserCidAliasInDto inDto)
         {
             long _timestamp = GetTimeStamp();
             var result = await _api.UserCidAliasAsync(new ApiUserCidAliasInDto()
