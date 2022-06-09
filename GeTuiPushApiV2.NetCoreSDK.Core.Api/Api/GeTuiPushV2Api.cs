@@ -86,6 +86,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
         /// <typeparam name="T1">请求参数类型</typeparam>
         /// <typeparam name="T2">响应参数data类型</typeparam>
         /// <param name="ApiUrl">请求地址</param>
+        /// <param name="PostData">请求参数</param>
         /// <returns></returns>
         public static async Task<ApiResultOutDto<T2>> HttpGetGeTuiApiAsync<T1, T2>(string ApiUrl, T1 PostData) where T1 : ApiInDto
         {
@@ -117,6 +118,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
         /// </summary>
         /// <typeparam name="T">请求参数类型</typeparam>
         /// <param name="ApiUrl">请求地址</param>
+        /// <param name="PostData">请求参数</param>
         /// <returns></returns>
         public static async Task<ApiResultOutDto> HttpGetGeTuiApiNoDataAsync<T>(string ApiUrl, T PostData) where T : ApiInDto
         {

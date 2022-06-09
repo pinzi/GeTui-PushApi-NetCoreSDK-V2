@@ -1,6 +1,6 @@
-﻿using GeTuiPushApiV2.ServerSDK.Core;
-using GeTuiPushApiV2.ServerSDK.Core.Utility;
-using GeTuiPushApiV2.ServerSDK.Storage;
+﻿using GeTuiPushApiV2.NetCoreSDK.Core;
+using GeTuiPushApiV2.NetCoreSDK.Core.Utility;
+using GeTuiPushApiV2.NetCoreSDK.Storage;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
@@ -19,7 +19,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Sample
 
             //准备CID
             var redis = provider.GetRequiredService<IStorage>();
-            redis.AddCID("123456789", "2bfd19ad80d679853a690ceb72c7c041");
+            redis.SaveCID("123456789", "2bfd19ad80d679853a690ceb72c7c041");
 
             //获取推送身份Token
             GeTuiPushOptions geTuiPushOptions = provider.GetRequiredService<GeTuiPushOptions>();
@@ -36,7 +36,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Sample
             {
                 var result = await GeTuiPushV2Api.HttpPostGeTuiApiAsync<ApiAuthInDto, ApiAuthOutDto>($"https://restapi.getui.com/v2/{geTuiPushOptions.AppID}/auth", indto);
                 Console.WriteLine(result.data.token);
-                var apiInDto = new ApiPushToSingleInDto()
+                var apiInDto = new ApiPushToSingleCIDInDto()
                 {
                     request_id = Guid.NewGuid().ToString(),
                     audience = new audience_cidDto()
@@ -63,7 +63,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Sample
                 };
                 apiInDto.token = result.data.token;
                 apiInDto.appId = geTuiPushOptions.AppID;
-                var result2 = await GeTuiPushV2Api.HttpPostGeTuiApiAsync<ApiPushToSingleInDto, ApiPushToSingleOutDto>($"https://restapi.getui.com/v2/{geTuiPushOptions.AppID}/push/single/cid", apiInDto);
+                var result2 = await GeTuiPushV2Api.HttpPostGeTuiApiNoDataAsync<ApiPushToSingleCIDInDto>($"https://restapi.getui.com/v2/{geTuiPushOptions.AppID}/push/single/cid", apiInDto);
                 Console.WriteLine($"IOC-1=>{result2.msg}");
             }
 
@@ -74,7 +74,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Sample
                 GeTuiPushV2Api api = provider.GetRequiredService<GeTuiPushV2Api>();
                 var result = await api.AuthAsync(indto);
                 Console.WriteLine(result.data.token);
-                var apiInDto = new ApiPushToSingleInDto()
+                var apiInDto = new ApiPushToSingleCIDInDto()
                 {
                     request_id = Guid.NewGuid().ToString(),
                     audience = new audience_cidDto()
@@ -101,7 +101,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Sample
                 };
                 apiInDto.token = result.data.token;
                 apiInDto.appId = geTuiPushOptions.AppID;
-                var result2 = await api.PushToSingleAsync(apiInDto);
+                var result2 = await api.PushToSingleCIDAsync(apiInDto);
                 Console.WriteLine($"IOC-2=>{result2.msg}");
             }
 
@@ -112,7 +112,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Sample
                 GeTuiPushService service = provider.GetRequiredService<GeTuiPushService>();
                 try
                 {
-                    await service.PushMessageAsync(new PushMessageInDto()
+                    await service.QuickPushMessageAsync(new PushMessageInDto()
                     {
                         title = "停机警告-IOC-3",
                         body = $"已停机，请及时处理",
@@ -121,8 +121,8 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Sample
                             msgId = new string[] { Guid.NewGuid().ToStr() },
                             text = $"停机时间：{DateTime.Now}"
                         }),
-                        isall = false,
-                        uid = new string[] { "123456789" }
+                        filter = TargetUserFilter.uid,
+                        filterCondition = new string[] { "123456789" }
                     });
                     Console.WriteLine("IOC-3=>推送成功");
                 }

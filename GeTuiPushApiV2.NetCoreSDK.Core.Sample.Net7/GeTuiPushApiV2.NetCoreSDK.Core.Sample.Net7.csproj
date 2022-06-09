@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GeTuiPushApiV2.ServerSDK.Core" Version="1.0.4" />
-    <PackageReference Include="GeTuiPushApiV2.ServerSDK.Core.IOC" Version="1.0.1" />
+    <PackageReference Include="GeTuiPushApiV2.NetCoreSDK.Core" Version="1.0.5" />
+    <PackageReference Include="GeTuiPushApiV2.NetCoreSDK.Core.IOC" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>

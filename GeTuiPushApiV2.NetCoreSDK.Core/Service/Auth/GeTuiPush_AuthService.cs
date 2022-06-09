@@ -12,7 +12,6 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
         /// <summary>
         /// 鉴权-获取鉴权token
         /// </summary>
-        /// <param name="inDto"></param>
         /// <returns></returns>
         public async Task<ApiResultOutDto<ApiAuthOutDto>> AuthAsync()
         {
@@ -39,7 +38,6 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
         /// <summary>
         /// 鉴权-删除鉴权token
         /// </summary>
-        /// <param name="inDto"></param>
         /// <returns></returns>
         public async Task<ApiResultOutDto<ApiAuthDeleteOutDto>> AuthDeleteAsync()
         {

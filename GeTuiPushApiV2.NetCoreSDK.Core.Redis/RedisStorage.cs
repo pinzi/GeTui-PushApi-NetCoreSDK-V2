@@ -72,7 +72,6 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Redis
         /// </summary>
         /// <param name="uid">用户id</param>
         /// <param name="cid">个推SDK的唯一识别号</param>
-        /// <param name="expireTime">CID有效期</param>
         public void SaveCID(string uid, string cid)
         {
             _iRedis.SetAdd($"{StorageKeyPrefix.PUSH_CID}{uid}", new List<string>() { cid });

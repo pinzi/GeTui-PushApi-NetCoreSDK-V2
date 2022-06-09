@@ -5,7 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GeTuiPushApiV2.NetCoreSDK.Core" Version="1.0.5" />
-    <PackageReference Include="GeTuiPushApiV2.NetCoreSDK.Core.IOC" Version="1.0.2" />
+    <PackageReference Include="GeTuiPushApiV2.NetCoreSDK.Core" Version="1.0.6" />
+    <PackageReference Include="GeTuiPushApiV2.NetCoreSDK.Core.IOC" Version="1.0.3" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
   </ItemGroup>
 
