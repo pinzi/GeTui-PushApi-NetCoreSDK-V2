@@ -29,8 +29,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Redis
         /// <summary>
         /// 构造函数，单例模式
         /// </summary>
-        /// <param name="ConnString">redis连接字符串</param>
-        /// <param name="DbNum">数据库编号</param>
+        /// <param name="options">redis连接配置</param>
         public StackExchangeRedis(RedisOptions options)
         {
             _redisOptions = options;
@@ -121,6 +120,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Redis
         /// 删除指定的Set集合键值
         /// </summary>
         /// <param name="key">键</param>
+        /// <param name="value">值</param>
         public void SetRemove(string key, string value)
         {
             db.SetRemove(key, value);

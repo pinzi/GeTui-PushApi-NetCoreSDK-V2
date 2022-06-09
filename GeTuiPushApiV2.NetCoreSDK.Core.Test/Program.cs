@@ -38,5 +38,7 @@ services.UseGeTuiPushApiV2NetCoreSDKCore(StorageType.MemoryCache);//
 }
 #endregion
 
+Newtonsoft.Json.JsonConvert.SerializeObject(new { id = 1, name = "hello" });
+
 Console.WriteLine("ok");
 Console.ReadKey();

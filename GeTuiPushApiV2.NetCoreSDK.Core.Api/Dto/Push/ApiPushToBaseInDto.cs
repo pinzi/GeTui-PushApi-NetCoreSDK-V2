@@ -390,19 +390,29 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
         /// </summary>
         [JsonProperty("action-loc-key")]
         public string actionlockey { get; set; }
-        //（用于多语言支持）指定Localizable.strings文件中相应的key
+        /// <summary>
+        /// （用于多语言支持）指定Localizable.strings文件中相应的key
+        /// </summary>
         [JsonProperty("loc-key")]
         public string lockey { get; set; }
-        //如果loc-key中使用了占位符，则在loc-args中指定各参数
+        /// <summary>
+        /// 如果loc-key中使用了占位符，则在loc-args中指定各参数
+        /// </summary>
         [JsonProperty("loc-args")]
         public string[] locargs { get; set; }
-        //指定启动界面图片名
+        /// <summary>
+        /// 指定启动界面图片名
+        /// </summary>
         [JsonProperty("launch-image")]
         public string launchimage { get; set; }
-        //(用于多语言支持）对于标题指定执行按钮所使用的Localizable.strings, 仅支持iOS8.2以上版本
+        /// <summary>
+        /// (用于多语言支持）对于标题指定执行按钮所使用的Localizable.strings, 仅支持iOS8.2以上版本
+        /// </summary>
         [JsonProperty("title-loc-key")]
         public string titlelockey { get; set; }
-        //对于标题, 如果loc-key中使用的占位符，则在loc-args中指定各参数, 仅支持iOS8.2以上版本
+        /// <summary>
+        /// 对于标题, 如果loc-key中使用的占位符，则在loc-args中指定各参数, 仅支持iOS8.2以上版本
+        /// </summary>
         [JsonProperty("title-loc-args")]
         public string[] titlelocargs { get; set; }
         /// <summary>

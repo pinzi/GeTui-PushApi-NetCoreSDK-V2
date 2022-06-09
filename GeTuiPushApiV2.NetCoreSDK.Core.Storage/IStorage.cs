@@ -65,7 +65,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Storage
         /// 批量保存别名数据列表
         /// </summary>
         /// <param name="alias">别名</param>
-        /// <param name="cid">个推SDK的唯一识别号列表</param>
+        /// <param name="cids">个推SDK的唯一识别号列表</param>
         public void SaveAlias(string alias, List<string> cids);
         /// <summary>
         /// 删除别名关联的所有cid列表

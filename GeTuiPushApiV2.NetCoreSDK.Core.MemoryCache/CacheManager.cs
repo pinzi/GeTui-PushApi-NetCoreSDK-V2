@@ -97,6 +97,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.MemoryCache
         /// </summary>
         /// <param name="key">关键字</param>
         /// <param name="value">缓存值</param>
+        /// <param name="span">过期时间</param>
         public void Set_SlidingExpire<T>(string key, T value, TimeSpan span)
         {
             if (string.IsNullOrWhiteSpace(key))
@@ -116,6 +117,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.MemoryCache
         /// </summary>
         /// <param name="key">关键字</param>
         /// <param name="value">缓存值</param>
+        /// <param name="span">过期时间</param>
         public void Set_AbsoluteExpire<T>(string key, T value, TimeSpan span)
         {
             if (string.IsNullOrWhiteSpace(key))
@@ -132,6 +134,8 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.MemoryCache
         /// </summary>
         /// <param name="key">关键字</param>
         /// <param name="value">缓存值</param>
+        /// <param name="slidingSpan">滑动过期时间</param>
+        /// <param name="absoluteSpan">绝对过期时间</param>
         public void Set_SlidingAndAbsoluteExpire<T>(string key, T value, TimeSpan slidingSpan, TimeSpan absoluteSpan)
         {
             if (string.IsNullOrWhiteSpace(key))

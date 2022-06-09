@@ -97,7 +97,6 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Test
                     Console.WriteLine(f);
                 });
                 Console.WriteLine("---------------------------------------------");
-                return;
             }
             #endregion
 
@@ -131,7 +130,6 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Test
             }
 
             Console.WriteLine("\r\n\r\n");
-
             {
                 Console.WriteLine("-------------------------------【别名】-------------------------------");
                 iStorage.SaveAlias("2", "A");

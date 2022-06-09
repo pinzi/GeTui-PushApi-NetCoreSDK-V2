@@ -1,7 +1,6 @@
-﻿using GeTuiPushApiV2.ServerSDK.Core;
-using GeTuiPushApiV2.ServerSDK.Core.Redis;
-using GeTuiPushApiV2.ServerSDK.Core.Utility;
-using GeTuiPushApiV2.ServerSDK.Storage;
+﻿using GeTuiPushApiV2.NetCoreSDK.Core.Redis;
+using GeTuiPushApiV2.NetCoreSDK.Core.Utility;
+using GeTuiPushApiV2.NetCoreSDK.Storage;
 using Newtonsoft.Json;
 
 namespace GeTuiPushApiV2.NetCoreSDK.Core.Sample
@@ -32,7 +31,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Sample
             {
                 var result = await GeTuiPushV2Api.HttpPostGeTuiApiAsync<ApiAuthInDto, ApiAuthOutDto>($"https://restapi.getui.com/v2/{AppID}/auth", indto);
                 Console.WriteLine(result.data.token);
-                var apiInDto = new ApiPushToSingleInDto()
+                var apiInDto = new ApiPushToSingleCIDInDto()
                 {
                     request_id = Guid.NewGuid().ToString(),
                     audience = new audience_cidDto()
@@ -59,7 +58,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Sample
                 };
                 apiInDto.token = result.data.token;
                 apiInDto.appId = AppID;
-                var result2 = await GeTuiPushV2Api.HttpPostGeTuiApiAsync<ApiPushToSingleInDto, ApiPushToSingleOutDto>($"https://restapi.getui.com/v2/{AppID}/push/single/cid", apiInDto);
+                var result2 = await GeTuiPushV2Api.HttpPostGeTuiApiNoDataAsync<ApiPushToSingleCIDInDto>($"https://restapi.getui.com/v2/{AppID}/push/single/cid", apiInDto);
                 Console.WriteLine($"普通-1=>{result2.msg}");
             }
 
@@ -70,7 +69,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Sample
                 GeTuiPushV2Api api = new GeTuiPushV2Api();
                 var result = await api.AuthAsync(indto);
                 Console.WriteLine(result.data.token);
-                var apiInDto = new ApiPushToSingleInDto()
+                var apiInDto = new ApiPushToSingleCIDInDto()
                 {
                     request_id = Guid.NewGuid().ToString(),
                     audience = new audience_cidDto()
@@ -97,7 +96,7 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Sample
                 };
                 apiInDto.token = result.data.token;
                 apiInDto.appId = AppID;
-                var result2 = await api.PushToSingleAsync(apiInDto);
+                var result2 = await api.PushToSingleCIDAsync(apiInDto);
                 Console.WriteLine($"普通-2=>{result2.msg}");
             }
 
@@ -110,8 +109,13 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Sample
                     Host = "127.0.0.1",
                     Port = 6379,
                     DbNum = 10
-                }));
-                iStorage.AddCID("123456789", "2bfd19ad80d679853a690ceb72c7c041");
+                }), new GeTuiPushOptions()
+                {
+                    AppID = AppID,
+                    AppKey = AppKey,
+                    MasterSecret = MasterSecret
+                });
+                iStorage.SaveCID("123456789", "2bfd19ad80d679853a690ceb72c7c041");
                 var options = new GeTuiPushOptions()
                 {
                     AppID = AppID,

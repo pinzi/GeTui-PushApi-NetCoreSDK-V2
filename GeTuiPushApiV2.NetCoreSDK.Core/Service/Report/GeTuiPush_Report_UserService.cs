@@ -42,7 +42,6 @@
         ///  统计API-【推送】获取24个小时在线用户数
         ///  查询当前时间一天内的在线用户数(10分钟一个点，1个小时六个点)
         /// </summary>
-        /// <param name="inDto"></param>
         /// <returns></returns>
         public async Task<ApiReportOnlineUserOutDto> ReportOnlineUserAsync()
         {

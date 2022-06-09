@@ -26,8 +26,8 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
         /// <summary>
         /// 初始化
         /// </summary>
-        /// <param name="cacheManager">存储方式</param>
-        /// <param name="option">个推消息推送配置信息</param>
+        /// <param name="iStorage">数据存储方式</param>
+        /// <param name="options">个推消息推送配置信息</param>
         /// <param name="api">个推消息推送V2接口</param>
         public GeTuiPushService(IStorage iStorage, GeTuiPushOptions options, GeTuiPushV2Api api)
         {
