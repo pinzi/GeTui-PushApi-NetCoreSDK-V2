@@ -20,9 +20,6 @@ jobs:
       - name: 列出Package发布的文件
         run: |
           ls Package
-      - name: Build
-        shell: pwsh
-        run: .\build.ps1 --stable=true
       - name: Get Release Version
         shell: pwsh
         run: .\build\getReleaseVersion.ps1
