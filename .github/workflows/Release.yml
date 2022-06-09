@@ -1,9 +1,9 @@
 name: GitHub Actions
 on:
   push:
-    branches: [ publish ]
+    branches: [ Release ]
   pull_request:
-    branches: [ publish ]
+    branches: [ Release ]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -20,9 +20,6 @@ jobs:
       - name: 列出Package发布的文件
         run: |
           ls Package
-      - name: Build
-        shell: pwsh
-        run: .\build.ps1 --stable=true
       - name: Get Release Version
         shell: pwsh
         run: .\build\getReleaseVersion.ps1
@@ -36,7 +33,7 @@ jobs:
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: ${{ env.GitAssemblyInformationalVersion }}
+          automatic_release_tag:V${{ env.GitAssemblyInformationalVersion }}
           title: Version ${{ env.GitAssemblyInformationalVersion }}
           prerelease: true
           files: |
