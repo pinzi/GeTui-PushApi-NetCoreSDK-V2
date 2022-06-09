@@ -16,11 +16,11 @@
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageId>GeTuiPushApiV2.NetCoreSDK.Core</PackageId>
     <PackageTags>GeTui;GeTuiPush</PackageTags>
-    <PackageReleaseNotes>第5次发布，更新图标</PackageReleaseNotes>
+    <PackageReleaseNotes>第6次发布，完成推送API，用户API，统计API的接入</PackageReleaseNotes>
     <Copyright>Copyright 2022 (c) pinzi. All rights reserved.</Copyright>
     <RepositoryUrl>https://github.com/pinzi/GeTui-PushApi-NetCoreSDK-V2.git</RepositoryUrl>
-    <PackageProjectUrl>https://www.nuget.org/packages/GeTuiPushApiV2.ServerSDK.Core</PackageProjectUrl>
-    <Version>1.0.4</Version>
+    <PackageProjectUrl>https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core</PackageProjectUrl>
+    <Version>1.0.5</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Service\GeTuiPushService.cs~RF1ee5b4a4.TMP" />
