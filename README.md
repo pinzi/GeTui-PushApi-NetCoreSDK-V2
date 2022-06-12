@@ -18,7 +18,7 @@
 - ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core.Api?logo=nuget)[GeTuiPushApiV2.NetCoreSDK.Core.Api](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core.Api/)  GeTui消息推送V2接口封装
 - ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core.IOC?logo=nuget)[GeTuiPushApiV2.NetCoreSDK.Core.IOC](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core.IOC/)  使用IOC容器
 - ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core.MemoryCache?logo=nuget)[GeTuiPushApiV2.NetCoreSDK.Core.MemoryCache](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core.MemoryCache) 使用内存存储数据
-- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core.Storage?logo=nuget)[GeTuiPushApiV2.NetCoreSDK.Core.Storage](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core.Storaget) 存储封装
+- ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core.Storage?logo=nuget)[GeTuiPushApiV2.NetCoreSDK.Core.Storage](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core.Storage) 存储封装
 - ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core.Utility?logo=nuget)[GeTuiPushApiV2.NetCoreSDK.Core.Utility](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core.Utility) 公共方法封装
 - ![Nuget Downloads](https://img.shields.io/nuget/dt/GeTuiPushApiV2.NetCoreSDK.Core.Redis?logo=nuget)[GeTuiPushApiV2.NetCoreSDK.Core.Redis](https://www.nuget.org/packages/GeTuiPushApiV2.NetCoreSDK.Core.Redis) 使用Redis存储数据
 
