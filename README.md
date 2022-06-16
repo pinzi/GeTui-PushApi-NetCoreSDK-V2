@@ -364,38 +364,38 @@ catch (Exception ex)
 | 推送API | PushToSingleBatchAliasAsync |[[toSingle]执行别名批量单推](https://docs.getui.com/getui/server/rest_v2/push/#4) | | 
 | 推送API | CreateListMessageAsync |[[toList]创建消息](https://docs.getui.com/getui/server/rest_v2/push/#5) |已测试 | 
 | 推送API | PushToListAsync |[[toList]执行cid批量推](https://docs.getui.com/getui/server/rest_v2/push/#6) |已测试| 
-| 推送API | PushToListAliasAsync |[[toList]执行别名批量推](https://docs.getui.com/getui/server/rest_v2/push/#7) |------- | 
+| 推送API | PushToListAliasAsync |[[toList]执行别名批量推](https://docs.getui.com/getui/server/rest_v2/push/#7) || 
 | 推送API | PushToAppAsync |[[toApp]执行群推](https://docs.getui.com/getui/server/rest_v2/push/#8) |已测试 | 
-| 推送API | PushToAppTagAsync |[[toApp]根据条件筛选用户推送](https://docs.getui.com/getui/server/rest_v2/push/#9) |------- | 
-| 推送API | PushToAppFastCustomTagAsync |[[toApp]使用标签快速推送](https://docs.getui.com/getui/server/rest_v2/push/#10) |------- | 
-| 推送API | TaskStopAsync |[[任务]停止任务](https://docs.getui.com/getui/server/rest_v2/push/#11) |------- | 
-| 推送API | TaskScheduleAsync |[[任务]查询定时任务](https://docs.getui.com/getui/server/rest_v2/push/#12) |------- | 
-| 推送API | TaskDeleteAsync |[[任务]删除定时任务](https://docs.getui.com/getui/server/rest_v2/push/#13) |------- | 
-| 推送API | TaskDetailAsync |[[推送]查询消息明细](https://docs.getui.com/getui/server/rest_v2/push/#14) |------- | 
-| 统计API | ReportPushTaskAsync | [[推送]获取推送结果（不含自定义事件）](https://docs.getui.com/getui/server/rest_v2/report/#1)  |------- | 
-| 统计API | ReportPushTaskActionAsync | [[推送]获取推送结果（含自定义事件）](https://docs.getui.com/getui/server/rest_v2/report/#2)  |------- | 
-| 统计API | ReportPushTaskGroupAsync | [[推送]任务组名查报表](https://docs.getui.com/getui/server/rest_v2/report/#3)  |------- | 
-|统计API  | ReportPushTaskDetailAsync |[[推送]获取推送实时结果](https://docs.getui.com/getui/server/rest_v2/report/#4)  |------- | 
-| ~~统计API~~ ||~~[[推送]获取单日推送数据](https://docs.getui.com/getui/server/rest_v2/report/#5)~~ |------- | 
-| ~~统计API~~ ||~~[[推送]查询推送量](https://docs.getui.com/getui/server/rest_v2/report/#6)~~  |------- | 
-| 统计API | ReportUserDateAsync |[[用户]获取单日用户数据接口](https://docs.getui.com/getui/server/rest_v2/report/#7)  |------- | 
-| 统计API | ReportOnlineUserAsync |[[用户]获取24个小时在线用户数](https://docs.getui.com/getui/server/rest_v2/report/#8)  |------- | 
+| 推送API | PushToAppTagAsync |[[toApp]根据条件筛选用户推送](https://docs.getui.com/getui/server/rest_v2/push/#9) | | 
+| 推送API | PushToAppFastCustomTagAsync |[[toApp]使用标签快速推送](https://docs.getui.com/getui/server/rest_v2/push/#10) | | 
+| 推送API | TaskStopAsync |[[任务]停止任务](https://docs.getui.com/getui/server/rest_v2/push/#11) | | 
+| 推送API | TaskScheduleAsync |[[任务]查询定时任务](https://docs.getui.com/getui/server/rest_v2/push/#12) | | 
+| 推送API | TaskDeleteAsync |[[任务]删除定时任务](https://docs.getui.com/getui/server/rest_v2/push/#13) | | 
+| 推送API | TaskDetailAsync |[[推送]查询消息明细](https://docs.getui.com/getui/server/rest_v2/push/#14) | | 
+| 统计API | ReportPushTaskAsync | [[推送]获取推送结果（不含自定义事件）](https://docs.getui.com/getui/server/rest_v2/report/#1)  | | 
+| 统计API | ReportPushTaskActionAsync | [[推送]获取推送结果（含自定义事件）](https://docs.getui.com/getui/server/rest_v2/report/#2)  | | 
+| 统计API | ReportPushTaskGroupAsync | [[推送]任务组名查报表](https://docs.getui.com/getui/server/rest_v2/report/#3)  | | 
+|统计API  | ReportPushTaskDetailAsync |[[推送]获取推送实时结果](https://docs.getui.com/getui/server/rest_v2/report/#4)  || 
+| ~~统计API~~ ||~~[[推送]获取单日推送数据](https://docs.getui.com/getui/server/rest_v2/report/#5)~~ | | 
+| ~~统计API~~ ||~~[[推送]查询推送量](https://docs.getui.com/getui/server/rest_v2/report/#6)~~  | | 
+| 统计API | ReportUserDateAsync |[[用户]获取单日用户数据接口](https://docs.getui.com/getui/server/rest_v2/report/#7)  | | 
+| 统计API | ReportOnlineUserAsync |[[用户]获取24个小时在线用户数](https://docs.getui.com/getui/server/rest_v2/report/#8)  | | 
 | 用户API | UserAliasAsync |[[别名]绑定别名](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-1)  |已测试| 
 | 用户API | UserAliasCidAsync |[[别名]根据cid查询别名](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-2)  |已测试| 
-| 用户API | UserCidAliasAsync |[[别名]根据别名查询cid](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-3)  |------- | 
+| 用户API | UserCidAliasAsync |[[别名]根据别名查询cid](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-3)  | | 
 | 用户API | UserAliasBatchUnBoundAsync |[[别名]批量解绑别名](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-4)  |已测试| 
 | 用户API | UserAliasUnBoundAsync |[[别名]解绑所有别名](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-5)  |已测试| 
 | 用户API | UserTagBindAsync |[[标签]一个用户绑定一批标签](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-6)  |已测试| 
 | 用户API | UserTagBatchBindAsync |[[标签]一批用户绑定一个标签](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-7)  |已测试| 
 | 用户API | UserTagBatchUnBindAsync |[[标签]一批用户解绑一个标签](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-8)  |已测试| 
 | 用户API | UserTagQueryAsync |[[标签]查询用户标签](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-9)  |已测试| 
-| 用户API | UserBlackAddAsync |[[用户]添加黑名单用户](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-10)  |------- | 
-| 用户API | UserBlackRemoveAsync |[[用户]移除黑名单用户](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-11)  |------- | 
-| 用户API | UserStatusAsync |[[用户]查询用户状态](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-12)  |------- | 
-| 用户API | UserDeviceStatusAsync |[[用户]查询设备状态](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-13)  |------- | 
-| 用户API | UserDetailAsync |[[用户]查询用户信息](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-14)  |------- | 
-| 用户API | UserBadgeAsync |[[用户]设置角标(仅支持IOS)](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-15)  |------- | 
-| 用户API | UserCountAsync |[[用户]查询用户总量](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-16)  |------- | 
+| 用户API | UserBlackAddAsync |[[用户]添加黑名单用户](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-10)  | | 
+| 用户API | UserBlackRemoveAsync |[[用户]移除黑名单用户](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-11)  | | 
+| 用户API | UserStatusAsync |[[用户]查询用户状态](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-12)  | | 
+| 用户API | UserDeviceStatusAsync |[[用户]查询设备状态](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-13)  | | 
+| 用户API | UserDetailAsync |[[用户]查询用户信息](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-14)  | | 
+| 用户API | UserBadgeAsync |[[用户]设置角标(仅支持IOS)](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-15)  | | 
+| 用户API | UserCountAsync |[[用户]查询用户总量](https://docs.getui.com/getui/server/rest_v2/user/#doc-title-16)  | | 
 
 
 
