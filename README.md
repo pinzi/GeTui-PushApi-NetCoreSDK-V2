@@ -253,19 +253,44 @@ services.UseGeTuiPushApiV2NetCoreSDKCore(StorageType.MemoryCache);
 public class NewLifeRedis : IRedis
 {
     public string Get(string key)
-    {
-        throw new NotImplementedException();
-    }
+        {
+            throw new NotImplementedException();
+        }
 
-    public void Remove(string key)
-    {
-        throw new NotImplementedException();
-    }
+        public List<string> GetList(string key)
+        {
+            throw new NotImplementedException();
+        }
 
-    public void Set(string key, string value, TimeSpan? expireTime = null)
-    {
-        throw new NotImplementedException();
-    }
+        public void Remove(string key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(List<string> keys)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Set(string key, string value, TimeSpan? expireTime = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetAdd(string key, string value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetAdd(string key, List<string> value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetRemove(string key, string value)
+        {
+            throw new NotImplementedException();
+        }
 }
 
 public static class RedisServiceCollectionExtensions
@@ -297,7 +322,7 @@ services.AddNewLifeRedis();
 ```C#
 IServiceCollection services = new ServiceCollection();
 //注入推送服务
-services.UseIOC();
+services.UseGeTuiPushApiV2NetCoreSDKCore();
 var provider = services.BuildServiceProvider();
 //开始消息推送
 GeTuiPushService service = provider.GetRequiredService<GeTuiPushService>();
