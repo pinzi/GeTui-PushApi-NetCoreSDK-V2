@@ -252,7 +252,7 @@ services.UseGeTuiPushApiV2NetCoreSDKCore(StorageType.MemoryCache);
 /// </summary>
 public class NewLifeRedis : IRedis
 {
-    public string Get(string key)
+        public string Get(string key)
         {
             throw new NotImplementedException();
         }
