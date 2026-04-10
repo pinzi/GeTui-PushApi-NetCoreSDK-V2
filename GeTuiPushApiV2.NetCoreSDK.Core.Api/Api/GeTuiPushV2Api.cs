@@ -1,10 +1,10 @@
-﻿using GeTuiPushApiV2.NetCoreSDK.Core.Utility;
+using GeTuiPushApiV2.NetCoreSDK.Core.Utility;
 using Newtonsoft.Json;
 
 namespace GeTuiPushApiV2.NetCoreSDK.Core
 {
     /// <summary>
-    /// 个推消息推送V2接口
+    /// 个推消息推送 V2 接口
     /// </summary>
     public partial class GeTuiPushV2Api
     {
@@ -13,13 +13,13 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
         /// </summary>
         internal const string ApiBaseUrl = "https://restapi.getui.com/v2/";
 
-        #region HTTP请求
-        #region 发起Post请求
+        #region HTTP 请求
+        #region 发起 Post 请求
         /// <summary>
-        /// 发起Post请求
+        /// 发起 Post 请求
         /// </summary>
         /// <typeparam name="T1">请求参数类型</typeparam>
-        /// <typeparam name="T2">响应参数data类型</typeparam>
+        /// <typeparam name="T2">响应参数 data 类型</typeparam>
         /// <param name="ApiUrl">请求地址</param>
         /// <param name="PostData">请求参数</param>
         /// <returns></returns>
@@ -35,21 +35,16 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
             }
             catch (Exception ex)
             {
-                try
-                {
-                    return JsonConvert.DeserializeObject<ApiResultOutDto<T2>>(ex.Message)!;
-                }
-                catch
-                {
-                    return new ApiResultOutDto<T2>() { code = -1, msg = ex.Message };
-                }
+                // 记录异常日志（实际项目中应使用日志框架）
+                Console.WriteLine($"[ERROR] HttpPostGeTuiApiAsync failed: {ex.Message}");
+                return new ApiResultOutDto<T2>() { code = -1, msg = ex.Message };
             }
         }
         #endregion
 
-        #region 发起Post请求（无data）
+        #region 发起 Post 请求（无 data）
         /// <summary>
-        /// 发起Post请求（无data）
+        /// 发起 Post 请求（无 data）
         /// </summary>
         /// <typeparam name="T">请求参数类型</typeparam>
         /// <param name="ApiUrl">请求地址</param>
@@ -67,24 +62,18 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
             }
             catch (Exception ex)
             {
-                try
-                {
-                    return JsonConvert.DeserializeObject<ApiResultOutDto>(ex.Message)!;
-                }
-                catch
-                {
-                    return new ApiResultOutDto() { code = -1, msg = ex.Message };
-                }
+                Console.WriteLine($"[ERROR] HttpPostGeTuiApiNoDataAsync failed: {ex.Message}");
+                return new ApiResultOutDto() { code = -1, msg = ex.Message };
             }
         }
         #endregion
 
-        #region 发起Get请求
+        #region 发起 Get 请求
         /// <summary>
-        /// 发起Get请求
+        /// 发起 Get 请求
         /// </summary>
         /// <typeparam name="T1">请求参数类型</typeparam>
-        /// <typeparam name="T2">响应参数data类型</typeparam>
+        /// <typeparam name="T2">响应参数 data 类型</typeparam>
         /// <param name="ApiUrl">请求地址</param>
         /// <param name="PostData">请求参数</param>
         /// <returns></returns>
@@ -100,21 +89,15 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
             }
             catch (Exception ex)
             {
-                try
-                {
-                    return JsonConvert.DeserializeObject<ApiResultOutDto<T2>>(ex.Message)!;
-                }
-                catch
-                {
-                    return new ApiResultOutDto<T2>() { code = -1, msg = ex.Message };
-                }
+                Console.WriteLine($"[ERROR] HttpGetGeTuiApiAsync failed: {ex.Message}");
+                return new ApiResultOutDto<T2>() { code = -1, msg = ex.Message };
             }
         }
         #endregion
 
-        #region 发起Get请求（无data）
+        #region 发起 Get 请求（无 data）
         /// <summary>
-        /// 发起Get请求（无data）
+        /// 发起 Get 请求（无 data）
         /// </summary>
         /// <typeparam name="T">请求参数类型</typeparam>
         /// <param name="ApiUrl">请求地址</param>
@@ -132,24 +115,18 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
             }
             catch (Exception ex)
             {
-                try
-                {
-                    return JsonConvert.DeserializeObject<ApiResultOutDto>(ex.Message)!;
-                }
-                catch
-                {
-                    return new ApiResultOutDto() { code = -1, msg = ex.Message };
-                }
+                Console.WriteLine($"[ERROR] HttpGetGeTuiApiNoDataAsync failed: {ex.Message}");
+                return new ApiResultOutDto() { code = -1, msg = ex.Message };
             }
         }
         #endregion
 
-        #region 发起Put请求
+        #region 发起 Put 请求
         /// <summary>
-        /// 发起Put请求
+        /// 发起 Put 请求
         /// </summary>
         /// <typeparam name="T1">请求参数类型</typeparam>
-        /// <typeparam name="T2">响应参数data类型</typeparam>
+        /// <typeparam name="T2">响应参数 data 类型</typeparam>
         /// <param name="ApiUrl">请求地址</param>
         /// <param name="PostData">请求参数</param>
         /// <returns></returns>
@@ -165,21 +142,15 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
             }
             catch (Exception ex)
             {
-                try
-                {
-                    return JsonConvert.DeserializeObject<ApiResultOutDto<T2>>(ex.Message)!;
-                }
-                catch
-                {
-                    return new ApiResultOutDto<T2>() { code = -1, msg = ex.Message };
-                }
+                Console.WriteLine($"[ERROR] HttpPutGeTuiApiAsync failed: {ex.Message}");
+                return new ApiResultOutDto<T2>() { code = -1, msg = ex.Message };
             }
         }
         #endregion
 
-        #region 发起Put请求（无data）
+        #region 发起 Put 请求（无 data）
         /// <summary>
-        /// 发起Put请求（无data）
+        /// 发起 Put 请求（无 data）
         /// </summary>
         /// <typeparam name="T">请求参数类型</typeparam>
         /// <param name="ApiUrl">请求地址</param>
@@ -197,24 +168,18 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
             }
             catch (Exception ex)
             {
-                try
-                {
-                    return JsonConvert.DeserializeObject<ApiResultOutDto>(ex.Message)!;
-                }
-                catch
-                {
-                    return new ApiResultOutDto() { code = -1, msg = ex.Message };
-                }
+                Console.WriteLine($"[ERROR] HttpPutGeTuiApiNoDataAsync failed: {ex.Message}");
+                return new ApiResultOutDto() { code = -1, msg = ex.Message };
             }
         }
         #endregion
 
-        #region 发起Delete请求
+        #region 发起 Delete 请求
         /// <summary>
-        /// 发起Delete请求
+        /// 发起 Delete 请求
         /// </summary>
         /// <typeparam name="T1">请求参数类型</typeparam>
-        /// <typeparam name="T2">响应参数data类型</typeparam>
+        /// <typeparam name="T2">响应参数 data 类型</typeparam>
         /// <param name="ApiUrl">请求地址</param>
         /// <param name="deleteData">请求参数</param>
         /// <returns></returns>
@@ -230,21 +195,15 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
             }
             catch (Exception ex)
             {
-                try
-                {
-                    return JsonConvert.DeserializeObject<ApiResultOutDto<T2>>(ex.Message)!;
-                }
-                catch
-                {
-                    return new ApiResultOutDto<T2>() { code = -1, msg = ex.Message };
-                }
+                Console.WriteLine($"[ERROR] HttpDeleteGeTuiApiAsync failed: {ex.Message}");
+                return new ApiResultOutDto<T2>() { code = -1, msg = ex.Message };
             }
         }
         #endregion
 
-        #region 发起Delete请求（无data）
+        #region 发起 Delete 请求（无 data）
         /// <summary>
-        /// 发起Delete请求（无data）
+        /// 发起 Delete 请求（无 data）
         /// </summary>
         /// <typeparam name="T">请求参数类型</typeparam>
         /// <param name="ApiUrl">请求地址</param>
@@ -262,14 +221,8 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core
             }
             catch (Exception ex)
             {
-                try
-                {
-                    return JsonConvert.DeserializeObject<ApiResultOutDto>(ex.Message)!;
-                }
-                catch
-                {
-                    return new ApiResultOutDto() { code = -1, msg = ex.Message };
-                }
+                Console.WriteLine($"[ERROR] HttpDeleteGeTuiApiNoDataAsync failed: {ex.Message}");
+                return new ApiResultOutDto() { code = -1, msg = ex.Message };
             }
         }
         #endregion
