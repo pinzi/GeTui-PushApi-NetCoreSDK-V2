@@ -38,17 +38,6 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Utility
         }
 
         /// <summary>
-        /// 同步 get 请求
-        /// </summary>
-        /// <param name="url">请求地址</param>    
-        /// <param name="headers">header 键值对</param>
-        /// <returns></returns>
-        public string HttpGet(string url, Dictionary<string, string> headers)
-        {
-            return HttpGetAsync(url, headers).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
         /// 异步 post 请求
         /// </summary>
         /// <param name="url">请求地址</param>
@@ -62,18 +51,6 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Utility
             request.Content = CreateJsonContent(formData);
             using var resp = await HttpClient.SendAsync(request);
             return await resp.Content.ReadAsStringAsync();
-        }
-
-        /// <summary>
-        /// 同步 post 请求
-        /// </summary>
-        /// <param name="url">请求地址</param>
-        /// <param name="headers">header 键值对</param>
-        /// <param name="formData">表单参数</param>
-        /// <returns></returns>
-        public string HttpPost<T>(string url, Dictionary<string, string> headers, T formData)
-        {
-            return HttpPostAsync(url, headers, formData).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -93,18 +70,6 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Utility
         }
 
         /// <summary>
-        /// 同步 put 请求
-        /// </summary>
-        /// <param name="url">请求地址</param>
-        /// <param name="headers">header 键值对</param>
-        /// <param name="formData">表单参数</param>
-        /// <returns></returns>
-        public string HttpPut<T>(string url, Dictionary<string, string> headers, T formData)
-        {
-            return HttpPutAsync(url, headers, formData).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
         /// 异步 Delete 请求
         /// </summary>
         /// <param name="url">请求地址</param>    
@@ -116,17 +81,6 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Utility
             AddHeaders(request.Headers, headers);
             using var resp = await HttpClient.SendAsync(request);
             return await resp.Content.ReadAsStringAsync();
-        }
-
-        /// <summary>
-        /// 同步 Delete 请求
-        /// </summary>
-        /// <param name="url">请求地址</param>    
-        /// <param name="headers">header 键值对</param>
-        /// <returns></returns>
-        public string HttpDelete(string url, Dictionary<string, string> headers)
-        {
-            return HttpDeleteAsync(url, headers).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -143,18 +97,6 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Utility
             request.Content = CreateJsonContent(deleteData);
             using var resp = await HttpClient.SendAsync(request);
             return await resp.Content.ReadAsStringAsync();
-        }
-
-        /// <summary>
-        /// 同步 Delete 请求
-        /// </summary>
-        /// <param name="url">请求地址</param>    
-        /// <param name="headers">header 键值对</param>
-        /// <param name="deleteData">提交的数据</param>
-        /// <returns></returns>
-        public string HttpDelete<T>(string url, Dictionary<string, string> headers, T deleteData)
-        {
-            return HttpDeleteAsync(url, headers, deleteData).GetAwaiter().GetResult();
         }
 
         private static void AddHeaders(HttpRequestHeaders headers, Dictionary<string, string> customHeaders)

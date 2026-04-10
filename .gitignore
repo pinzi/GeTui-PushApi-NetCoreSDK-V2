@@ -1,1 +1,58 @@
-Nothing should be ignored based on the provided file changes. The only modified file is a source code file (`HttpHelper.cs`), which should not be added to .gitignore.
+```
+# Build artifacts
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.so
+*.dylib
+*.jar
+*.war
+*.class
+*.o
+*.obj
+*.out
+
+# Dependencies
+packages/
+node_modules/
+.nuget/
+.npm/
+bower_components/
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+.env.*
+!.env.example
+
+# IDE files
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+htmlcov/
+.coverage
+*.coverage
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+```
