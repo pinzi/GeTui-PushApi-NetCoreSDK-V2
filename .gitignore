@@ -1,58 +1,54 @@
 ```
-# Build artifacts
-bin/
+# Test results and build artifacts
+**/TestResults/
+**/*.trx
+**/*.xml
 obj/
+bin/
 *.dll
 *.exe
 *.pdb
-*.so
-*.dylib
-*.jar
-*.war
-*.class
-*.o
-*.obj
-*.out
+*.config
+*.runtimeconfig.json
+*.deps.json
+*.props
+*.targets
 
 # Dependencies
 packages/
-node_modules/
+**/node_modules/
+**/.nuget/
 .nuget/
-.npm/
-bower_components/
 
 # Logs
 *.log
-logs/
+**/logs/
 
 # Environment
 .env
 .env.local
-.env.*
-!.env.example
+*.env.*
 
-# IDE files
+# Editors
 .vs/
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
-Thumbs.db
-
-# Test coverage
-coverage/
-htmlcov/
-.coverage
-*.coverage
+.vshistory/
+.ReSharper*/
+**/.idea/
+*.user
+*.userosscache
+*.suo
+*.csproj.user
+*.userprefs
 
 # OS generated files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+[Tt]emp/
 ```
