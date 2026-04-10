@@ -14,9 +14,13 @@ namespace GeTuiPushApiV2.NetCoreSDK.Core.Test
         {
             Console.WriteLine("*************************************************普通方式*************************************************");
 
-            string AppID = "Ny3b4Umv7882X0UheVwCU4";//应用ID
-            string AppKey = "dY1BXGSHys8TPKeCqU3ilA"; //应用key
-            string MasterSecret = "GAZTCU0hyO69XjC9u5pSb2"; //主密钥
+            // 从环境变量读取配置（推荐方式）
+            // 设置环境变量示例:
+            // Windows: setx GETUI_APP_ID "your_app_id"
+            // Linux/Mac: export GETUI_APP_ID="your_app_id"
+            string AppID = Environment.GetEnvironmentVariable("GETUI_APP_ID") ?? throw new InvalidOperationException("环境变量 GETUI_APP_ID 未设置");
+            string AppKey = Environment.GetEnvironmentVariable("GETUI_APP_KEY") ?? throw new InvalidOperationException("环境变量 GETUI_APP_KEY 未设置");
+            string MasterSecret = Environment.GetEnvironmentVariable("GETUI_MASTER_SECRET") ?? throw new InvalidOperationException("环境变量 GETUI_MASTER_SECRET 未设置");
 
             long _timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000;
             var indto = new ApiAuthInDto()

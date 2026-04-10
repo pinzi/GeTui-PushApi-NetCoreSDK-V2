@@ -1,6 +1,48 @@
-The file changes show only the deletion of README_SECURITY.md, which is a documentation file. There are no build artifacts, dependency directories, temporary files, or other items that should be ignored according to the specified rules. Since only a source/documentation file was changed (deleted), no additional ignore rules are needed.
+```
+# Build artifacts
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.so
+*.dylib
+*.jar
+*.war
+*.class
+*.o
+*.obj
+*.out
 
-Therefore, the .gitignore file remains empty.
+# Dependencies
+packages/
+node_modules/
+.nuget/
+.nyc_output/
+coverage/
 
-(No output)
-Nothing should be ignored since only a README.md file was modified and no build artifacts, dependencies, or temporary files were detected in the changes.
+# IDE files
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Test coverage
+htmlcov/
+.coverage
+coverage.xml
+```
